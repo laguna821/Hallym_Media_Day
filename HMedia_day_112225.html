@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <title>2025 미디어인의 날 — 길을 걷다: 전략과 전술 | 모바일 초대장</title>
+  <!-- Pretendard Variable (fallbacks included) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --ink: #111111;
+      --primary: #002870; /* 제목/키워드 */
+      --info: #005bac;    /* 본문/정보 */
+      --accent: #00ada9;  /* CTA/포인트 */
+      --muted: #8a97a6;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+      -webkit-text-size-adjust: 100%;
+    }
+    a { color: var(--info); text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* App bar */
+    .appbar {
+      position: fixed; inset: 0 0 auto 0; height: 56px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px; background: rgba(255,255,255,0.8); backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid #eef2f7; z-index: 40;
+    }
+    .brand { font-weight: 700; letter-spacing: 0.2px; color: var(--primary); font-size: 15px; }
+    .hint { font-size: 12px; color: var(--muted); }
+
+    /* Slider */
+    .viewport { position: relative; height: 100svh; overflow: hidden; }
+    .track {
+      position: absolute; inset: 56px 0 64px 0; /* leave space for appbar & dots */
+      display: grid; grid-auto-flow: column; grid-auto-columns: 100%;
+      overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .track::-webkit-scrollbar { display: none; }
+
+    .slide {
+      scroll-snap-align: start; padding: clamp(24px, 7vw, 48px); display: grid; place-content: center; gap: 20px;
+    }
+    .slide-inner { max-width: min(680px, 92vw); margin-inline: auto; }
+
+    .kicker { text-transform: uppercase; font-size: 12px; letter-spacing: 0.18em; color: var(--muted); }
+    .label { font-size: 12px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; }
+    .label.left { text-align: left; }
+    .label.right { text-align: right; }
+
+    .title-hero { color: var(--primary); font-weight: 800; line-height: 1.2; font-size: clamp(30px, 8vw, 56px); }
+    .title-1    { color: var(--primary); font-weight: 800; line-height: 1.22; font-size: clamp(28px, 6.6vw, 42px); }
+    .title-2    { color: var(--primary); font-weight: 800; line-height: 1.25; font-size: clamp(22px, 5.6vw, 32px); }
+    .lead       { color: var(--ink); font-size: clamp(17px, 4.6vw, 19px); }
+    .muted      { color: var(--muted); }
+
+    .u-accent   { background-image: linear-gradient(to top, var(--accent) 0.18em, transparent 0.18em); background-repeat: no-repeat; background-size: 100% 0.18em; }
+
+    .hr { height: 1px; background: #e9eef5; width: 100%; border: 0; }
+
+    .cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      height: 48px; padding: 0 18px; background: var(--accent); color: #fff; border-radius: 12px; font-weight: 700; font-size: 16px; border: 0;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+    }
+    .cta:active { transform: translateY(1px); }
+
+    /* Dots */
+    .dots { position: fixed; inset: auto 0 10px 0; display: flex; align-items: center; justify-content: center; gap: 10px; z-index: 30; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #cfd8e3; transition: transform .25s ease, background-color .25s ease; }
+    .dot[aria-current="true"] { background: var(--info); transform: scale(1.4); }
+
+    /* Info grid on Slide 6 */
+    .info-grid { display: grid; gap: 10px; font-size: 15px; color: var(--ink); }
+    .info-grid .row { display: grid; grid-template-columns: 88px 1fr; gap: 10px; }
+    .info-grid .key { color: var(--muted); }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      .track { scroll-behavior: auto; }
+      .dot { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="appbar" role="banner">
+    <div class="brand">2025 미디어인의 날</div>
+    <div class="hint" aria-hidden="true">좌우로 스와이프</div>
+  </header>
+
+  <main class="viewport" role="main">
+    <section class="track" id="track" aria-label="가로 슬라이드 초대장">
+
+      <!-- SLIDE 1: The Hook -->
+      <article class="slide" id="s1" aria-label="Hook">
+        <div class="slide-inner">
+          <p class="kicker">Invitation</p>
+          <h1 class="title-1" style="margin: 0 0 10px 0;">‘처음부터 완벽한 <span class="u-accent">전략</span>’이 없어서 불안하신가요?</h1>
+          <p class="lead">괜찮습니다. 시작은 언제나 <strong>전술</strong>에서부터—지금 가진 것으로 한 걸음, 그 한 걸음이 길을 엽니다.</p>
+        </div>
+      </article>
+
+      <!-- SLIDE 2: The Conflict (Strategy) -->
+      <article class="slide" id="s2" aria-label="Conflict">
+        <div class="slide-inner">
+          <div class="label left" aria-hidden="true">Strategy</div>
+          <h2 class="title-2" style="margin: 4px 0 12px 0;">전략은 ‘모든 수단’을 갖춘 상태입니다.</h2>
+          <p class="lead" style="margin: 0 0 6px 0;">가위·바위·보 <em>모두</em>를 쥐고 있다면 어디서든 대응할 수 있죠.</p>
+          <p class="muted" style="margin: 0;">하지만 커리어의 시작점에서, 그 완벽함을 지금 당장 갖추긴 어렵습니다.</p>
+        </div>
+      </article>
+
+      <!-- SLIDE 3: The Revelation (Tactics) -->
+      <article class="slide" id="s3" aria-label="Revelation">
+        <div class="slide-inner" style="text-align: right;">
+          <div class="label right" aria-hidden="true">Tactics</div>
+          <h2 class="title-2" style="margin: 4px 0 12px 0;">전술은 ‘지금 가진 것’으로 이기는 법입니다.</h2>
+          <p class="lead" style="margin: 0 0 6px 0;">가위만 있다면, 바위를 피하고 <strong>보</strong>만 노립니다.</p>
+          <p class="muted" style="margin: 0;">현실적인 선택이 작은 승리를 만들고, 그 승리가 자원이 됩니다.</p>
+        </div>
+      </article>
+
+      <!-- SLIDE 4: The Pivot (Growth) -->
+      <article class="slide" id="s4" aria-label="Pivot">
+        <div class="slide-inner">
+          <h2 class="title-2" style="margin: 0 0 12px 0;">작은 <span class="u-accent">전술적 승리</span>가 쌓여 <span class="u-accent">전략적 자원</span>이 됩니다.</h2>
+          <p class="lead" style="margin: 0 0 6px 0;">반복되는 실행은 네트워크·포트폴리오·경험을 축적하고, 그 자체가 전략이 됩니다.</p>
+          <p class="muted" style="margin: 0;">이 순간부터 문제는 ‘완벽한 계획’이 아니라, <strong>다음 한 걸음</strong>입니다.</p>
+        </div>
+      </article>
+
+      <!-- SLIDE 5: Theme Reveal -->
+      <article class="slide" id="s5" aria-label="Theme Reveal">
+        <div class="slide-inner" style="text-align:center;">
+          <h2 class="title-hero" style="margin: 0 0 10px 0;">길을 걷다: 전략과 전술</h2>
+          <p class="lead" style="color: var(--info); margin: 0;">집요한 문제의식 · 실행 가능한 가이던스 · 안도감과 현실적 공감</p>
+        </div>
+      </article>
+
+      <!-- SLIDE 6: Invitation & CTA -->
+      <article class="slide" id="s6" aria-label="Invitation & Information">
+        <div class="slide-inner">
+          <h2 class="title-1" style="margin: 0 0 14px 0;">당신을 공식적으로 초대합니다</h2>
+          <p class="lead" style="margin: 0 0 14px 0;">미디어인의 날 2회차 — <strong>실천으로 연결되는 전술</strong>에서 <strong>자원이 되는 전략</strong>까지.</p>
+          <div class="hr" role="separator" aria-hidden="true"></div>
+          <div class="info-grid" style="margin-top: 12px;">
+            <div class="row"><div class="key">주제</div><div>길을 걷다: 전략과 전술</div></div>
+            <div class="row"><div class="key">일시</div><div>2025. 11. 22</div></div>
+            <div class="row"><div class="key">장소</div><div>추후 공지</div></div>
+            <div class="row"><div class="key">대상</div><div>재학생 · 졸업생 · 교원 · 동문</div></div>
+            <div class="row"><div class="key">드레스코드</div><div>편안한 비즈니스 캐주얼 (선택)</div></div>
+          </div>
+          <p class="muted" style="margin: 10px 0 16px 0;">세부 일정과 스피커 라인업은 순차 공개됩니다.</p>
+          <a class="cta" href="#" role="button" aria-label="참석 신청하기 (링크는 추후 활성화)">참석 신청하기</a>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Pagination dots -->
+    <nav class="dots" aria-label="슬라이드 페이지 표시">
+      <button class="dot" data-to="s1" aria-label="슬라이드 1" aria-current="true"></button>
+      <button class="dot" data-to="s2" aria-label="슬라이드 2"></button>
+      <button class="dot" data-to="s3" aria-label="슬라이드 3"></button>
+      <button class="dot" data-to="s4" aria-label="슬라이드 4"></button>
+      <button class="dot" data-to="s5" aria-label="슬라이드 5"></button>
+      <button class="dot" data-to="s6" aria-label="슬라이드 6"></button>
+    </nav>
+  </main>
+
+  <script>
+    (function() {
+      const track = document.getElementById('track');
+      const slides = Array.from(track.querySelectorAll('.slide'));
+      const dots = Array.from(document.querySelectorAll('.dot'));
+
+      // Dot click → snap to slide
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const id = dot.getAttribute('data-to');
+          const el = document.getElementById(id);
+          if (!el) return;
+          const left = el.offsetLeft - track.offsetLeft;
+          track.scrollTo({ left, behavior: 'smooth' });
+        });
+      });
+
+      // Observe to set active dot
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            dots.forEach(d => d.setAttribute('aria-current', d.getAttribute('data-to') === id ? 'true' : 'false'));
+          }
+        });
+      }, { root: track, threshold: 0.6 });
+
+      slides.forEach(s => io.observe(s));
+
+      // Keyboard accessibility (left/right)
+      window.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        const activeIndex = dots.findIndex(d => d.getAttribute('aria-current') === 'true');
+        let next = activeIndex + (e.key === 'ArrowRight' ? 1 : -1);
+        next = Math.max(0, Math.min(dots.length - 1, next));
+        dots[next].click();
+      });
+    })();
+  </script>
+</body>
+</html>
