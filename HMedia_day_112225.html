@@ -31,13 +31,9 @@
     a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
     /* App bar */
-    .appbar {
-      position: fixed; inset: 0 0 auto 0; height: 56px; display: flex; align-items: center; justify-content: space-between;
-      padding: 0 16px; background: rgba(255,255,255,0.8); backdrop-filter: saturate(180%) blur(10px);
-      border-bottom: 1px solid #eef2f7; z-index: 40;
-    }
-    .brand { font-weight: 700; letter-spacing: 0.2px; color: var(--primary); font-size: 15px; }
-    .hint { font-size: 12px; color: var(--muted); }
+    .appbar { position: fixed; inset: 0 0 auto 0; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; background: var(--primary); color: #fff; border-bottom: none; z-index: 40; }
+    .brand { font-weight: 700; letter-spacing: 0.2px; color: #fff; font-size: 15px; }
+    .hint { font-size: 12px; color: #fff; }
 
     /* Slider */
     .viewport { position: relative; height: 100svh; overflow: hidden; }
@@ -102,67 +98,67 @@
   <main class="viewport" role="main">
     <section class="track" id="track" aria-label="가로 슬라이드 초대장">
 
-      <!-- SLIDE 1: The Hook -->
+      <!-- SLIDE 1: Hook -->
       <article class="slide" id="s1" aria-label="Hook">
         <div class="slide-inner">
-          <p class="kicker">Invitation</p>
-          <h1 class="title-1" style="margin: 0 0 10px 0;">‘처음부터 완벽한 <span class="u-accent">전략</span>’이 없어서 불안하신가요?</h1>
-          <p class="lead">괜찮습니다. 시작은 언제나 <strong>전술</strong>에서부터—지금 가진 것으로 한 걸음, 그 한 걸음이 길을 엽니다.</p>
+          <h1 class="title-1" style="margin: 0 0 10px 0;">당신의 첫 직장은 완벽했습니까?<br/>누구도 풀패키지로 시작하지 않습니다.</h1>
         </div>
       </article>
 
-      <!-- SLIDE 2: The Conflict (Strategy) -->
+      <!-- SLIDE 2: Conflict -->
       <article class="slide" id="s2" aria-label="Conflict">
         <div class="slide-inner">
-          <div class="label left" aria-hidden="true">Strategy</div>
-          <h2 class="title-2" style="margin: 4px 0 12px 0;">전략은 ‘모든 수단’을 갖춘 상태입니다.</h2>
-          <p class="lead" style="margin: 0 0 6px 0;">가위·바위·보 <em>모두</em>를 쥐고 있다면 어디서든 대응할 수 있죠.</p>
-          <p class="muted" style="margin: 0;">하지만 커리어의 시작점에서, 그 완벽함을 지금 당장 갖추긴 어렵습니다.</p>
+          <h2 class="title-2" style="margin: 0 0 12px 0;">가위·바위·보를 다 쥐고 게임을 시작할 수는 없습니다.<br/>오징어게임의 성기훈도 모든 필승법을 갖고 뛰지 않았습니다.</h2>
         </div>
       </article>
 
-      <!-- SLIDE 3: The Revelation (Tactics) -->
-      <article class="slide" id="s3" aria-label="Revelation">
-        <div class="slide-inner" style="text-align: right;">
-          <div class="label right" aria-hidden="true">Tactics</div>
-          <h2 class="title-2" style="margin: 4px 0 12px 0;">전술은 ‘지금 가진 것’으로 이기는 법입니다.</h2>
-          <p class="lead" style="margin: 0 0 6px 0;">가위만 있다면, 바위를 피하고 <strong>보</strong>만 노립니다.</p>
-          <p class="muted" style="margin: 0;">현실적인 선택이 작은 승리를 만들고, 그 승리가 자원이 됩니다.</p>
-        </div>
-      </article>
-
-      <!-- SLIDE 4: The Pivot (Growth) -->
-      <article class="slide" id="s4" aria-label="Pivot">
+      <!-- SLIDE 3: Reality Check -->
+      <article class="slide" id="s3" aria-label="Reality Check">
         <div class="slide-inner">
-          <h2 class="title-2" style="margin: 0 0 12px 0;">작은 <span class="u-accent">전술적 승리</span>가 쌓여 <span class="u-accent">전략적 자원</span>이 됩니다.</h2>
-          <p class="lead" style="margin: 0 0 6px 0;">반복되는 실행은 네트워크·포트폴리오·경험을 축적하고, 그 자체가 전략이 됩니다.</p>
-          <p class="muted" style="margin: 0;">이 순간부터 문제는 ‘완벽한 계획’이 아니라, <strong>다음 한 걸음</strong>입니다.</p>
+          <p class="lead" style="margin: 0;">당신보다 앞서간 졸업생들은 가위 바위 보를 다 가지고 시작한 것처럼 보이겠지만,<br/>그들 모두 가위나 바위 하나만을 가지고 살아남는 법을 배웠습니다.</p>
         </div>
       </article>
 
-      <!-- SLIDE 5: Theme Reveal -->
-      <article class="slide" id="s5" aria-label="Theme Reveal">
+      <!-- SLIDE 4: Definition - Tactics -->
+      <article class="slide" id="s4" aria-label="Definition - Tactics">
+        <div class="slide-inner">
+          <h2 class="title-1" style="margin: 0;">그것이 ‘전술’입니다.</h2>
+        </div>
+      </article>
+
+      <!-- SLIDE 5: Survival & Effort -->
+      <article class="slide" id="s5" aria-label="Survival & Effort">
+        <div class="slide-inner">
+          <p class="lead" style="margin: 0;">당장 내가 가진 것만으로 작은 곳에서라도 일하면서 살아남아,<br/>내게 없는 바위나 보가 갖춰질 때까지<br/>투잡을 뛰거나 야간 대학원을 다녀서라도<br/>길게 훗날을 도모하는 것.</p>
+        </div>
+      </article>
+
+      <!-- SLIDE 6: Growth & Personal Brand -->
+      <article class="slide" id="s6" aria-label="Growth & Personal Brand">
+        <div class="slide-inner">
+          <p class="lead" style="margin: 0;">그렇게 다양한 경험과 스킬셋을<br/>나의 퍼스널 브랜드로 승화해서<br/>마침내 원하던 직업이나 꿈에 도달하는 것.</p>
+        </div>
+      </article>
+
+      <!-- SLIDE 7: Definition - Strategy -->
+      <article class="slide" id="s7" aria-label="Definition - Strategy">
+        <div class="slide-inner">
+          <h2 class="title-1" style="margin: 0;">그것이 전략입니다.</h2>
+        </div>
+      </article>
+
+      <!-- SLIDE 8: Reflection Question -->
+      <article class="slide" id="s8" aria-label="Reflection Question">
+        <div class="slide-inner">
+          <h2 class="title-2" style="margin: 0;">당신이라는 브랜드의<br/>전략과 전술은 무엇입니까?</h2>
+        </div>
+      </article>
+
+      <!-- SLIDE 9: Theme Reveal & Date -->
+      <article class="slide" id="s9" aria-label="Theme Reveal & Date">
         <div class="slide-inner" style="text-align:center;">
-          <h2 class="title-hero" style="margin: 0 0 10px 0;">길을 걷다: 전략과 전술</h2>
-          <p class="lead" style="color: var(--info); margin: 0;">집요한 문제의식 · 실행 가능한 가이던스 · 안도감과 현실적 공감</p>
-        </div>
-      </article>
-
-      <!-- SLIDE 6: Invitation & CTA -->
-      <article class="slide" id="s6" aria-label="Invitation & Information">
-        <div class="slide-inner">
-          <h2 class="title-1" style="margin: 0 0 14px 0;">당신을 공식적으로 초대합니다</h2>
-          <p class="lead" style="margin: 0 0 14px 0;">미디어인의 날 2회차 — <strong>실천으로 연결되는 전술</strong>에서 <strong>자원이 되는 전략</strong>까지.</p>
-          <div class="hr" role="separator" aria-hidden="true"></div>
-          <div class="info-grid" style="margin-top: 12px;">
-            <div class="row"><div class="key">주제</div><div>길을 걷다: 전략과 전술</div></div>
-            <div class="row"><div class="key">일시</div><div>2025. 11. 22</div></div>
-            <div class="row"><div class="key">장소</div><div>추후 공지</div></div>
-            <div class="row"><div class="key">대상</div><div>재학생 · 졸업생 · 교원 · 동문</div></div>
-            <div class="row"><div class="key">드레스코드</div><div>편안한 비즈니스 캐주얼 (선택)</div></div>
-          </div>
-          <p class="muted" style="margin: 10px 0 16px 0;">세부 일정과 스피커 라인업은 순차 공개됩니다.</p>
-          <a class="cta" href="#" role="button" aria-label="참석 신청하기 (링크는 추후 활성화)">참석 신청하기</a>
+          <h2 class="title-hero" style="margin: 0 0 8px 0;">길을 걷다: 전략과 전술</h2>
+          <p class="lead" style="color: var(--info); margin: 0;">2025. 11. 22</p>
         </div>
       </article>
 
@@ -176,6 +172,9 @@
       <button class="dot" data-to="s4" aria-label="슬라이드 4"></button>
       <button class="dot" data-to="s5" aria-label="슬라이드 5"></button>
       <button class="dot" data-to="s6" aria-label="슬라이드 6"></button>
+      <button class="dot" data-to="s7" aria-label="슬라이드 7"></button>
+      <button class="dot" data-to="s8" aria-label="슬라이드 8"></button>
+      <button class="dot" data-to="s9" aria-label="슬라이드 9"></button>
     </nav>
   </main>
 
