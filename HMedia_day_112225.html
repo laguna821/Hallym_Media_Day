@@ -87,15 +87,53 @@
       .track { scroll-behavior: auto; }
       .dot { transition: none; }
     }
+      /* Landing (main hero) */
+    .landing { position: fixed; inset: 56px 0 0 0; background: var(--bg); z-index: 35; display: grid; place-content: center; text-align: center; }
+    .landing-inner { padding: clamp(24px, 6vw, 48px); }
+    .landing-title { color: var(--primary); font-weight: 800; line-height: 1.15; font-size: clamp(32px, 8.5vw, 54px); letter-spacing: 0.01em; }
+    .landing-sub { color: var(--info); font-size: clamp(16px, 4.6vw, 20px); margin-top: 8px; }
+    .landing-tagline { color: var(--ink); font-size: clamp(18px, 4.8vw, 22px); margin-top: 10px; }
+
+    .landing-actions { position: absolute; left: 0; right: 0; bottom: 16px; padding: 0 16px calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 14px; border-radius: 12px; font-weight: 700; border: 0; box-shadow: 0 10px 16px rgba(0,0,0,0.06); text-decoration: none; }
+    .btn-primary { background: var(--primary); color: #fff; }
+
+    .floaters { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .floaters span { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); background: radial-gradient(50% 50% at 50% 50%, var(--accent), transparent 60%); opacity: .08; filter: blur(0.5px); border-radius: 50%; animation: drift var(--d, 26s) ease-in-out infinite alternate; transform: translate(0,0); }
+    @keyframes drift { to { transform: translate(var(--dx, 14px), var(--dy, -10px)); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .floaters span { animation: none; }
+    }
   </style>
 </head>
 <body>
   <header class="appbar" role="banner">
     <div class="brand">2025 미디어인의 날</div>
-    <div class="hint" aria-hidden="true">11. 22</div>
+    <div class="hint" aria-hidden="true">좌우로 스와이프</div>
   </header>
 
   <main class="viewport" role="main">
+
+    <!-- Landing (main page) -->
+    <section class="landing" id="landing" aria-label="메인 초대장">
+      <div class="floaters" aria-hidden="true">
+        <span style="--x:8%;  --y:16%; --s:72px; --dx:10px;  --dy:-8px;  --d:24s;"></span>
+        <span style="--x:78%; --y:22%; --s:56px; --dx:-8px;  --dy:10px;  --d:22s;"></span>
+        <span style="--x:18%; --y:74%; --s:64px; --dx:12px;  --dy:-10px; --d:26s;"></span>
+        <span style="--x:66%; --y:72%; --s:84px; --dx:-12px; --dy:8px;  --d:28s;"></span>
+        <span style="--x:40%; --y:38%; --s:48px; --dx:8px;   --dy:-8px;  --d:20s;"></span>
+      </div>
+      <div class="landing-inner">
+        <h1 class="landing-title">길을 걷다: 전략과 전술</h1>
+        <p class="landing-sub">2025. 11. 22 미디어인의 날</p>
+        <p class="landing-tagline">당신을 초대합니다.</p>
+      </div>
+      <div class="landing-actions">
+        <a href="#s1" id="gotoSlides" class="btn btn-primary" role="button" aria-label="행사 기획의도 보기">행사 기획의도</a>
+        <a href="http://qr.kakao.com/talk/38DwpPqE2txmrcCDJGeFLbLCLFw-" class="btn btn-primary" role="button" aria-label="행사 문의 (안창현 교수)" target="_blank" rel="noopener">행사 문의 (안창현 교수)</a>
+      </div>
+    </section>
     <section class="track" id="track" aria-label="가로 슬라이드 초대장">
 
       <!-- SLIDE 1: Hook -->
@@ -162,12 +200,6 @@
         </div>
       </article>
 
-      <article class="slide" id="s10" aria-label="Theme Reveal & Date">
-        <div class="slide-inner" style="text-align:center;">
-          <h2 class="title-hero" style="margin: 0 0 8px 0;">당신을 초대합니다.</h2>
-        </div>
-      </article>
-      
     </section>
 
     <!-- Pagination dots -->
@@ -181,7 +213,6 @@
       <button class="dot" data-to="s7" aria-label="슬라이드 7"></button>
       <button class="dot" data-to="s8" aria-label="슬라이드 8"></button>
       <button class="dot" data-to="s9" aria-label="슬라이드 9"></button>
-      <button class="dot" data-to="s10" aria-label="슬라이드 9"></button>
     </nav>
   </main>
 
@@ -224,6 +255,28 @@
         dots[next].click();
       });
     })();
+  </script>
+  <script>
+    // Landing → Slides transition
+    document.addEventListener('DOMContentLoaded', function () {
+      var goto = document.getElementById('gotoSlides');
+      var trackEl = document.getElementById('track');
+      if (goto && trackEl) {
+        goto.addEventListener('click', function (e) {
+          e.preventDefault();
+          var landing = document.getElementById('landing');
+          if (landing) {
+            landing.setAttribute('hidden', '');
+          }
+          var first = document.getElementById('s1');
+          if (first) {
+            var left = first.offsetLeft - trackEl.offsetLeft;
+            try { trackEl.scrollTo({ left: left, behavior: 'smooth' }); }
+            catch (err) { trackEl.scrollLeft = left; }
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>
