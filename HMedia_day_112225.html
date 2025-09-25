@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="light" />
   <title>2025 미디어인의 날 — 길을 걷다: 전략과 전술 | 모바일 초대장</title>
   <!-- Pretendard Variable -->
+  <link rel="preload" as="image" href="assets/2.png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
   <style>
@@ -96,6 +97,16 @@
 
     /* Landing (main hero) */
     .landing { position: fixed; inset: 56px 0 0 0; background: var(--bg); z-index: 35; display: grid; place-content: center; text-align: center; }
+    /* Landing background image (responsive cover + readability overlay) */
+    .landing {
+      /* 상단은 투명한 흰색 오버레이, 하단은 실제 이미지 세트 */
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.85), rgba(255,255,255,.85)),
+        url('assets/2.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: auto, cover; /* 오버레이는 auto, 이미지가 cover */
+    }
     .landing-inner { padding: clamp(24px, 6vw, 48px); }
     .landing-title { color: var(--primary); font-weight: 800; line-height: 1.15; font-size: clamp(32px, 8.5vw, 54px); letter-spacing: 0.01em; }
     .landing-sub { color: var(--info); font-size: clamp(16px, 4.6vw, 20px); margin-top: 8px; }
