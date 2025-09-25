@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
   <title>2025 미디어인의 날 — 길을 걷다: 전략과 전술 | 모바일 초대장</title>
-  <!-- Pretendard Variable (fallbacks included) -->
+  <!-- Pretendard Variable -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
   <style>
@@ -31,23 +31,26 @@
     a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
     /* App bar */
-    .appbar { position: fixed; inset: 0 0 auto 0; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; background: var(--primary); color: #fff; border-bottom: none; z-index: 40; }
+    .appbar {
+      position: fixed; inset: 0 0 auto 0; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px; background: var(--primary); color: #fff; border-bottom: none; z-index: 40;
+    }
     .brand { font-weight: 700; letter-spacing: 0.2px; color: #fff; font-size: 15px; }
     .hint { font-size: 12px; color: #fff; }
 
     /* Slider */
     .viewport { position: relative; height: 100svh; overflow: hidden; }
     .track {
-      position: absolute; inset: 56px 0 64px 0; /* leave space for appbar & dots */
+      /* 하단에 고정 액션바(+도트) 공간 확보 */
+      position: absolute; inset: 56px 0 120px 0;
       display: grid; grid-auto-flow: column; grid-auto-columns: 100%;
       overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
     .track::-webkit-scrollbar { display: none; }
 
-    .slide {
-      scroll-snap-align: start; padding: clamp(24px, 7vw, 48px); display: grid; place-content: center; gap: 20px;
-    }
+    .slide { scroll-snap-align: start; padding: clamp(24px, 7vw, 48px); display: grid; place-content: center; gap: 20px; }
     .slide-inner { max-width: min(680px, 92vw); margin-inline: auto; }
 
     .kicker { text-transform: uppercase; font-size: 12px; letter-spacing: 0.18em; color: var(--muted); }
@@ -61,7 +64,7 @@
     .lead       { color: var(--ink); font-size: clamp(17px, 4.6vw, 19px); }
     .muted      { color: var(--muted); }
 
-    .u-accent   { background-image: linear-gradient(to top, var(--accent) 0.18em, transparent 0.18em); background-repeat: no-repeat; background-size: 100% 0.18em; }
+    .u-accent { background-image: linear-gradient(to top, var(--accent) 0.18em, transparent 0.18em); background-repeat: no-repeat; background-size: 100% 0.18em; }
 
     .hr { height: 1px; background: #e9eef5; width: 100%; border: 0; }
 
@@ -72,12 +75,15 @@
     }
     .cta:active { transform: translateY(1px); }
 
-    /* Dots */
-    .dots { position: fixed; inset: auto 0 10px 0; display: flex; align-items: center; justify-content: center; gap: 10px; z-index: 30; }
+    /* Dots (고정 액션바와 겹치지 않게 위로) */
+    .dots {
+      position: fixed; inset: auto 0 84px 0;
+      display: flex; align-items: center; justify-content: center; gap: 10px; z-index: 45;
+    }
     .dot { width: 7px; height: 7px; border-radius: 50%; background: #cfd8e3; transition: transform .25s ease, background-color .25s ease; }
     .dot[aria-current="true"] { background: var(--info); transform: scale(1.4); }
 
-    /* Info grid on Slide 6 */
+    /* Info grid on Slide 6 (if needed later) */
     .info-grid { display: grid; gap: 10px; font-size: 15px; color: var(--ink); }
     .info-grid .row { display: grid; grid-template-columns: 88px 1fr; gap: 10px; }
     .info-grid .key { color: var(--muted); }
@@ -87,24 +93,32 @@
       .track { scroll-behavior: auto; }
       .dot { transition: none; }
     }
-      /* Landing (main hero) */
+
+    /* Landing (main hero) */
     .landing { position: fixed; inset: 56px 0 0 0; background: var(--bg); z-index: 35; display: grid; place-content: center; text-align: center; }
     .landing-inner { padding: clamp(24px, 6vw, 48px); }
     .landing-title { color: var(--primary); font-weight: 800; line-height: 1.15; font-size: clamp(32px, 8.5vw, 54px); letter-spacing: 0.01em; }
     .landing-sub { color: var(--info); font-size: clamp(16px, 4.6vw, 20px); margin-top: 8px; }
     .landing-tagline { color: var(--ink); font-size: clamp(18px, 4.8vw, 22px); margin-top: 10px; }
 
-    .landing-actions { position: absolute; left: 0; right: 0; bottom: 16px; padding: 0 16px calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    /* 랜딩 내부 버튼은 숨기고(중복 노출 방지), 대신 전역 고정 액션바 사용 */
+    .landing-actions { display: none !important; }
     .btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 14px; border-radius: 12px; font-weight: 700; border: 0; box-shadow: 0 10px 16px rgba(0,0,0,0.06); text-decoration: none; }
     .btn-primary { background: var(--primary); color: #fff; }
 
     .floaters { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
     .floaters span { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); background: radial-gradient(50% 50% at 50% 50%, var(--accent), transparent 60%); opacity: .08; filter: blur(0.5px); border-radius: 50%; animation: drift var(--d, 26s) ease-in-out infinite alternate; transform: translate(0,0); }
     @keyframes drift { to { transform: translate(var(--dx, 14px), var(--dy, -10px)); } }
+    @media (prefers-reduced-motion: reduce) { .floaters span { animation: none; } }
 
-    @media (prefers-reduced-motion: reduce) {
-      .floaters span { animation: none; }
+    /* 전역 고정 하단 액션바 (랜딩/슬라이드 공통 노출) */
+    .global-actions {
+      position: fixed; left: 0; right: 0; bottom: 16px; z-index: 60;
+      padding: 0 16px calc(16px + env(safe-area-inset-bottom, 0px));
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
     }
+
+    [hidden]{ display:none !important; }
   </style>
 </head>
 <body>
@@ -114,7 +128,6 @@
   </header>
 
   <main class="viewport" role="main">
-
     <!-- Landing (main page) -->
     <section class="landing" id="landing" aria-label="메인 초대장">
       <div class="floaters" aria-hidden="true">
@@ -129,13 +142,15 @@
         <p class="landing-sub">2025. 11. 22 미디어인의 날</p>
         <p class="landing-tagline">당신을 초대합니다.</p>
       </div>
+      <!-- 기존 .landing-actions는 숨김 처리됨 (중복 방지) -->
       <div class="landing-actions">
         <a href="#s1" id="gotoSlides" class="btn btn-primary" role="button" aria-label="행사 기획의도 보기">행사 기획의도</a>
         <a href="http://qr.kakao.com/talk/38DwpPqE2txmrcCDJGeFLbLCLFw-" class="btn btn-primary" role="button" aria-label="행사 문의 (안창현 교수)" target="_blank" rel="noopener">행사 문의 (안창현 교수)</a>
       </div>
     </section>
-    <section class="track" id="track" aria-label="가로 슬라이드 초대장">
 
+    <!-- Slides -->
+    <section class="track" id="track" aria-label="가로 슬라이드 초대장">
       <!-- SLIDE 1: Hook -->
       <article class="slide" id="s1" aria-label="Hook">
         <div class="slide-inner">
@@ -199,7 +214,6 @@
           <p class="lead" style="color: var(--info); margin: 0;">2025. 11. 22</p>
         </div>
       </article>
-
     </section>
 
     <!-- Pagination dots -->
@@ -214,8 +228,17 @@
       <button class="dot" data-to="s8" aria-label="슬라이드 8"></button>
       <button class="dot" data-to="s9" aria-label="슬라이드 9"></button>
     </nav>
+
+    <!-- Global bottom actions (persist across landing & slides) -->
+    <nav class="global-actions" id="globalActions" aria-label="고정 하단 액션">
+      <a href="#s1" id="primaryBtn" class="btn btn-primary" role="button">행사 기획의도</a>
+      <a href="http://qr.kakao.com/talk/38DwpPqE2txmrcCDJGeFLbLCLFw-" class="btn btn-primary" role="button" target="_blank" rel="noopener">
+        행사 문의 (안창현 교수)
+      </a>
+    </nav>
   </main>
 
+  <!-- Slider logic -->
   <script>
     (function() {
       const track = document.getElementById('track');
@@ -230,6 +253,7 @@
           if (!el) return;
           const left = el.offsetLeft - track.offsetLeft;
           track.scrollTo({ left, behavior: 'smooth' });
+          if (location.hash !== '#' + id) { location.hash = '#' + id; }
         });
       });
 
@@ -256,25 +280,66 @@
       });
     })();
   </script>
+
+  <!-- View toggles: landing <-> slides, and primary button text/action -->
   <script>
-    // Landing → Slides transition
-    document.addEventListener('DOMContentLoaded', function () {
-      var goto = document.getElementById('gotoSlides');
+    function setPrimary(mode){
+      var btn = document.getElementById('primaryBtn');
+      if(!btn) return;
+      if(mode === 'slides'){
+        btn.textContent = '메인 페이지';
+        btn.onclick = function(e){ e.preventDefault(); toMain(); };
+      } else {
+        btn.textContent = '행사 기획의도';
+        btn.onclick = function(e){ e.preventDefault(); toSlides(); };
+      }
+    }
+    function toSlides(){
+      var landing = document.getElementById('landing');
+      if(landing){ landing.hidden = true; landing.style.display = 'none'; }
       var trackEl = document.getElementById('track');
-      if (goto && trackEl) {
-        goto.addEventListener('click', function (e) {
-          e.preventDefault();
-          var landing = document.getElementById('landing');
-          if (landing) {
-            landing.setAttribute('hidden', '');
-          }
-          var first = document.getElementById('s1');
-          if (first) {
-            var left = first.offsetLeft - trackEl.offsetLeft;
-            try { trackEl.scrollTo({ left: left, behavior: 'smooth' }); }
-            catch (err) { trackEl.scrollLeft = left; }
-          }
-        });
+      var first   = document.getElementById('s1');
+      if(trackEl && first){
+        var left = first.offsetLeft - trackEl.offsetLeft;
+        try { trackEl.scrollTo({ left:left, behavior:'smooth' }); } catch(e){ trackEl.scrollLeft = left; }
+      }
+      if(location.hash !== '#s1'){ location.hash = '#s1'; }
+      setPrimary('slides'); return false;
+    }
+    function toMain(){
+      var landing = document.getElementById('landing');
+      if(landing){ landing.hidden = false; landing.style.display = 'grid'; }
+      var trackEl = document.getElementById('track');
+      if(trackEl){
+        try { trackEl.scrollTo({ left:0, behavior:'smooth' }); } catch(e){ trackEl.scrollLeft = 0; }
+      }
+      try { history.replaceState(null, '', location.pathname + location.search); }
+      catch(e){ location.hash = ''; }
+      setPrimary('landing'); return false;
+    }
+
+    // 초기 상태 세팅 & 해시 변경 대응
+    document.addEventListener('DOMContentLoaded', function(){
+      var goto = document.getElementById('gotoSlides'); // (랜딩 내부 버튼은 숨김이지만 안전망)
+      if(goto){ goto.addEventListener('click', function(e){ e.preventDefault(); toSlides(); }); }
+
+      if(location.hash && /^#s\d+$/i.test(location.hash)){
+        var landing = document.getElementById('landing');
+        if(landing){ landing.hidden = true; landing.style.display = 'none'; }
+        setPrimary('slides');
+      } else {
+        setPrimary('landing');
+      }
+    });
+    window.addEventListener('hashchange', function(){
+      if(location.hash && /^#s\d+$/i.test(location.hash)){
+        var landing = document.getElementById('landing');
+        if(landing){ landing.hidden = true; landing.style.display = 'none'; }
+        setPrimary('slides');
+      } else {
+        var landing = document.getElementById('landing');
+        if(landing){ landing.hidden = false; landing.style.display = 'grid'; }
+        setPrimary('landing');
       }
     });
   </script>
