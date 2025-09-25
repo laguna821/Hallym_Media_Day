@@ -4,9 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
-  <title>2025 미디어인의 날 — 길을 걷다: 전략과 전술 | 모바일 초대장</title>
+  <title>모바일 초대장: 미디어인의 날 2025 </title>
   <!-- Pretendard Variable -->
-  <link rel="preload" as="image" href="assets/2.png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
   <style>
@@ -59,10 +58,10 @@
     .label.left { text-align: left; }
     .label.right { text-align: right; }
 
-    .title-hero { color: var(--primary); font-weight: 800; line-height: 1.2; font-size: clamp(30px, 8vw, 56px); }
-    .title-1    { color: var(--primary); font-weight: 800; line-height: 1.22; font-size: clamp(28px, 6.6vw, 42px); }
-    .title-2    { color: var(--primary); font-weight: 800; line-height: 1.25; font-size: clamp(22px, 5.6vw, 32px); }
-    .lead       { color: var(--ink); font-size: clamp(17px, 4.6vw, 19px); }
+    .title-hero { color: var(--primary); font-weight: 800; line-height: 1.2; font-size: clamp(29.04px, 8vw, 31.04px); }
+    .title-1    { color: var(--primary); font-weight: 800; line-height: 1.22; font-size: clamp(27.22px, 6.6vw, 29.22px); }
+    .title-2    { color: var(--primary); font-weight: 800; line-height: 1.25; font-size: clamp(25.51px, 5.6vw, 27.51px); }
+    .lead       { color: var(--ink); font-size: clamp(24px, 4.6vw, 26px); }
     .muted      { color: var(--muted); }
 
     .u-accent { background-image: linear-gradient(to top, var(--accent) 0.18em, transparent 0.18em); background-repeat: no-repeat; background-size: 100% 0.18em; }
@@ -97,20 +96,11 @@
 
     /* Landing (main hero) */
     .landing { position: fixed; inset: 56px 0 0 0; background: var(--bg); z-index: 35; display: grid; place-content: center; text-align: center; }
-    /* Landing background image (responsive cover + readability overlay) */
-    .landing {
-      /* 상단은 투명한 흰색 오버레이, 하단은 실제 이미지 세트 */
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,.85), rgba(255,255,255,.85)),
-        url('assets/2.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: auto, cover; /* 오버레이는 auto, 이미지가 cover */
-    }
+
     .landing-inner { padding: clamp(24px, 6vw, 48px); }
-    .landing-title { color: var(--primary); font-weight: 800; line-height: 1.15; font-size: clamp(32px, 8.5vw, 54px); letter-spacing: 0.01em; }
-    .landing-sub { color: var(--info); font-size: clamp(16px, 4.6vw, 20px); margin-top: 8px; }
-    .landing-tagline { color: var(--ink); font-size: clamp(18px, 4.8vw, 22px); margin-top: 10px; }
+    .landing-title { color: var(--primary); font-weight: 800; line-height: 1.15; font-size: clamp(30.99px, 8.5vw, 32.99px); letter-spacing: 0.01em; }
+    .landing-sub { color: var(--info); font-size: clamp(27.22px, 4.6vw, 29.22px); margin-top: 8px; }
+    .landing-tagline { color: var(--ink); font-size: clamp(25.51px, 4.8vw, 27.51px); margin-top: 10px; }
 
     /* 랜딩 내부 버튼은 숨기고(중복 노출 방지), 대신 전역 고정 액션바 사용 */
     .landing-actions { display: none !important; }
@@ -134,8 +124,8 @@
 </head>
 <body>
   <header class="appbar" role="banner">
-    <div class="brand">2025 미디어인의 날</div>
-    <div class="hint" aria-hidden="true">좌우로 스와이프</div>
+    <div class="brand">한림대학교 미디어인의 날</div>
+    <div class="hint" aria-hidden="true">2025. 11. 22</div>
   </header>
 
   <main class="viewport" role="main">
@@ -150,7 +140,7 @@
       </div>
       <div class="landing-inner">
         <h1 class="landing-title">길을 걷다: 전략과 전술</h1>
-        <p class="landing-sub">2025. 11. 22 미디어인의 날</p>
+        <h2 class="landing-sub">2025. 11. 22 미디어인의 날</h2>
         <p class="landing-tagline">당신을 초대합니다.</p>
       </div>
       <!-- 기존 .landing-actions는 숨김 처리됨 (중복 방지) -->
@@ -165,21 +155,21 @@
       <!-- SLIDE 1: Hook -->
       <article class="slide" id="s1" aria-label="Hook">
         <div class="slide-inner">
-          <h1 class="title-1" style="margin: 0 0 10px 0;">당신의 첫 직장은 완벽했습니까?<br/>누구도 풀패키지로 시작하지 않습니다.</h1>
+          <h1 class="title-1" style="margin: 0 0 10px 0;">당신의 첫 직장은 완벽했습니까?<br/>그 누구도 모든 자격을 갖춘채 <br/> 풀패키지로 시작하지 않습니다.</h1>
         </div>
       </article>
 
       <!-- SLIDE 2: Conflict -->
       <article class="slide" id="s2" aria-label="Conflict">
         <div class="slide-inner">
-          <h2 class="title-2" style="margin: 0 0 12px 0;">가위·바위·보를 다 쥐고 게임을 시작할 수는 없습니다.<br/>오징어게임의 성기훈도 모든 필승법을 갖고 뛰지 않았습니다.</h2>
+          <h2 class="title-2" style="margin: 0 0 12px 0;">가위·바위·보를 다 쥐고<br/> 게임을 시작할 수는 없습니다.<br/>오징어게임의 성기훈도, <br/>처음엔 필승법이 없었습니다.</h2>
         </div>
       </article>
 
       <!-- SLIDE 3: Reality Check -->
       <article class="slide" id="s3" aria-label="Reality Check">
         <div class="slide-inner">
-          <p class="lead" style="margin: 0;">당신보다 앞서간 졸업생들은 가위 바위 보를 다 가지고 시작한 것처럼 보이겠지만,<br/>그들 모두 가위나 바위 하나만을 가지고 살아남는 법을 배웠습니다.</p>
+          <p class="lead" style="margin: 0;">당신보다 앞서간 졸업생들은,<br/> 가위 바위 보를 다 가지고 시작한 것 같겠지만,<br/>그들 모두 가위나 바위 하나만을 가지고 <br/>살아남는 법을 배웠습니다.</p>
         </div>
       </article>
 
@@ -193,7 +183,7 @@
       <!-- SLIDE 5: Survival & Effort -->
       <article class="slide" id="s5" aria-label="Survival & Effort">
         <div class="slide-inner">
-          <p class="lead" style="margin: 0;">당장 내가 가진 것만으로 작은 곳에서라도 일하면서 살아남아,<br/>내게 없는 바위나 보가 갖춰질 때까지<br/>투잡을 뛰거나 야간 대학원을 다녀서라도<br/>길게 훗날을 도모하는 것.</p>
+          <p class="lead" style="margin: 0;">당장 내가 가진 것만으로 <br/>작은 곳에서라도 일하면서 살아남아,<br/>내게 없는 바위나 보가 갖춰질 때까지<br/>투잡을 뛰거나 야간 대학원을 다녀서라도<br/>길게 훗날을 도모하는 것.</p>
         </div>
       </article>
 
@@ -221,8 +211,10 @@
       <!-- SLIDE 9: Theme Reveal & Date -->
       <article class="slide" id="s9" aria-label="Theme Reveal & Date">
         <div class="slide-inner" style="text-align:center;">
+          <h2 class="title-hero" style="margin: 0 0 8px 0;">2025 미디어인의날</h2>
           <h2 class="title-hero" style="margin: 0 0 8px 0;">길을 걷다: 전략과 전술</h2>
-          <p class="lead" style="color: var(--info); margin: 0;">2025. 11. 22</p>
+          <h2 class="title-2" style="color: var(--info); margin: 0;">2025. 11. 22</h2>
+          <p class="lead" style="margin: 10;">당신의 이야기를 공유하세요.</p>
         </div>
       </article>
     </section>
