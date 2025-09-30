@@ -19,14 +19,41 @@
     }
     * { box-sizing: border-box; }
     html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.45;
-      -webkit-text-size-adjust: 100%;
-    }
+/* 1) 기본 폰트 컬러/굵기를 h1 기준으로 통일 */
+body{
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  background: var(--bg);
+  color: var(--primary);      /* ← h1 컬러로 통일 */
+  font-weight: 800;           /* ← h1 굵기로 통일 */
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* 2) 타입 스케일(정해주신 세 크기) */
+:root{
+  --h1: 1.48rem;  /* 23.61px */
+  --h2: 1.38rem;  /* 22.13px */
+  --h3: 1.30rem;  /* 20.74px */
+}
+
+/* 3) 기존 클래스들을 h1/h2/h3로 매핑 (색/굵기도 상속) */
+.title-hero, .title-1, .landing-title{
+  color: inherit !important; font-weight: inherit !important;
+  font-size: var(--h1) !important; line-height: 1.2;
+}
+.title-2, .landing-sub{
+  color: inherit !important; font-weight: inherit !important;
+  font-size: var(--h2) !important; line-height: 1.2;
+}
+.lead, .landing-tagline, .kicker, .label, p, li{
+  color: inherit !important; font-weight: inherit !important;
+  font-size: var(--h3) !important; line-height: 1.2;
+}
+
+/* (참고) 앱바 텍스트는 흰색 유지 */
+.appbar .brand, .appbar .hint{ color:#fff; }
+
     a { color: var(--info); text-decoration: none; }
     a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -76,10 +103,22 @@
     .cta:active { transform: translateY(1px); }
 
     /* Dots (고정 액션바와 겹치지 않게 위로) */
-    .dots {
-      position: fixed; inset: auto 0 84px 0;
-      display: flex; align-items: center; justify-content: center; gap: 10px; z-index: 45;
-    }
+/* 기본은 숨김 */
+.dots{ display: none; }
+
+/* 슬라이드 모드일 때만 표시 */
+.mode-slides .dots{
+  display: flex;
+}
+
+/* 위치(기존과 동일) */
+.dots{
+  position: fixed; inset: auto 0 84px 0;
+  align-items: center; justify-content: center; gap: 10px; z-index: 45;
+}
+
+
+
     .dot { width: 7px; height: 7px; border-radius: 50%; background: #cfd8e3; transition: transform .25s ease, background-color .25s ease; }
     .dot[aria-current="true"] { background: var(--info); transform: scale(1.4); }
 
@@ -120,6 +159,19 @@
     }
 
     [hidden]{ display:none !important; }
+
+/* 전체 기본: 가운데 정렬 */
+body,
+.landing, .landing-inner,
+.slide, .slide-inner {
+  text-align: center;
+}
+
+/* 기존에 좌/우 정렬을 강제하던 클래스 무효화 */
+.label.left,
+.label.right {
+  text-align: center !important;
+}
   </style>
 </head>
 <body>
@@ -141,7 +193,7 @@
       <div class="landing-inner">
         <h1 class="landing-title">길을 걷다: 전략과 전술</h1>
         <h2 class="landing-sub">2025. 11. 22 미디어인의 날</h2>
-        <p class="landing-tagline">당신을 초대합니다.</p>
+        <h3 class="landing-tagline">당신을 초대합니다.</h3>
       </div>
       <!-- 기존 .landing-actions는 숨김 처리됨 (중복 방지) -->
       <div class="landing-actions">
@@ -176,7 +228,7 @@
       <!-- SLIDE 4: Definition - Tactics -->
       <article class="slide" id="s4" aria-label="Definition - Tactics">
         <div class="slide-inner">
-          <h2 class="title-1" style="margin: 0;">그것이 ‘전술’입니다.</h2>
+          <h1 class="title-1" style="margin: 0 0 10px 0;">그것이 '전술'입니다.</h1>
         </div>
       </article>
 
@@ -197,22 +249,21 @@
       <!-- SLIDE 7: Definition - Strategy -->
       <article class="slide" id="s7" aria-label="Definition - Strategy">
         <div class="slide-inner">
-          <h2 class="title-1" style="margin: 0;">그것이 전략입니다.</h2>
+          <h1 class="title-1" style="margin: 0 0 10px 0;">그것이 '전략'입니다.</h1>
         </div>
       </article>
 
       <!-- SLIDE 8: Reflection Question -->
       <article class="slide" id="s8" aria-label="Reflection Question">
         <div class="slide-inner">
-          <h2 class="title-2" style="margin: 0;">당신이라는 브랜드의<br/>전략과 전술은 무엇입니까?</h2>
-        </div>
+          <h1 class="title-1" style="margin: 0 0 10px 0;">당신이라는 브랜드의<br/>전략과 전술은 무엇입니까?</h1>
+         </div>
       </article>
 
       <!-- SLIDE 9: Theme Reveal & Date -->
       <article class="slide" id="s9" aria-label="Theme Reveal & Date">
         <div class="slide-inner" style="text-align:center;">
-          <h2 class="title-hero" style="margin: 0 0 8px 0;">2025 미디어인의날</h2>
-          <h2 class="title-hero" style="margin: 0 0 8px 0;">길을 걷다: 전략과 전술</h2>
+          <h1 class="title-1" style="margin: 0 0 10px 0;">길을 걷다: 전략과 전술</h1>
           <h2 class="title-2" style="color: var(--info); margin: 0;">2025. 11. 22</h2>
           <p class="lead" style="margin: 10;">당신의 이야기를 공유하세요.</p>
         </div>
@@ -286,9 +337,13 @@
 
   <!-- View toggles: landing <-> slides, and primary button text/action -->
   <script>
-    function setPrimary(mode){
-      var btn = document.getElementById('primaryBtn');
-      if(!btn) return;
+  function setPrimary(mode){
+    var btn = document.getElementById('primaryBtn');
+    // 모드 클래스 토글 (랜딩=도트 숨김, 슬라이드=도트 표시)
+    document.body.classList.toggle('mode-slides', mode === 'slides');
+    document.body.classList.toggle('mode-landing', mode !== 'slides');
+
+    if(btn){
       if(mode === 'slides'){
         btn.textContent = '메인 페이지';
         btn.onclick = function(e){ e.preventDefault(); toMain(); };
@@ -297,6 +352,9 @@
         btn.onclick = function(e){ e.preventDefault(); toSlides(); };
       }
     }
+  }
+
+
     function toSlides(){
       var landing = document.getElementById('landing');
       if(landing){ landing.hidden = true; landing.style.display = 'none'; }
