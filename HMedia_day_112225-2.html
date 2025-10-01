@@ -195,10 +195,18 @@ body.mode-slides  #landing { display: none !important; }
   </header>
 
 <!-- HTML 파일과 같은 폴더라면 -->
-<img src="./3.png" alt="" aria-hidden="true"
-     style="position:fixed; inset:0; width:100vw; height:100svh;
-            object-fit:cover; object-position:center;
-            transform:scale(1.10); z-index:0; pointer-events:none;">
+<img
+  src="./3.png"
+  alt="" aria-hidden="true"
+  style="
+    position:fixed; inset:0;
+    width:100vw; height:100vh; height:100svh;
+    object-fit:cover; object-position:center;
+    transform:scale(1.10);
+    z-index:0; pointer-events:none;
+    opacity:.50;            /* ← 흰색 베일 느낌 (0.80~0.92 사이에서 취향조절) */
+  ">
+
 
 
   <main class="viewport" role="main">
@@ -228,21 +236,21 @@ body.mode-slides  #landing { display: none !important; }
       <!-- SLIDE 1: Hook -->
       <article class="slide" id="s1" aria-label="Hook">
         <div class="slide-inner">
-          <h1 class="title-1" style="margin: 0 0 10px 0; line-height: 1.6;">당신의 첫 직장은 완벽했습니까?<br/>그 누구도 모든 자격을 갖춘채 <br/> 풀패키지로 시작하지 않습니다.</h1>
+          <h1 class="title-1" style="margin: 0 0 10px 0; line-height: 1.6;">당신의 첫 직장은 완벽했습니까?<br/>그 누구도 모든 자격을 갖춘채 <br/> 풀패키지로 시작하지 않습니다,</h1>
         </div>
       </article>
 
       <!-- SLIDE 2: Conflict -->
       <article class="slide" id="s2" aria-label="Conflict">
         <div class="slide-inner">
-          <h2 class="title-2" style="margin: 0 0 12px 0; line-height: 1.6;">가위·바위·보를 다 가지고<br/> 게임을 시작할 수는 없습니다.<br/>오징어게임의 성기훈도 <br/>처음엔 필승법이 없었습니다,</h2>
+          <h2 class="title-2" style="margin: 0 0 12px 0; line-height: 1.6;">가위·바위·보를 다 가지고<br/> 게임을 시작할 수는 없습니다.<br/>오징어게임의 성기훈도 <br/>처음엔 필승법이 없었습니다.</h2>
         </div>
       </article>
 
       <!-- SLIDE 3: Reality Check -->
       <article class="slide" id="s3" aria-label="Reality Check">
         <div class="slide-inner">
-          <p class="lead" style="margin: 0; line-height: 1.6;">당신보다 앞서간 졸업생들은<br/> 가위 바위 보를 다 가지고 시작한 것 같겠지만,<br/>그들 모두 가위나 바위 하나만을 가지고 <br/>살아남는 법을 배웠습니다,</p>
+          <p class="lead" style="margin: 0; line-height: 1.6;">당신보다 앞서간 졸업생들은<br/> 가위 바위 보를 다 가지고 시작한 것 같겠지만,<br/>그들 모두 가위나 바위 하나만을 가지고 <br/>살아남는 법을 배웠습니다.</p>
         </div>
       </article>
 
@@ -256,7 +264,7 @@ body.mode-slides  #landing { display: none !important; }
       <!-- SLIDE 5: Survival & Effort -->
       <article class="slide" id="s5" aria-label="Survival & Effort">
         <div class="slide-inner">
-          <p class="lead" style="margin: 0; line-height: 1.6;">당장 내가 가진 것만으로 <br/>작은 곳에서라도 일하면서 살아남아,<br/><br/>내게 없는 바위나 보가 갖춰질 때까지<br/>투잡을 뛰거나 야간 대학원을 다녀서라도<br/>길게 훗날을 도모하는 것,</p>
+          <p class="lead" style="margin: 0; line-height: 1.6;">당장 내가 가진 것만으로 <br/>작은 곳에서라도 일하면서 살아남아,<br/><br/>내게 없는 바위나 보가 갖춰질 때까지<br/>투잡을 뛰거나 야간 대학원을 다녀서라도<br/>길게 훗날을 도모하는 것.</p>
         </div>
       </article>
 
