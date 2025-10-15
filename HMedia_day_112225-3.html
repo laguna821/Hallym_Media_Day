@@ -17,13 +17,14 @@
       --muted:#8a97a6;
 
       /* 하단 UI 변수 */
-      --actions-h:42px;          /* 버튼 높이(컴팩트) */
+      --actions-h:40px;          /* 버튼 높이(더 컴팩트) */
       --ui-gap:10px;             /* 도트와 버튼 간격 */
+      --bottom-offset:24px;      /* 화면 하단 기본 여유(브라우저 바 대비) */
 
-      /* 글자 크기: 작은 화면에서 자동 축소 */
-      --h1: clamp(18px, 5.2vw, 23.61px);
-      --h2: clamp(17px, 4.8vw, 22.13px);
-      --h3: clamp(15px, 4.4vw, 20.74px);
+      /* 글자 크기: 작은 화면에서 자동 축소 (최소값 더 낮춤) */
+      --h1: clamp(17px, 5vw, 23.61px);
+      --h2: clamp(16px, 4.6vw, 22.13px);
+      --h3: clamp(14.5px, 4.2vw, 20.74px);
     }
 
     *{ box-sizing:border-box; }
@@ -69,14 +70,14 @@
     .track{
       /* 하단 UI(도트+버튼)만큼 여백 확보 */
       position:absolute;
-      inset:56px 0 calc(16px + var(--actions-h) + var(--ui-gap) + env(safe-area-inset-bottom,0px)) 0;
+      inset:56px 0 calc(var(--bottom-offset) + var(--actions-h) + var(--ui-gap) + env(safe-area-inset-bottom,0px)) 0;
       display:grid; grid-auto-flow:column; grid-auto-columns:100%;
       overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
       -webkit-overflow-scrolling:touch;
       z-index:1;
     }
     .track::-webkit-scrollbar{ display:none; }
-    .slide{ scroll-snap-align:start; padding:clamp(24px,7vw,48px); display:grid; place-content:center; gap:20px; }
+    .slide{ scroll-snap-align:start; padding:clamp(22px,6.6vw,44px); display:grid; place-content:center; gap:16px; }
     .slide-inner{ max-width:min(680px,92vw); margin-inline:auto; }
 
     .kicker{ text-transform:uppercase; font-size:12px; letter-spacing:.18em; color:var(--muted); }
@@ -89,19 +90,20 @@
     .u-accent{ background-image:linear-gradient(to top, var(--accent) 0.18em, transparent 0.18em); background-repeat:no-repeat; background-size:100% 0.18em; }
     .hr{ height:1px; background:#e9eef5; width:100%; border:0; }
 
-    .btn{ display:inline-flex; align-items:center; justify-content:center; height:var(--actions-h); padding:0 12px; border-radius:12px; font-weight:700; border:0; box-shadow:0 10px 16px rgba(0,0,0,.06); text-decoration:none; font-size:13.5px; white-space:nowrap; }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; height:var(--actions-h); padding:0 12px; border-radius:12px; font-weight:700; border:0; box-shadow:0 10px 16px rgba(0,0,0,.06); text-decoration:none; font-size:13px; white-space:nowrap; }
     .btn-primary{ background:var(--primary); color:#fff; }
 
     /* 랜딩 */
     .landing{ position:fixed; inset:56px 0 0 0; background:transparent; z-index:1; display:grid; place-content:center; text-align:center; }
-    .landing-inner{ padding:clamp(24px,6vw,48px); }
+    .landing-inner{ padding:clamp(22px,6vw,44px); }
     .landing-actions{ display:none !important; } /* 내부 버튼 숨김 */
 
     /* ===== 하단 UI 컨테이너(도트 + 3버튼) ===== */
     .bottom-ui{
-      position:fixed; left:0; right:0; bottom:16px;
+      position:fixed; left:0; right:0;
+      bottom:calc(var(--bottom-offset) + env(safe-area-inset-bottom,0px));
       z-index:1000;
-      padding:0 12px calc(16px + env(safe-area-inset-bottom,0px));
+      padding:0 12px;
       display:grid; grid-template-rows:auto var(--actions-h); row-gap:var(--ui-gap);
       pointer-events:none;  /* 내부 요소만 클릭 가능 */
     }
@@ -114,7 +116,7 @@
       z-index:1000; pointer-events:auto;
     }
     .dot{ width:7px; height:7px; border-radius:50%; background:#cfd8e3; transition:transform .25s ease, background-color .25s ease; }
-    .dot[aria-current="true"]{ background:var(--info); transform:scale(1.4); }
+    .dot[aria-current="true"]{ background:var(--info); transform:scale(1.35); }
 
     /* 3버튼 그리드(항상 1줄) */
     .global-actions{
@@ -126,20 +128,20 @@
     .global-actions .btn-center{   justify-self:center; }  /* 가운데 */
     .global-actions a:last-child{  justify-self:end; }     /* 우 */
 
-    /* 극좁은 화면 대응 (버튼·앱바 살짝 더 축소) */
+    /* 작아질수록 더 컴팩트하게 */
     @media (max-width:400px){
-      :root{ --actions-h:40px; }
-      .btn{ font-size:13px; padding:0 10px; }
-    }
-    @media (max-width:360px){
-      :root{ --actions-h:38px; }
-      .btn{ font-size:12.5px; padding:0 9px; }
+      :root{ --actions-h:38px; --bottom-offset:28px; }
+      .btn{ font-size:12.5px; padding:0 10px; }
       .brand{ font-size:14px; }
       .hint{  font-size:11px; }
     }
+    @media (max-width:360px){
+      :root{ --actions-h:36px; --bottom-offset:32px; }
+      .btn{ font-size:12px; padding:0 9px; }
+    }
     @media (max-width:330px){
-      :root{ --actions-h:36px; }
-      .btn{ font-size:12px; padding:0 8px; }
+      :root{ --actions-h:34px; --bottom-offset:36px; }
+      .btn{ font-size:11.5px; padding:0 8px; }
     }
 
     /* 랜딩/슬라이드 모드 토글(겹침 방지) */
@@ -159,19 +161,12 @@
     <div class="hint" aria-hidden="true">2025. 11. 22</div>
   </header>
 
-  <!-- 고정 배경 (이미지 경로 조정 가능) -->
+  <!-- 고정 배경 -->
   <img src="./4.png" alt="" aria-hidden="true" class="bg">
 
   <main class="viewport" role="main">
     <!-- Landing -->
     <section class="landing" id="landing" aria-label="메인 초대장">
-      <div class="floaters" aria-hidden="true">
-        <span style="--x:8%;  --y:16%; --s:72px; --dx:10px;  --dy:-8px;  --d:24s;"></span>
-        <span style="--x:78%; --y:22%; --s:56px; --dx:-8px;  --dy:10px;  --d:22s;"></span>
-        <span style="--x:18%; --y:74%; --s:64px; --dx:12px;  --dy:-10px; --d:26s;"></span>
-        <span style="--x:66%; --y:72%; --s:84px; --dx:-12px; --dy:8px;  --d:28s;"></span>
-        <span style="--x:40%; --y:38%; --s:48px; --dx:8px;   --dy:-8px;  --d:20s;"></span>
-      </div>
       <div class="landing-inner">
         <h1 class="landing-title">길을 걷다: 전략과 전술</h1>
         <h2 class="landing-sub">2025. 11. 22 미디어인의 날</h2>
