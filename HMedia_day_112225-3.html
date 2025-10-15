@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
-  <title>모바일 초대장: 미디어인의 날 2025 </title>
+  <title>모바일 초대장: 미디어인의 날 2025</title>
   <!-- Pretendard Variable -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
@@ -17,13 +17,13 @@
       --muted:#8a97a6;
 
       /* 하단 UI 변수 */
-      --actions-h:44px;          /* 버튼 높이 */
+      --actions-h:42px;          /* 버튼 높이(컴팩트) */
       --ui-gap:10px;             /* 도트와 버튼 간격 */
 
-      /* 타입 스케일(3단) */
-      --h1:1.48rem;  /* 23.61px */
-      --h2:1.38rem;  /* 22.13px */
-      --h3:1.30rem;  /* 20.74px */
+      /* 글자 크기: 작은 화면에서 자동 축소 */
+      --h1: clamp(18px, 5.2vw, 23.61px);
+      --h2: clamp(17px, 4.8vw, 22.13px);
+      --h3: clamp(15px, 4.4vw, 20.74px);
     }
 
     *{ box-sizing:border-box; }
@@ -45,7 +45,7 @@
 
     /* 타입 매핑 */
     .title-hero, .title-1, .landing-title{ color:inherit !important; font-weight:inherit !important; font-size:var(--h1) !important; line-height:1.2; }
-    .title-2, .landing-sub{ color:inherit !important; font-weight:inherit !important; font-size:var(--h2) !important; line-height:1.2; }
+    .title-2, .landing-sub{  color:inherit !important; font-weight:inherit !important; font-size:var(--h2) !important; line-height:1.2; }
     .lead, .landing-tagline, .kicker, .label, p, li{ color:inherit !important; font-weight:inherit !important; font-size:var(--h3) !important; line-height:1.2; }
 
     /* 상단 앱바 */
@@ -55,7 +55,7 @@
       padding:0 16px; background:var(--primary); color:#fff; border-bottom:none; z-index:40;
     }
     .brand{ font-weight:700; letter-spacing:.2px; color:#fff; font-size:15px; }
-    .hint{ font-size:12px; color:#fff; }
+    .hint{  font-size:12px; color:#fff; }
 
     /* 고정 배경 */
     .bg{
@@ -67,7 +67,7 @@
     /* 메인 뷰포트/슬라이더 */
     .viewport{ position:relative; height:100svh; overflow:hidden; }
     .track{
-      /* 하단 UI(도트+버튼) 높이만큼 여백 확보 */
+      /* 하단 UI(도트+버튼)만큼 여백 확보 */
       position:absolute;
       inset:56px 0 calc(16px + var(--actions-h) + var(--ui-gap) + env(safe-area-inset-bottom,0px)) 0;
       display:grid; grid-auto-flow:column; grid-auto-columns:100%;
@@ -83,33 +83,27 @@
     .label{ font-size:12px; letter-spacing:.14em; color:var(--muted); text-transform:uppercase; }
     .label.left, .label.right{ text-align:center !important; }
 
-    .title-hero{ color:var(--primary); font-weight:800; line-height:1.2; font-size:clamp(29.04px,8vw,31.04px); }
-    .title-1{    color:var(--primary); font-weight:800; line-height:1.22; font-size:clamp(27.22px,6.6vw,29.22px); }
-    .title-2{    color:var(--primary); font-weight:800; line-height:1.25; font-size:clamp(25.51px,5.6vw,27.51px); }
-    .lead{       color:var(--ink);     font-size:clamp(24px,4.6vw,26px); }
+    .title-hero{ color:var(--primary); font-weight:800; line-height:1.2; }
     .muted{      color:var(--muted); }
 
     .u-accent{ background-image:linear-gradient(to top, var(--accent) 0.18em, transparent 0.18em); background-repeat:no-repeat; background-size:100% 0.18em; }
     .hr{ height:1px; background:#e9eef5; width:100%; border:0; }
 
-    .btn{ display:inline-flex; align-items:center; justify-content:center; height:44px; padding:0 14px; border-radius:12px; font-weight:700; border:0; box-shadow:0 10px 16px rgba(0,0,0,.06); text-decoration:none; }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; height:var(--actions-h); padding:0 12px; border-radius:12px; font-weight:700; border:0; box-shadow:0 10px 16px rgba(0,0,0,.06); text-decoration:none; font-size:13.5px; white-space:nowrap; }
     .btn-primary{ background:var(--primary); color:#fff; }
 
     /* 랜딩 */
     .landing{ position:fixed; inset:56px 0 0 0; background:transparent; z-index:1; display:grid; place-content:center; text-align:center; }
     .landing-inner{ padding:clamp(24px,6vw,48px); }
-    .landing-title{ color:var(--primary); font-weight:800; line-height:1.15; font-size:clamp(30.99px,8.5vw,32.99px); letter-spacing:.01em; }
-    .landing-sub{ color:var(--info);    font-size:clamp(27.22px,4.6vw,29.22px); margin-top:8px; }
-    .landing-tagline{ color:var(--ink); font-size:clamp(25.51px,4.8vw,27.51px); margin-top:10px; }
     .landing-actions{ display:none !important; } /* 내부 버튼 숨김 */
 
-    /* ===== 새 구조: 하단 UI 컨테이너(도트 + 버튼) ===== */
+    /* ===== 하단 UI 컨테이너(도트 + 3버튼) ===== */
     .bottom-ui{
       position:fixed; left:0; right:0; bottom:16px;
       z-index:1000;
       padding:0 12px calc(16px + env(safe-area-inset-bottom,0px));
       display:grid; grid-template-rows:auto var(--actions-h); row-gap:var(--ui-gap);
-      pointer-events:none;  /* 내부 요소만 클릭 활성화 */
+      pointer-events:none;  /* 내부 요소만 클릭 가능 */
     }
     /* 도트: 슬라이드 모드에서만 보이게 */
     .dots{ display:none; }
@@ -128,14 +122,24 @@
       display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:8px;
       pointer-events:auto;
     }
-    .global-actions .btn{ height:var(--actions-h); padding:0 12px; border-radius:12px; font-size:14px; white-space:nowrap; }
     .global-actions a:nth-child(1){ justify-self:start; }   /* 좌 */
     .global-actions .btn-center{   justify-self:center; }  /* 가운데 */
     .global-actions a:last-child{  justify-self:end; }     /* 우 */
 
-    /* 극좁은 화면 대응 */
+    /* 극좁은 화면 대응 (버튼·앱바 살짝 더 축소) */
+    @media (max-width:400px){
+      :root{ --actions-h:40px; }
+      .btn{ font-size:13px; padding:0 10px; }
+    }
     @media (max-width:360px){
-      .global-actions .btn{ font-size:13px; padding:0 10px; }
+      :root{ --actions-h:38px; }
+      .btn{ font-size:12.5px; padding:0 9px; }
+      .brand{ font-size:14px; }
+      .hint{  font-size:11px; }
+    }
+    @media (max-width:330px){
+      :root{ --actions-h:36px; }
+      .btn{ font-size:12px; padding:0 8px; }
     }
 
     /* 랜딩/슬라이드 모드 토글(겹침 방지) */
@@ -155,7 +159,7 @@
     <div class="hint" aria-hidden="true">2025. 11. 22</div>
   </header>
 
-  <!-- 고정 배경 -->
+  <!-- 고정 배경 (이미지 경로 조정 가능) -->
   <img src="./4.png" alt="" aria-hidden="true" class="bg">
 
   <main class="viewport" role="main">
