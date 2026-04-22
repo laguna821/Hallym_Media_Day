@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="date" content="2026-04-19" />
+  <meta name="theme-color" content="#f7f5f0" id="themeColorMeta" />
+  <title>누가복음 6:6–11 — 프리미엄 정론·정행·현대 적용 가이드</title>
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('lk06_06_11_premium_theme');
+        const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', saved === 'light' || saved === 'dark' ? saved : (systemDark ? 'dark' : 'light'));
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+
+    :root {
+      color-scheme: light dark;
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+      --font-serif: "Noto Serif KR", "Source Han Serif KR", "AppleMyungjo", Georgia, serif;
+      --page-max: 760px;
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f7f5f0;
+      --bg-2: #ede6d9;
+      --bg-3: #fffaf3;
+      --surface: rgba(255,255,255,.76);
+      --surface-strong: rgba(255,255,255,.94);
+      --surface-soft: rgba(255,250,243,.66);
+      --surface-inset: rgba(246,241,232,.78);
+      --border: rgba(94,76,44,.17);
+      --border-strong: rgba(94,76,44,.26);
+      --text: #1c1c1c;
+      --text-strong: #0f1115;
+      --muted: #6b7280;
+      --muted-2: #8a8378;
+      --emerald: #0f6b4f;
+      --emerald-2: #0a8a66;
+      --emerald-soft: rgba(15,107,79,.12);
+      --amber: #d79a3a;
+      --amber-2: #9a6221;
+      --amber-soft: rgba(215,154,58,.14);
+      --shadow: 0 22px 70px rgba(58,43,22,.13);
+      --shadow-soft: 0 14px 36px rgba(58,43,22,.10);
+      --header-bg: rgba(247,245,240,.78);
+      --bottom-bg: rgba(247,245,240,.84);
+      --hero-glow: rgba(215,154,58,.24);
+      --focus: rgba(15,107,79,.36);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #081020;
+      --bg-2: #0b1020;
+      --bg-3: #121826;
+      --surface: rgba(18,24,38,.72);
+      --surface-strong: rgba(20,27,42,.92);
+      --surface-soft: rgba(12,18,31,.72);
+      --surface-inset: rgba(5,10,18,.48);
+      --border: rgba(230,233,242,.10);
+      --border-strong: rgba(255,184,69,.26);
+      --text: #d8deea;
+      --text-strong: #f2efe7;
+      --muted: #a9b1c2;
+      --muted-2: #7e8799;
+      --emerald: #00c896;
+      --emerald-2: #16e0ad;
+      --emerald-soft: rgba(0,200,150,.13);
+      --amber: #ffb845;
+      --amber-2: #d99a35;
+      --amber-soft: rgba(255,184,69,.13);
+      --shadow: 0 26px 86px rgba(0,0,0,.48);
+      --shadow-soft: 0 18px 44px rgba(0,0,0,.38);
+      --header-bg: rgba(8,16,32,.80);
+      --bottom-bg: rgba(8,16,32,.86);
+      --hero-glow: rgba(0,200,150,.20);
+      --focus: rgba(0,200,150,.42);
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { min-height: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% -12%, var(--hero-glow) 0%, rgba(0,0,0,0) 34rem),
+        radial-gradient(circle at 8% 10%, rgba(15,107,79,.16), rgba(0,0,0,0) 24rem),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 48%, var(--bg) 100%);
+      line-height: 1.72;
+      letter-spacing: -0.012em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: -1;
+    }
+    body::before {
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at top, black 0%, transparent 72%);
+    }
+    body::after {
+      width: 34rem;
+      height: 34rem;
+      right: -16rem;
+      top: 6rem;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--amber-soft), transparent 64%);
+      filter: blur(10px);
+    }
+
+    ::selection { background: var(--emerald-soft); color: var(--text-strong); }
+    a { color: inherit; }
+    button, summary { font: inherit; }
+
+    .skip-link {
+      position: fixed;
+      left: 14px;
+      top: -80px;
+      z-index: 999;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--emerald);
+      text-decoration: none;
+      transition: top .2s var(--ease);
+    }
+    .skip-link:focus { top: 14px; outline: 3px solid var(--focus); }
+
+    .shell {
+      width: min(var(--page-max), 100%);
+      margin: 0 auto;
+      padding: 14px 16px 132px;
+    }
+
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: blur(22px) saturate(165%);
+      -webkit-backdrop-filter: blur(22px) saturate(165%);
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .app-header__inner {
+      width: min(var(--page-max), 100%);
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: space-between;
+    }
+    .brand {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, var(--emerald), #064e3b 72%),
+        var(--surface-strong);
+      color: white;
+      box-shadow: 0 16px 34px rgba(15,107,79,.28);
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.26);
+    }
+    .brand-mark svg { width: 22px; height: 22px; position: relative; z-index: 1; }
+    .brand-text { min-width: 0; }
+    .brand-title {
+      margin: 0;
+      font-size: clamp(16px, 4vw, 20px);
+      line-height: 1.15;
+      color: var(--text-strong);
+      font-weight: 860;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-subtitle {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11.5px;
+      font-weight: 650;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+
+    .icon-btn,
+    .pill-btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-strong);
+      border-radius: 999px;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 1px 0 rgba(255,255,255,.10) inset;
+      transition: transform .18s var(--ease), border-color .18s var(--ease), background .18s var(--ease), box-shadow .18s var(--ease);
+    }
+    .icon-btn { width: 40px; padding: 0; }
+    .pill-btn { padding: 0 14px; font-size: 13px; font-weight: 760; }
+    .icon-btn svg,
+    .pill-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .icon-btn:hover,
+    .pill-btn:hover { transform: translateY(-1px); border-color: var(--border-strong); box-shadow: var(--shadow-soft); }
+    .icon-btn:active,
+    .pill-btn:active { transform: translateY(0); }
+    .icon-btn:focus-visible,
+    .pill-btn:focus-visible,
+    .study-card__toggle:focus-visible,
+    summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+    .reading-panel,
+    .hero-panel,
+    .study-card,
+    .footer-card {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      backdrop-filter: blur(18px) saturate(155%);
+      -webkit-backdrop-filter: blur(18px) saturate(155%);
+      box-shadow: var(--shadow);
+    }
+
+    .reading-panel {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 14px 0 14px;
+    }
+    details.scripture-details { background: transparent; }
+    details.scripture-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      padding: 17px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--text-strong);
+      font-weight: 840;
+    }
+    details.scripture-details summary::-webkit-details-marker { display: none; }
+    .summary-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .summary-left svg { width: 20px; height: 20px; color: var(--emerald); flex: 0 0 auto; }
+    .summary-left span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .chevron-round,
+    .study-card__chev {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: inline-grid;
+      place-items: center;
+      background: var(--surface-inset);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      flex: 0 0 auto;
+      transition: transform .24s var(--ease), color .24s var(--ease), background .24s var(--ease), border-color .24s var(--ease);
+    }
+    .chevron-round svg,
+    .study-card__chev svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+    details[open] .chevron-round { transform: rotate(180deg); color: var(--emerald); border-color: var(--border-strong); }
+    .scripture-body {
+      padding: 2px 20px 22px;
+      border-top: 1px solid var(--border);
+      background: var(--surface-soft);
+      font-family: var(--font-serif);
+      font-size: 15.8px;
+      line-height: 2;
+      color: var(--text);
+    }
+    .scripture-body p { margin: 13px 0; }
+    .scripture-body b { color: var(--text-strong); font-weight: 760; }
+    .v {
+      font-family: var(--font-sans);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      margin-right: 7px;
+      border-radius: 999px;
+      background: var(--emerald-soft);
+      color: var(--emerald);
+      font-size: 11px;
+      font-weight: 900;
+      vertical-align: 1px;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      padding: 28px 22px 26px;
+      margin: 14px 0 18px;
+    }
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 0%, var(--amber-soft), transparent 32%),
+        radial-gradient(circle at 88% 16%, var(--emerald-soft), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,.08), transparent 42%);
+      pointer-events: none;
+    }
+    .hero-panel > * { position: relative; }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--amber);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 20px;
+    }
+    .hero-chip-row span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      color: var(--emerald);
+      background: var(--emerald-soft);
+      font-family: var(--font-serif);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+    .hero-quote {
+      margin: 0;
+      font-family: var(--font-serif);
+      color: var(--text-strong);
+      font-size: clamp(31px, 8.5vw, 54px);
+      line-height: 1.26;
+      font-weight: 900;
+      letter-spacing: -.055em;
+    }
+    .hero-caption {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 60ch;
+    }
+    .hero-caption b { color: var(--text-strong); font-weight: 760; }
+    .hero-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 22px 0 16px;
+      color: var(--amber);
+    }
+    .hero-rule::before,
+    .hero-rule::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+    }
+
+    .section-list {
+      display: grid;
+      gap: 13px;
+    }
+    .study-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease), box-shadow .2s var(--ease);
+    }
+    .study-card:hover { border-color: var(--border-strong); }
+    .study-card__head { border-bottom: 1px solid transparent; }
+    .study-card.is-open .study-card__head { border-bottom-color: var(--border); }
+    .study-card__toggle {
+      appearance: none;
+      border: 0;
+      width: 100%;
+      padding: 16px 16px;
+      background: transparent;
+      color: var(--text-strong);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .study-card__num {
+      width: 36px;
+      height: 36px;
+      border-radius: 13px;
+      display: inline-grid;
+      place-items: center;
+      background: var(--surface-inset);
+      color: var(--emerald);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+    .study-card__title {
+      min-width: 0;
+      font-size: clamp(15.5px, 4.2vw, 18px);
+      font-weight: 880;
+      line-height: 1.35;
+      letter-spacing: -.028em;
+    }
+    .study-card.is-open .study-card__chev { transform: rotate(180deg); color: var(--emerald); border-color: var(--border-strong); }
+
+    .summary-brief,
+    .detail-body {
+      padding: 17px 18px 20px;
+    }
+    .summary-brief {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(135deg, var(--emerald-soft), rgba(255,255,255,0));
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.72;
+    }
+    .summary-brief .summary-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 3px 9px;
+      margin: 0 0 8px;
+      border-radius: 999px;
+      color: var(--emerald);
+      background: var(--surface-inset);
+      border: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+    .summary-brief b { color: var(--text-strong); }
+    .study-card:not(.is-open) .detail-body { display: none; }
+    body.summary-mode .study-card.is-open .summary-brief { display: block; }
+    body.summary-mode .study-card .detail-body { display: none; }
+    body:not(.summary-mode) .study-card.is-open .detail-body { display: block; }
+
+    .detail-body {
+      background: linear-gradient(180deg, var(--surface-soft), transparent);
+      color: var(--text);
+    }
+    .detail-body p,
+    .detail-body li {
+      margin: 0 0 13px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.82;
+    }
+    .detail-body p:last-child,
+    .detail-body li:last-child { margin-bottom: 0; }
+    .detail-body b { color: var(--text-strong); font-weight: 780; }
+    .detail-body ul { margin: 0; padding-left: 22px; }
+    .detail-body h4 {
+      margin: 22px 0 8px;
+      color: var(--amber);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .015em;
+      line-height: 1.45;
+    }
+    .detail-body h4:first-child { margin-top: 0; }
+    .note,
+    .detail-body .note {
+      margin: 0 0 16px;
+      padding: 16px 16px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--emerald-soft), rgba(255,255,255,0));
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+    }
+    .hint,
+    .detail-body .hint {
+      display: block;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+      color: var(--muted-2);
+      font-size: 13px;
+      font-style: normal;
+    }
+    .muted.small,
+    .detail-body .muted.small {
+      color: var(--muted-2);
+      font-size: 13px;
+      text-align: left;
+      display: block;
+    }
+
+    .kv {
+      display: grid;
+      grid-template-columns: minmax(95px, 130px) 1fr;
+      gap: 0;
+      margin-top: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--surface-inset);
+    }
+    .kv > div {
+      padding: 12px 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    .kv > div:nth-last-child(-n+2) { border-bottom: 0; }
+    .kv-label {
+      color: var(--emerald);
+      font-family: var(--font-serif);
+      font-weight: 900;
+      background: var(--emerald-soft);
+      border-right: 1px solid var(--border);
+      word-break: break-word;
+    }
+    .mapping-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--surface-inset);
+      font-size: 13px;
+    }
+    .mapping-table th,
+    .mapping-table td {
+      padding: 11px 10px;
+      vertical-align: top;
+      text-align: left;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .mapping-table th:last-child,
+    .mapping-table td:last-child { border-right: 0; }
+    .mapping-table tr:last-child td { border-bottom: 0; }
+    .mapping-table th {
+      color: var(--text-strong);
+      background: var(--surface-soft);
+      font-weight: 850;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .divider { height: 1px; margin: 22px 0; background: var(--border); }
+
+    .footer-card {
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      text-align: center;
+      color: var(--muted);
+    }
+    .footer-card b { color: var(--text-strong); }
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 14px;
+      color: var(--amber);
+      font-family: var(--font-serif);
+      letter-spacing: .16em;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .bottom-bar {
+      position: fixed;
+      inset: auto 0 0;
+      z-index: 70;
+      padding: 12px 16px max(12px, env(safe-area-inset-bottom));
+      background: var(--bottom-bg);
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(24px) saturate(170%);
+      -webkit-backdrop-filter: blur(24px) saturate(170%);
+      box-shadow: 0 -18px 56px rgba(0,0,0,.16);
+    }
+    .bottom-bar__inner {
+      width: min(var(--page-max), 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .action-btn {
+      appearance: none;
+      border: 1px solid var(--border-strong);
+      min-height: 52px;
+      border-radius: 18px;
+      cursor: pointer;
+      color: var(--text-strong);
+      font-size: 14px;
+      font-weight: 870;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      box-shadow: 0 1px 0 rgba(255,255,255,.12) inset, var(--shadow-soft);
+      transition: transform .18s var(--ease), filter .18s var(--ease);
+    }
+    .action-btn svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .action-btn:active { transform: translateY(1px); }
+    .action-btn--summary {
+      background: linear-gradient(135deg, var(--emerald), #075f47);
+      color: white;
+      border-color: rgba(255,255,255,.12);
+    }
+    .action-btn--collapse {
+      background: linear-gradient(135deg, var(--amber), var(--amber-2));
+      color: #fff8e8;
+      border-color: rgba(255,255,255,.12);
+    }
+    .action-btn[aria-pressed="true"] { filter: saturate(1.16) brightness(1.03); }
+    .action-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(88px + env(safe-area-inset-bottom));
+      z-index: 100;
+      transform: translate(-50%, 12px);
+      padding: 11px 14px;
+      border-radius: 999px;
+      background: var(--text-strong);
+      color: var(--bg);
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s var(--ease), transform .2s var(--ease);
+      white-space: nowrap;
+    }
+    .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (min-width: 720px) {
+      .shell { padding-left: 20px; padding-right: 20px; }
+      .hero-panel { padding: 38px 38px 34px; }
+      .summary-brief,
+      .detail-body { padding-left: 22px; padding-right: 22px; }
+    }
+
+    @media (max-width: 440px) {
+      .app-header__inner { padding: 10px 12px; }
+      .brand-mark { width: 38px; height: 38px; border-radius: 14px; }
+      .brand-subtitle { max-width: 190px; }
+      .pill-btn span.theme-text { display: none; }
+      .pill-btn { min-width: 40px; padding: 0 12px; }
+      .shell { padding-left: 12px; padding-right: 12px; }
+      .hero-panel { padding: 25px 18px 23px; }
+      .scripture-body { padding-left: 17px; padding-right: 17px; }
+      .study-card__toggle { padding: 14px 13px; gap: 10px; }
+      .study-card__num { width: 32px; height: 32px; border-radius: 12px; }
+      .summary-brief,
+      .detail-body { padding: 15px 15px 18px; }
+      .kv { grid-template-columns: 1fr; }
+      .kv-label { border-right: 0; }
+      .kv > div:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .kv > div:last-child { border-bottom: 0; }
+      .mapping-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .bottom-bar { padding-left: 12px; padding-right: 12px; }
+      .action-btn { min-height: 50px; border-radius: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
+
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">본문으로 바로가기</a>
+
+  <header class="app-header" aria-label="상단 메뉴">
+    <div class="app-header__inner">
+      <div class="brand" aria-label="페이지 제목">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 5.8c2.8-.9 5.2-.5 8 1.4 2.8-1.9 5.2-2.3 8-1.4v12.8c-2.8-.9-5.2-.5-8 1.4-2.8-1.9-5.2-2.3-8-1.4V5.8z"/><path d="M12 7.2v12.2"/></svg>
+        </div>
+        <div class="brand-text">
+          <p class="brand-title">누가복음 6:6–11</p>
+          <div class="brand-subtitle">정론 · 정행 · 현대 적용 가이드</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="pill-btn" id="btnTheme" type="button" aria-label="테마 변경">
+          <span id="themeIcon" aria-hidden="true">☀️</span>
+          <span class="theme-text" id="themeText">라이트</span>
+        </button>
+        <button class="icon-btn" id="btnShare" type="button" aria-label="공유하기">
+          <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.6l6.8-4.2M8.6 13.4l6.8 4.2"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell" id="content">
+    <section class="reading-panel" aria-label="누가복음 6장 6절부터 11절 본문">
+      <details class="scripture-details" open>
+        <summary>
+          <span class="summary-left">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.8c2.8-.9 5.2-.5 8 1.4 2.8-1.9 5.2-2.3 8-1.4v12.8c-2.8-.9-5.2-.5-8 1.4-2.8-1.9-5.2-2.3-8-1.4V5.8z"/><path d="M12 7.2v12.2"/></svg>
+            <span>본문 읽기 <small>(눅 6:6–11)</small></span>
+          </span>
+          <span class="chevron-round" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="scripture-body">
+          
+<p><span class="v">6</span> 또 다른 안식일에 예수께서 <b>회당</b>에 들어가사 가르치실새 거기 <b>오른손 마른 사람</b>이 있는지라</p>
+<p><span class="v">7</span> <b>서기관과 바리새인들</b>이 예수를 <b>고발할 증거</b>를 찾으려 하여 안식일에 병을 고치시는가 엿보니</p>
+<p><span class="v">8</span> 예수께서 그들의 생각을 아시고 손 마른 사람에게 이르시되 <b>일어나 한가운데 서라</b> 하시니 그가 일어나 서거늘</p>
+<p><span class="v">9</span> 예수께서 그들에게 이르시되 내가 너희에게 묻노니 안식일에 <b>선을 행하는 것</b>과 <b>악을 행하는 것</b>, <b>생명을 구하는 것</b>과 <b>죽이는 것</b>, 어느 것이 옳으냐 하시며</p>
+<p><span class="v">10</span> 무리를 둘러보시고 그 사람에게 이르시되 <b>네 손을 내밀라</b> 하시니 그가 그리하매 그 손이 <b>회복된지라</b></p>
+<p><span class="v">11</span> 그들은 <b>노기가 가득하여</b> 예수를 어떻게 할까 하고 서로 의논하니라</p>
+
+        </div>
+      </details>
+    </section>
+
+    <section class="hero-panel" aria-label="핵심 구절과 설명">
+      <p class="eyebrow">Bible Study · Premium Guide</p>
+      <div class="hero-chip-row">
+        
+<span class="greek">σάββατον (sabbaton)</span>
+<span class="greek">ξηρός (xēros)</span>
+<span class="greek">δεξιά (dexia)</span>
+<span class="greek">μέσος (mesos)</span>
+<span class="greek">ἀγαθοποιέω (agathopoieō)</span>
+<span class="greek">σῴζω (sōzō)</span>
+<span class="greek">ἀποκαθίστημι (apokathistēmi)</span>
+
+      </div>
+      <h1 class="hero-quote">“안식일에 선을 행하는 것과 악을 행하는 것,<br/>어느 것이 옳으냐?”</h1>
+      <div class="hero-rule" aria-hidden="true">✦</div>
+      <p class="hero-caption">
+        누가복음 6:6–11은 단순한 치유 기사가 아니라, <b>안식일이 무엇을 위한 날인가</b>를 두고 벌어지는 공개 충돌입니다.
+        예수님은 아픈 사람을 구석에 두지 않고 <b>한가운데 세우신 뒤</b>, 안식일 문제를 “해도 되느냐”의 규칙 문제에서
+        <b>선을 행할 것이냐, 생명을 살릴 것이냐</b>의 문제로 바꾸십니다.
+        이 장면은 곧이어 더 커질 갈등의 시작이기도 하며, 동시에 하나님 나라가 어떤 방식으로 사람을 회복시키는지 보여 주는 본문이기도 합니다.
+      </p>
+    </section>
+
+    <section class="section-list" aria-label="해설 섹션">
+      
+      <article class="study-card is-open" data-card>
+        <div class="study-card__head">
+          <button class="study-card__toggle" type="button" aria-expanded="true">
+            <span class="study-card__num">00</span>
+            <span class="study-card__title">아주 짧은 도입 (2–3문장)</span>
+            <span class="study-card__chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+        </div>
+        <div class="summary-brief" aria-label="요약">
+          <span class="summary-label">요약</span>
+          <div>
+          이 본문은 “예수님은 사랑, 유대교는 율법”처럼 단순하게 읽으면 오히려 놓치는 것이 많습니다. 예수님도 유대인이셨고, 이 장면은 유대 사회 안에서 안식일의 참뜻을 두고 벌어진 깊은 논쟁입니다.
+        </div>
+        </div>
+        <div class="detail-body">
+          
+
+<p>
+          이 본문은 누가복음 6장 안식일 논쟁의 한가운데 놓인 장면입니다.
+          겉으로는 “안식일에 병을 고쳐도 되는가”라는 질문 같지만, 실제로는 <b>하나님 뜻을 지키는 일이 규칙 보존인지 사람 회복인지</b>가 정면으로 부딪히는 순간입니다.
+          예수님은 이 문제를 말싸움으로만 풀지 않으시고, 한 사람의 마른 손을 회복시키심으로 답하십니다.
+        </p>
+<div class="hint">
+          이 본문은 “예수님은 사랑, 유대교는 율법”처럼 단순하게 읽으면 오히려 놓치는 것이 많습니다. 예수님도 유대인이셨고, 이 장면은 유대 사회 안에서 안식일의 참뜻을 두고 벌어진 깊은 논쟁입니다.
+        </div>
+
+        </div>
+      </article>
+    
+
+      <article class="study-card is-open" data-card>
+        <div class="study-card__head">
+          <button class="study-card__toggle" type="button" aria-expanded="true">
+            <span class="study-card__num">01</span>
+            <span class="study-card__title">한눈 요약 (3–4문장)</span>
+            <span class="study-card__chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+        </div>
+        <div class="summary-brief" aria-label="요약">
+          <span class="summary-label">요약</span>
+          <div>
+          핵심은 이렇습니다. 예수님은 안식일을 깨뜨리신 것이 아니라, 안식일의 중심이 사람을 살리고 회복시키는 데 있음을 드러내셨습니다.
+        </div>
+        </div>
+        <div class="detail-body">
+          
+
+<p class="content-long">
+<b>1)</b> 또 다른 안식일에 예수님이 회당에서 가르치실 때, 오른손이 마른 사람이 있었습니다.<br/>
+<b>2)</b> 서기관들과 바리새인들은 그 사람의 고통보다, 예수님을 고발할 틈을 찾기 위해 안식일 치유 여부를 지켜보고 있었습니다.<br/>
+<b>3)</b> 예수님은 그 사람을 한가운데 세우시고, 안식일에 선을 행하는 것과 악을 행하는 것, 생명을 구하는 것과 죽이는 것 중 무엇이 옳은지를 물으신 뒤 손을 회복시키십니다.<br/>
+<b>4)</b> 그러나 기적을 본 종교 지도자들은 기뻐하지 않고 오히려 분노로 가득 차 예수님을 어떻게 할지 의논합니다.
+        </p>
+
+
+        </div>
+      </article>
+    
+
+      <article class="study-card is-open" data-card>
+        <div class="study-card__head">
+          <button class="study-card__toggle" type="button" aria-expanded="true">
+            <span class="study-card__num">02</span>
+            <span class="study-card__title">역사 · 지리 · 배경</span>
+            <span class="study-card__chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+        </div>
+        <div class="summary-brief" aria-label="요약">
+          <span class="summary-label">요약</span>
+          <div>
+          이 본문은 갈릴리 지역 회당의 공개 자리에서 벌어진 두 번째 안식일 논쟁입니다. 안식일은 언약의 표지였고, 예수님은 그 뜻을 아픈 사람의 회복이라는 기준으로 다시 드러내십니다.
+        </div>
+        </div>
+        <div class="detail-body">
+          
+
+<div class="content-long">
+<h4>2-1) 이 장면은 누가복음 안에서 두 번째 안식일 논쟁이다</h4>
+<p>
+            누가복음 6장 앞부분은 안식일 문제로 긴장이 점점 높아지는 문맥입니다.
+            바로 앞 6:1–5에서는 제자들이 안식일에 이삭을 잘라 먹은 일로 논쟁이 있었고, 그 직후에 바로 이 사건이 나옵니다.
+            그러므로 6:6–11은 뜬금없는 치유 기사가 아니라, <b>예수님의 안식일 이해와 종교 지도자들의 안식일 이해가 본격적으로 충돌하는 장면</b>입니다.
+          </p>
+<h4>2-2) 회당은 단순한 예배당이 아니라 공동체의 공개 공간이었다</h4>
+<p>
+            회당은 성전과는 다른 지역 공동체의 모임 장소였습니다.
+            여기서는 성경을 읽고, 가르침을 듣고, 기도하고, 지역 사회의 질서와 정체성을 확인하는 일이 함께 이루어졌습니다.
+            따라서 예수님의 행동은 조용한 개인 상담이 아니라, <b>많은 사람이 다 보는 자리에서 안식일의 뜻을 다시 묻는 공개 선언</b>이었습니다.
+          </p>
+<h4>2-3) “오른손 마른 사람”은 생계와 존엄이 크게 흔들린 상태를 뜻할 수 있다</h4>
+<p>
+            누가는 특별히 그 사람이 <b>오른손</b>이 말랐다고 적습니다.
+            당시 사회에서 손은 곧 노동과 생계, 일상 기능과 이어졌고, 특히 오른손은 많은 작업에서 중심 역할을 했을 가능성이 큽니다.
+            그러므로 이 사람의 문제는 단순한 불편이 아니라, <b>일하고 먹고 살아가는 능력, 공동체 안에서의 자립감과 존엄까지 흔들린 상태</b>였을 수 있습니다.
+          </p>
+<h4>2-4) 안식일은 단순한 휴일이 아니라 창조와 해방을 기억하는 날이었다</h4>
+<p>
+            유대 전통에서 안식일은 하나님이 세상을 창조하신 뒤 쉬신 것을 기억하는 날이면서, 동시에 애굽의 종살이에서 풀려난 백성의 자유를 기억하는 날이기도 했습니다.
+            그래서 안식일은 단지 “아무 일도 하지 않는 날”이 아니라, <b>하나님 백성이 누구인지 드러나는 언약의 표지</b>였습니다.
+            로마 지배 아래 살던 시대에는 이런 표지가 더욱 중요했기 때문에, 안식일 규정 해석은 아주 민감한 문제가 될 수밖에 없었습니다.
+          </p>
+<h4>2-5) 당시 논점은 ‘응급 상황이 아닌 치유’를 안식일에 해도 되는가였다</h4>
+<p>
+            여기서 조심해야 할 점이 있습니다.
+            예수님 시대 유대 사회가 무조건 자비가 없었다고 보면 안 됩니다. 생명이 당장 위급한 경우 안식일 규정을 넘어 사람을 살리는 판단은 후대 랍비 전통에서도 중요하게 다루어집니다.
+            하지만 이 사람의 손은 당장 죽느냐 사느냐의 응급 상황은 아니었기 때문에, 반대자들은 “굳이 오늘 해야 하는가”라고 생각했을 가능성이 큽니다.
+            예수님은 바로 그 자리에서 문제를 “나중에 해도 되느냐”가 아니라, <b>지금 할 수 있는 선을 미루는 것이 과연 중립인가</b>라는 질문으로 바꾸십니다.
+          </p>
+<h4>2-6) “한가운데 서라”는 말은 숨겨진 상처를 공동체 중심으로 옮기는 행동이다</h4>
+<p>
+            예수님은 손 마른 사람을 조용히 뒤에서 고치지 않으셨습니다.
+            오히려 “일어나 한가운데 서라”고 하셨습니다. 이것은 단순한 동선 지시가 아니라, 공동체가 늘 주변으로 밀어 놓던 아픔을 중앙으로 가져오는 행동입니다.
+            다시 말해 예수님은 안식일 논쟁을 추상적 해석 싸움으로 두지 않으시고, <b>눈앞의 상처 입은 사람을 기준으로 안식일을 다시 읽게 하신 것</b>입니다.
+          </p>
+<h4>2-7) 11절의 분노는 갈등의 방향을 예고한다</h4>
+<p>
+            11절에서 종교 지도자들은 놀라움이나 찬양이 아니라 분노로 가득 찹니다.
+            이는 이후 예수님을 향한 반감과 배척, 결국 십자가 길로 이어질 긴장의 씨앗을 보여 줍니다.
+            아이러니하게도, 손은 회복되었는데 마음은 더 굳어집니다. 누가는 이 대조를 통해 <b>기적을 보아도 마음이 닫혀 있으면 사람은 더 강하게 거부할 수 있음</b>을 보여 줍니다.
+          </p>
+</div>
+
+
+        </div>
+      </article>
+    
+
+      <article class="study-card is-open" data-card>
+        <div class="study-card__head">
+          <button class="study-card__toggle" type="button" aria-expanded="true">
+            <span class="study-card__num">03</span>
+            <span class="study-card__title">① 정론(Orthodoxy): 전통적으로 무엇을 믿어 왔나</span>
+            <span class="study-card__chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+        </div>
+        <div class="summary-brief" aria-label="요약">
+          <span class="summary-label">요약</span>
+          <div>
+          전통적으로 이 본문은 예수님이 안식일을 폐기하신 분이 아니라, 안식일이 원래 무엇을 위한 날이었는지 드러내신 분으로 읽힙니다. 치유는 하나님 나라의 표지이고, 분노는 인간 마음의 완고함을 드러냅니다.
+        </div>
+        </div>
+        <div class="detail-body">
+          
+
+<p class="note">
+          전통적 해석에서 이 본문은 단순히 “예수님이 병을 고치셨다”보다, <b>예수님이 안식일의 참뜻을 드러내는 권위 있는 분</b>이라는 점에 무게를 둡니다.
+          바로 앞 6:5에서 “인자는 안식일의 주인”이라고 하신 말씀과 이 장면은 서로 깊게 연결됩니다.
+        </p>
+<div class="content-long">
+<h4>3-1) 예수님은 율법을 폐기하신 분이 아니라 그 중심을 밝히시는 분으로 읽혀 왔다</h4>
+<p>
+            교회는 오래도록 이 본문을 “예수님이 율법을 없애셨다”기보다, 율법이 본래 향하던 중심을 드러내셨다고 이해해 왔습니다.
+            안식일은 하나님을 기억하는 날이자, 인간이 끝없이 일의 노예가 되지 않도록 주신 선물이었습니다.
+            그러므로 예수님이 안식일에 사람을 회복시키신 것은 안식일을 깨뜨리는 행동이 아니라, <b>안식일의 뜻을 가장 온전하게 이루는 행동</b>으로 읽혀 왔습니다.
+          </p>
+<h4>3-2) 이 치유는 하나님 나라의 표지이며 작은 새 창조의 장면이다</h4>
+<p>
+            마른 손이 다시 펴지고 기능을 되찾는 장면은 단지 한 개인의 불편 해소가 아닙니다.
+            교회 전통은 이런 회복 사건을 예수님 안에서 하나님 나라가 이미 시작되었다는 표지로 보아 왔습니다.
+            말라 있던 것이 다시 살아나고, 굳어 있던 것이 다시 움직이는 것은 곧 <b>하나님의 통치가 들어오면 인간의 깨어진 상태가 회복된다</b>는 사실을 보여 줍니다.
+          </p>
+<h4>3-3) 예수님의 질문은 ‘허용’의 수준을 넘어 선과 악, 생명과 죽음의 수준으로 올라간다</h4>
+<p>
+            9절은 이 본문의 중심입니다.
+            예수님은 “안식일에 병을 고쳐도 되느냐”라고 묻지 않으시고, “안을까요, 하지 말까요”의 규정 차원보다 더 높은 곳으로 문제를 끌어올리십니다.
+            곧 <b>선을 행하는 것과 악을 행하는 것, 생명을 구하는 것과 죽이는 것</b> 가운데 무엇이 하나님의 뜻에 맞는지를 묻습니다.
+            전통 해석은 여기서, 선을 미루는 태도 역시 완전히 무색무취한 중립이 아니라는 점을 중요하게 보았습니다.
+          </p>
+<h4>3-4) 기적 앞에서 분노하는 마음은 인간 죄의 깊이를 드러낸다</h4>
+<p>
+            이 본문은 아픈 사람의 회복만 보여 주지 않고, 동시에 종교적 완고함도 드러냅니다.
+            손은 회복되었는데 지도자들은 기쁨보다 분노를 택합니다.
+            교회는 이 장면을 통해, 사람이 얼마나 쉽게 하나님의 선한 일을 보고도 자기 틀과 권위가 흔들린다는 이유로 거부할 수 있는지를 보아 왔습니다.
+          </p>
+<h4>3-5) 정론의 핵심 고백</h4>
+<p>
+            정론적으로 이 본문은 이렇게 요약할 수 있습니다.
+            <b>예수님은 안식일의 참뜻을 밝히시는 권위 있는 분이시며, 그분 안에서 하나님의 나라는 사람을 묶는 규칙주의가 아니라 상한 생명을 회복시키는 방식으로 드러난다.</b>
+</p>
+</div>
+
+
+        </div>
+      </article>
+    
+
+      <article class="study-card is-open" data-card>
+        <div class="study-card__head">
+          <button class="study-card__toggle" type="button" aria-expanded="true">
+            <span class="study-card__num">04</span>
+            <span class="study-card__title">② 정행(Orthopraxy): “그래서 어떻게 살아야 하나?”로 읽기</span>
+            <span class="study-card__chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+        </div>
+        <div class="summary-brief" aria-label="요약">
+          <span class="summary-label">요약</span>
+          <div>
+          정행의 핵심은 분명합니다. 약한 사람을 중심으로 데려오고, 선을 미루지 말고, 규칙이 정말 생명을 위한 것인지 계속 묻는 것입니다. 안식은 멈춤 그 자체가 아니라 회복을 위한 멈춤이어야 합니다.
+        </div>
+        </div>
+        <div class="detail-body">
+          
+
+<p class="note">
+          정행 관점에서 보면, 이 본문은 “안식일 규정을 어떻게 해석할까”만 묻지 않습니다.
+          오히려 <b>내가 실제로 사람을 살리는 쪽으로 움직이고 있는가</b>, 그리고 <b>공동체가 약한 사람을 어디에 세우고 있는가</b>를 묻습니다.
+        </p>
+<div class="content-long">
+<h4>4-1) 참된 신앙은 상처 입은 사람을 주변이 아니라 중심으로 데려온다</h4>
+<p>
+            예수님은 손 마른 사람을 조용히 처리하지 않으셨습니다.
+            그를 “한가운데” 세우셨다는 것은, 공동체가 외면해 온 약함을 더 이상 숨기지 말라는 뜻과 같습니다.
+            정행적으로 보면 신앙은 아픈 사람을 예배 뒤편에 남겨 두는 것이 아니라, <b>그 사람의 회복이 공동체의 중심 관심사가 되게 만드는 삶</b>입니다.
+          </p>
+<h4>4-2) “해치지 않음”만으로 충분하지 않고, 해야 할 선을 실제로 해야 한다</h4>
+<p>
+            많은 사람은 자신이 직접 나쁜 일을 하지 않았으면 괜찮다고 생각합니다.
+            그러나 예수님의 질문은 거기서 멈추지 않습니다. 할 수 있는데도 선을 미루고, 도울 수 있는데도 체면과 절차를 더 앞세우면, 그것은 생명 편에 서지 않는 일일 수 있습니다.
+            정행의 핵심은 <b>악을 피하는 수준을 넘어, 지금 가능한 선을 실제 행동으로 옮기는 것</b>입니다.
+          </p>
+<h4>4-3) 규칙은 필요하지만, 사람을 살리기 위한 규칙이어야 한다</h4>
+<p>
+            이 본문을 “규칙은 다 나쁘다”로 읽으면 곤란합니다.
+            공동체에는 질서와 기준이 필요합니다. 문제는 그 기준이 사람을 지키는 틀인가, 아니면 사람을 숨 막히게 하는 틀인가입니다.
+            정행은 규칙 자체를 부정하는 태도가 아니라, <b>이 규칙이 지금도 생명을 살리고 있는가</b>를 끊임없이 묻는 태도입니다.
+          </p>
+<h4>4-4) 치유는 예수님의 명령과 인간의 작은 순종이 만나는 자리에서 일어난다</h4>
+<p>
+            예수님은 “네 손을 내밀라”고 말씀하셨고, 그 사람은 그대로 했습니다.
+            정행의 눈으로 보면, 회복은 하나님이 일방적으로 다 하시는 것처럼 보이면서도 동시에 사람이 움츠러든 것을 다시 내미는 참여를 요구합니다.
+            오늘 우리에게도 그렇습니다. 관계가 굳었든, 마음이 말랐든, 기도와 용서와 사과와 섬김의 손을 다시 내밀어야 회복이 시작됩니다.
+          </p>
+<h4>4-5) 종교 지도자들의 모습은 오늘의 우리에게도 경고가 된다</h4>
+<p>
+            본문 속 지도자들은 성경을 모르던 사람들이 아니라, 오히려 너무 잘 아는 사람들이었습니다.
+            그런데 그 지식과 열심이 사람을 보는 눈보다 앞서자, 그들은 아픈 사람을 회복의 대상이 아니라 고발의 기회로 보았습니다.
+            정행적으로 가장 무서운 위험은, 종교 언어를 많이 쓰면서도 실제로는 <b>감시, 비교, 판정, 배제</b>의 습관 속에 머무는 것입니다.
+          </p>
+<h4>4-6) 오늘의 말로 바꾸면: 안식일은 ‘멈춤’만이 아니라 ‘회복을 위한 멈춤’이다</h4>
+<p>
+            안식은 그저 일을 멈추는 기술이 아닙니다.
+            하나님 앞에서 다시 숨을 고르고, 약해진 생명을 돌보고, 관계를 회복하고, 내 안에서 말라 버린 부분이 무엇인지 돌아보는 시간이어야 합니다.
+            그래서 정행의 관점에서 안식일은 단지 쉼의 규칙이 아니라, <b>회복을 위한 하나님 나라의 리듬</b>입니다.
+          </p>
+</div>
+
+
+        </div>
+      </article>
+    
+
+      <article class="study-card is-open" data-card>
+        <div class="study-card__head">
+          <button class="study-card__toggle" type="button" aria-expanded="true">
+            <span class="study-card__num">05</span>
+            <span class="study-card__title">원어 키워드 정리 (헬라어/그리스어)</span>
+            <span class="study-card__chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+        </div>
+        <div class="summary-brief" aria-label="요약">
+          <span class="summary-label">요약</span>
+          <div>
+          핵심 단어들은 안식일, 마른 상태, 오른손, 가운데, 선을 행함, 생명을 살림, 회복을 중심으로 흐릅니다. 이 본문은 안식과 선과 생명이라는 구약의 큰 흐름을 예수님 안에서 다시 밝힙니다.
+        </div>
+        </div>
+        <div class="detail-body">
+          
+
+<p class="muted small">
+          신약 본문이므로 핵심 키워드는 <b>헬라어 lemma(표제어)</b> 기준으로 정리했습니다.
+          사전 뜻을 길게 나열하기보다, 이 본문 안에서 어떤 그림을 만드는지에 집중했습니다.
+        </p>
+<div class="content-long">
+<h4>핵심 단어</h4>
+<div class="kv">
+<div class="kv-label">σάββατον</div>
+<div>
+<b>sabbaton</b> (안식일). 단순한 휴일이 아니라 하나님과의 언약, 창조의 쉼, 해방의 기억을 품은 날입니다.
+              본문에서는 “무엇을 금지할 것인가”보다 “하나님 뜻에 맞는 쉼이 무엇인가”를 묻는 중심 무대가 됩니다.
+              <span class="hint">대표 용례: 눅 6:6, 눅 13:14</span>
+</div>
+<div class="kv-label">ξηρός</div>
+<div>
+<b>xēros</b> (마른, 말라 버린). 물기가 없는 상태를 넘어, 기능과 생명력이 빠져나간 상태를 떠올리게 합니다.
+              여기서는 손의 장애를 말하지만, 더 넓게는 메말라 버린 인간 상태의 그림도 함께 줍니다.
+              <span class="hint">대표 용례: 눅 6:8, 막 3:1</span>
+</div>
+<div class="kv-label">δεξιά</div>
+<div>
+<b>dexia</b> (오른쪽, 오른손). 누가가 특별히 적은 말로, 손상의 현실성을 더 크게 보여 줍니다.
+              이 사람의 아픔이 단순한 작은 불편이 아니라 생계와 일상 능력의 손상일 수 있음을 떠올리게 합니다.
+              <span class="hint">대표 용례: 눅 6:6, 행 3:7</span>
+</div>
+<div class="kv-label">μέσος</div>
+<div>
+<b>mesos</b> (가운데, 중심). 예수님이 사람을 한가운데 세우실 때, 공동체가 외면한 아픔이 중심 문제로 옮겨집니다.
+              본문 안에서 매우 중요한 공간적·상징적 역할을 합니다.
+              <span class="hint">대표 용례: 눅 6:8, 눅 22:55</span>
+</div>
+<div class="kv-label">ἀγαθοποιέω</div>
+<div>
+<b>agathopoieō</b> (선을 행하다). 선을 생각하는 정도가 아니라 실제로 좋은 일을 하다라는 뜻입니다.
+              예수님은 안식일 문제를 “하지 말 것”의 목록이 아니라 “해야 할 선”의 차원으로 끌어올리십니다.
+              <span class="hint">대표 용례: 눅 6:9, 벧전 2:15</span>
+</div>
+<div class="kv-label">κακοποιέω</div>
+<div>
+<b>kakopoieō</b> (악을 행하다, 해를 끼치다). 선을 행하는 것의 반대편에 놓입니다.
+              예수님의 질문은 선을 미루는 일이 사실상 어떤 편에 서는지 드러내 줍니다.
+              <span class="hint">대표 용례: 눅 6:9, 벧전 3:17</span>
+</div>
+<div class="kv-label">σῴζω</div>
+<div>
+<b>sōzō</b> (구하다, 살리다, 회복하다). 영혼 구원만이 아니라 눈앞의 생명을 살리고 온전하게 하는 뜻도 품습니다.
+              본문에서는 안식일의 목적이 생명을 살리는 데 있음을 드러냅니다.
+              <span class="hint">대표 용례: 눅 6:9, 눅 8:48</span>
+</div>
+<div class="kv-label">ἀπόλλυμι</div>
+<div>
+<b>apollymi</b> (죽게 하다, 망하게 하다). “구하다”의 반대편에 놓여 생명과 죽음의 대조를 만듭니다.
+              예수님의 질문은 중립 지대를 좁혀 버리고, 행동의 방향을 분명히 묻게 합니다.
+              <span class="hint">대표 용례: 눅 6:9, 눅 19:10</span>
+</div>
+<div class="kv-label">ἀποκαθίστημι</div>
+<div>
+<b>apokathistēmi</b> (회복시키다, 본래대로 돌리다). 단지 조금 나아진 것이 아니라 원래 기능으로 돌려놓는다는 느낌이 강합니다.
+              본문에서 예수님의 치유는 단순 위로가 아니라 실제 회복입니다.
+              <span class="hint">대표 용례: 눅 6:10, 행 1:6</span>
+</div>
+</div>
+<div class="divider"></div>
+<h4>짧은 OT–NT 연결: 안식일과 생명</h4>
+<table class="mapping-table">
+<thead>
+<tr>
+<th>개념</th>
+<th>OT 히브리어(MT)</th>
+<th>OT 헬라어(LXX)</th>
+<th>NT 헬라어</th>
+<th>정합/차이</th>
+<th>해석적 함의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>안식일의 쉼</b></td>
+<td>שַׁבָּת (šabbāt)</td>
+<td>σάββατα / σάββατον</td>
+<td>σάββατον</td>
+<td>기본 개념은 이어지지만, 예수님은 그 쉼이 사람을 살리는 방향으로 읽혀야 함을 더 선명히 드러내십니다.</td>
+<td>안식일은 차가운 정지가 아니라 하나님이 주시는 회복의 질서로 이해되어야 합니다.</td>
+</tr>
+<tr>
+<td><b>선 / 좋음</b></td>
+<td>טוֹב (ṭov)</td>
+<td>ἀγαθός</td>
+<td>ἀγαθοποιέω</td>
+<td>구약의 “좋음” 개념이 신약 본문에서는 “선을 행함”이라는 적극적 행동으로 울립니다.</td>
+<td>좋다고 아는 데서 멈추지 않고 실제로 선을 행하는 것이 본문의 핵심입니다.</td>
+</tr>
+<tr>
+<td><b>생명 / 목숨</b></td>
+<td>נֶפֶשׁ (nephesh)</td>
+<td>ψυχή</td>
+<td>ψυχή / σῴζω</td>
+<td>목숨과 생명은 단지 추상 개념이 아니라 실제 살아 있음과 연결됩니다.</td>
+<td>예수님의 질문은 영적 원칙만이 아니라 눈앞의 생명을 어떻게 대할지를 묻습니다.</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-top:14px;">
+            이 표는 단어를 기계처럼 1:1로 맞추려는 것이 아니라, 구약의 안식과 선과 생명 개념이 신약에서 어떻게 더 날카롭게 살아나는지를 보여 주기 위한 것입니다.
+            누가복음 6:6–11은 안식일을 둘러싼 작은 규정 싸움이 아니라, <b>하나님이 원래 주고자 하신 쉼이 사람을 다시 살리는 방향으로 이해되어야 한다</b>는 선언으로 읽을 수 있습니다.
+          </p>
+</div>
+
+
+        </div>
+      </article>
+    
+
+      <article class="study-card is-open" data-card>
+        <div class="study-card__head">
+          <button class="study-card__toggle" type="button" aria-expanded="true">
+            <span class="study-card__num">06</span>
+            <span class="study-card__title">현대 적용 (개인 · 공동체 · 공적 영역)</span>
+            <span class="study-card__chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+        </div>
+        <div class="summary-brief" aria-label="요약">
+          <span class="summary-label">요약</span>
+          <div>
+          오늘의 적용은 분명합니다. 내 안의 마른 손을 직면하고, 작은 선을 오늘 행하고, 공동체는 약한 사람을 중심에 두며, 제도와 쉼도 생명을 살리는 방향으로 다시 물어야 합니다.
+        </div>
+        </div>
+        <div class="detail-body">
+          
+
+<p class="note">
+          오늘 우리에게 이 본문은 “어떤 규칙을 더 세워야 하나”보다,
+          <b>내가 지금 실제로 누구를 살리고 누구를 더 말라가게 하고 있는가</b>를 다시 묻게 합니다.
+        </p>
+<div class="content-long">
+<h4>6-1) 개인 — 내 안의 ‘마른 손’이 무엇인지 정직하게 보기</h4>
+<p>
+            오늘 우리의 마른 손은 꼭 몸의 병만이 아닐 수 있습니다.
+            오래 미뤄 둔 사과, 굳어 버린 관계, 선을 행할 힘을 잃은 마음, 다시 기도하고 싶지만 메말라 버린 영혼일 수도 있습니다.
+            예수님의 말씀은 그런 우리에게도 옵니다. <b>숨지 말고 가운데 서라, 그리고 굳은 손을 다시 내밀라</b>고 하십니다.
+          </p>
+<h4>6-2) 개인 — “나는 나쁜 짓은 안 했다”에서 멈추지 않기</h4>
+<p>
+            많은 사람은 적극적으로 해를 끼치지 않았으면 괜찮다고 생각합니다.
+            그러나 예수님의 질문은 한 걸음 더 들어갑니다. 내가 오늘 할 수 있는 선을 일부러 미루고 있다면, 나는 정말 생명 편에 서 있는가를 묻습니다.
+            그래서 이 본문은 우리에게 <b>작은 선이라도 오늘 하라</b>고 밀어 줍니다.
+          </p>
+<h4>6-3) 공동체 — 약한 사람을 예배의 중심 관심사로 두고 있는가</h4>
+<p>
+            교회는 늘 스스로를 물어야 합니다.
+            우리 공동체는 능숙한 사람, 오래 다닌 사람, 말 잘하는 사람만 편하게 만드는 구조는 아닌가요.
+            예수님이 한가운데 세우시는 사람은 대개 강한 사람이 아니라, 상처 입은 사람, 지친 사람, 기능을 잃은 사람, 주변으로 밀려난 사람입니다.
+            그러므로 현대 교회는 접근성, 돌봄, 환대, 회복의 구조를 실제로 갖추어야 합니다.
+          </p>
+<h4>6-4) 공동체 — 감시 문화보다 회복 문화를 세우기</h4>
+<p>
+            본문 속 서기관과 바리새인들은 “누가 회복되는가”보다 “누가 걸리는가”에 더 관심이 있었습니다.
+            오늘의 공동체도 마찬가지입니다. 사람을 도울 기회를 찾는 공동체가 아니라, 실수와 흠을 잡을 기회를 찾는 공동체가 될 수 있습니다.
+            이 본문은 우리에게 묻습니다. <b>우리의 눈은 회복을 향하고 있는가, 아니면 감시와 판정을 향하고 있는가?</b>
+</p>
+<h4>6-5) 공적 영역 — 제도와 절차도 생명 쪽으로 다시 물어야 한다</h4>
+<p>
+            학교, 병원, 행정기관, 회사, 복지 제도 안에서도 우리는 비슷한 장면을 자주 봅니다.
+            규정은 있는데 사람이 숨을 못 쉬고, 절차는 있는데 약한 사람이 더 뒤로 밀리는 일입니다.
+            예수님의 질문은 오늘 공적 영역에도 그대로 울립니다. <b>이 제도는 사람을 살리는가, 아니면 형식은 맞지만 실제 생명을 소모시키는가?</b>
+</p>
+<h4>6-6) 쉼을 다시 정의하기 — 안식은 회복 없는 멈춤이 아니다</h4>
+<p>
+            현대인은 쉬어도 회복되지 않는 경우가 많습니다.
+            몸은 멈췄는데 마음은 더 메말라 있고, 시간을 비웠는데 관계는 더 굳어 있는 식입니다.
+            이 본문은 안식을 “일 안 하는 날”에서 한 걸음 더 나아가, <b>하나님 앞에서 생명을 다시 돌보는 날</b>로 새롭게 생각하게 만듭니다.
+          </p>
+</div>
+
+
+        </div>
+      </article>
+    
+
+      <article class="study-card is-open" data-card>
+        <div class="study-card__head">
+          <button class="study-card__toggle" type="button" aria-expanded="true">
+            <span class="study-card__num">07</span>
+            <span class="study-card__title">작은 실천 체크리스트 (이번 주 적용)</span>
+            <span class="study-card__chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+        </div>
+        <div class="summary-brief" aria-label="요약">
+          <span class="summary-label">요약</span>
+          <div>
+          기억할 것: 예수님은 안식일의 무게를 가볍게 하신 것이 아니라, 그 무게가 어디를 향해야 하는지 바로잡으셨습니다. 안식일의 중심은 생명을 살리고 회복시키는 하나님 뜻입니다.
+        </div>
+        </div>
+        <div class="detail-body">
+          
+
+<ul class="content-long">
+<li><b>1.</b> 내가 요즘 일부러 숨기고 있는 “마른 손”이 무엇인지 한 가지 적어 봅니다. 관계, 기도, 건강, 용기, 책임감 가운데 무엇이 말라 있는지 정직하게 써 봅니다.</li>
+<li><b>2.</b> 오늘 안에 할 수 있는 선한 행동 하나를 미루지 말고 바로 해 봅니다. 안부 연락, 사과, 작은 도움, 방문, 기도 요청 응답도 좋습니다.</li>
+<li><b>3.</b> 내가 속한 공동체의 규칙이나 분위기 가운데, 사람을 살리기보다 숨 막히게 만드는 것이 무엇인지 한 가지 점검해 봅니다.</li>
+<li><b>4.</b> 예배나 모임에서 늘 가장자리로 밀려나기 쉬운 사람 한 명을 떠올리고, 그 사람을 실제로 중심에 초대하는 작은 행동을 해 봅니다.</li>
+<li><b>5.</b> 이번 주의 쉼 시간을 단순 소비 시간이 아니라 회복 시간으로 다시 설계해 봅니다. 잠깐이라도 침묵, 감사, 가족 돌봄, 관계 회복, 자비의 행동을 넣어 보십시오.</li>
+</ul>
+<p class="muted small">
+          기억할 것: 예수님은 안식일의 무게를 가볍게 하신 것이 아니라, 그 무게가 어디를 향해야 하는지 바로잡으셨습니다. 안식일의 중심은 생명을 살리고 회복시키는 하나님 뜻입니다.
+        </p>
+
+        </div>
+      </article>
+    
+
+      <article class="study-card is-open" data-card>
+        <div class="study-card__head">
+          <button class="study-card__toggle" type="button" aria-expanded="true">
+            <span class="study-card__num">08</span>
+            <span class="study-card__title">마지막 3–4문장 핵심 요약</span>
+            <span class="study-card__chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+        </div>
+        <div class="summary-brief" aria-label="요약">
+          <span class="summary-label">요약</span>
+          <div>
+          누가복음 6:6–11은 안식일 규정을 둘러싼 작은 충돌이 아니라, <b>하나님 뜻의 중심이 어디에 있는가</b>를 보여 주는 본문입니다.
+          예수님은 손 마른 사람을 한가운데 세우심으로써, 종교가 주변으로 밀어 놓은 상처를 공동체의 중심 문제로 가져오셨습니다.
+          그리고 안식일의 참뜻은 사람을 눌러 두는 데 있지 않고, <b>선을 행하고 생명을 살리고 회복시키는 데 있다</b>는 사실을 드러내셨습니다.
+          이 본문은 오늘 우리에게 묻습니다. <b>나는 규칙을 지키는 사람인가, 아니면 사람을 살리는 쪽으로 실제로 움직이는 사람인가?</b>
+</div>
+        </div>
+        <div class="detail-body">
+          
+
+<p class="content-long">
+          누가복음 6:6–11은 안식일 규정을 둘러싼 작은 충돌이 아니라, <b>하나님 뜻의 중심이 어디에 있는가</b>를 보여 주는 본문입니다.
+          예수님은 손 마른 사람을 한가운데 세우심으로써, 종교가 주변으로 밀어 놓은 상처를 공동체의 중심 문제로 가져오셨습니다.
+          그리고 안식일의 참뜻은 사람을 눌러 두는 데 있지 않고, <b>선을 행하고 생명을 살리고 회복시키는 데 있다</b>는 사실을 드러내셨습니다.
+          이 본문은 오늘 우리에게 묻습니다. <b>나는 규칙을 지키는 사람인가, 아니면 사람을 살리는 쪽으로 실제로 움직이는 사람인가?</b>
+</p>
+
+        </div>
+      </article>
+    
+      <article class="footer-card">
+        
+<p class="muted small">
+          이 페이지는 <b>모바일 전용</b>으로 제작되었습니다.<br/>
+          상단 <b>공유</b> 버튼으로 링크를 나누고,
+          하단 <b>요약 모드</b>로 소그룹 나눔에도 활용해 보세요.<br/>
+          동일한 레이아웃으로 다른 본문도
+          <b>정론 · 정행 · 현대 적용</b> 관점에서 계속 확장할 수 있습니다.
+        </p>
+
+        <div class="footer-brand" aria-hidden="true">SOLI DEO GLORIA</div>
+      </article>
+    </section>
+  </main>
+
+  <nav class="bottom-bar" aria-label="하단 도구 모음">
+    <div class="bottom-bar__inner">
+      <button class="action-btn action-btn--summary" id="btnSummaryMode" type="button" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12"/><path d="M8 12h12"/><path d="M8 18h12"/><path d="M4 6h.01"/><path d="M4 12h.01"/><path d="M4 18h.01"/></svg>
+        <span id="summaryLabel">요약 모드</span>
+      </button>
+      <button class="action-btn action-btn--collapse" id="btnCollapseAll" type="button" aria-pressed="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l4-4 4 4"/><path d="M12 3v8"/><path d="M16 17l-4 4-4-4"/><path d="M12 13v8"/></svg>
+        <span id="collapseLabel">전체 접기</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+
+    (() => {
+      const root = document.documentElement;
+      const body = document.body;
+      const themeBtn = document.getElementById('btnTheme');
+      const themeIcon = document.getElementById('themeIcon');
+      const themeText = document.getElementById('themeText');
+      const themeMeta = document.getElementById('themeColorMeta');
+      const shareBtn = document.getElementById('btnShare');
+      const summaryBtn = document.getElementById('btnSummaryMode');
+      const summaryLabel = document.getElementById('summaryLabel');
+      const collapseBtn = document.getElementById('btnCollapseAll');
+      const collapseLabel = document.getElementById('collapseLabel');
+      const toast = document.getElementById('toast');
+      const themeKey = 'lk06_06_11_premium_theme';
+      const summaryKey = 'lk06_06_11_summary_mode';
+
+      function showToast(message) {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add('is-visible');
+        window.clearTimeout(showToast.timer);
+        showToast.timer = window.setTimeout(() => toast.classList.remove('is-visible'), 1700);
+      }
+
+      function getSystemTheme() {
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function setTheme(theme, persist = true) {
+        const safeTheme = theme === 'dark' ? 'dark' : 'light';
+        root.setAttribute('data-theme', safeTheme);
+        if (persist) localStorage.setItem(themeKey, safeTheme);
+        if (themeIcon) themeIcon.textContent = safeTheme === 'dark' ? '🌙' : '☀️';
+        if (themeText) themeText.textContent = safeTheme === 'dark' ? '다크' : '라이트';
+        if (themeBtn) {
+          themeBtn.setAttribute('aria-label', safeTheme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환');
+          themeBtn.setAttribute('aria-pressed', safeTheme === 'dark' ? 'true' : 'false');
+        }
+        if (themeMeta) themeMeta.setAttribute('content', safeTheme === 'dark' ? '#081020' : '#f7f5f0');
+      }
+
+      const savedTheme = localStorage.getItem(themeKey);
+      setTheme(savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : getSystemTheme(), Boolean(savedTheme));
+
+      if (!savedTheme && window.matchMedia) {
+        const mq = window.matchMedia('(prefers-color-scheme: dark)');
+        const syncSystemTheme = () => setTheme(getSystemTheme(), false);
+        if (mq.addEventListener) mq.addEventListener('change', syncSystemTheme);
+        else if (mq.addListener) mq.addListener(syncSystemTheme);
+      }
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+          setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+      }
+
+      function setSummaryMode(on, persist = true) {
+        body.classList.toggle('summary-mode', on);
+        if (summaryBtn) summaryBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (summaryLabel) summaryLabel.textContent = on ? '자세히 보기' : '요약 모드';
+        if (persist) localStorage.setItem(summaryKey, on ? '1' : '0');
+      }
+
+      setSummaryMode(localStorage.getItem(summaryKey) === '1', false);
+
+      if (summaryBtn) {
+        summaryBtn.addEventListener('click', () => {
+          const next = !body.classList.contains('summary-mode');
+          setSummaryMode(next);
+          showToast(next ? '요약 모드로 바꿨습니다.' : '자세히 보기로 바꿨습니다.');
+        });
+      }
+
+      function cards() {
+        return Array.from(document.querySelectorAll('[data-card]'));
+      }
+
+      function scriptureDetails() {
+        return document.querySelector('details.scripture-details');
+      }
+
+      function isCardOpen(card) {
+        return card.classList.contains('is-open');
+      }
+
+      function setCardOpen(card, open) {
+        card.classList.toggle('is-open', open);
+        const toggle = card.querySelector('.study-card__toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+
+      function allOpen() {
+        const everyCardOpen = cards().every(isCardOpen);
+        const scriptureOpen = scriptureDetails() ? scriptureDetails().open : true;
+        return everyCardOpen && scriptureOpen;
+      }
+
+      function updateCollapseButton() {
+        const opened = allOpen();
+        if (collapseLabel) collapseLabel.textContent = opened ? '전체 접기' : '전체 펼치기';
+        if (collapseBtn) {
+          collapseBtn.setAttribute('aria-pressed', opened ? 'true' : 'false');
+          collapseBtn.setAttribute('aria-label', opened ? '모든 섹션 접기' : '모든 섹션 펼치기');
+        }
+      }
+
+      cards().forEach((card) => {
+        const toggle = card.querySelector('.study-card__toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', () => {
+          setCardOpen(card, !isCardOpen(card));
+          updateCollapseButton();
+        });
+      });
+
+      const scripture = scriptureDetails();
+      if (scripture) scripture.addEventListener('toggle', updateCollapseButton);
+
+      if (collapseBtn) {
+        collapseBtn.addEventListener('click', () => {
+          const nextOpen = !allOpen();
+          cards().forEach((card) => setCardOpen(card, nextOpen));
+          const d = scriptureDetails();
+          if (d) d.open = nextOpen;
+          updateCollapseButton();
+          showToast(nextOpen ? '모든 섹션을 펼쳤습니다.' : '모든 섹션을 접었습니다.');
+        });
+      }
+
+      updateCollapseButton();
+
+      if (shareBtn) {
+        shareBtn.addEventListener('click', async () => {
+          const shareData = {
+            title: document.title,
+            text: '누가복음 6:6–11 정론·정행·현대 적용 가이드',
+            url: window.location.href
+          };
+          if (navigator.share) {
+            try {
+              await navigator.share(shareData);
+              return;
+            } catch (error) {
+              if (error && error.name === 'AbortError') return;
+            }
+          }
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            showToast('링크를 복사했습니다.');
+          } catch (error) {
+            window.prompt('아래 링크를 복사해 공유하세요.', window.location.href);
+          }
+        });
+      }
+    })();
+
+  </script>
+</body>
+</html>
