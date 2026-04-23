@@ -1,0 +1,1469 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#F7F5F0" />
+<title>누구를 위한 커리큘럼인가 · Mobile Editorial HTML</title>
+<style>
+:root {
+  --primary:#0F6B4F;
+  --primary-active:#0A8A66;
+  --primary-dark:#00C896;
+  --secondary:#D79A3A;
+  --secondary-strong:#9A6221;
+  --neutral:#F7F5F0;
+  --bg:#F7F5F0;
+  --bg-depth:#EDE6D9;
+  --bg-warm:#FFFAF3;
+  --surface:#FFFFFF;
+  --surface-soft:#FFFAF3;
+  --surface-inset:#F6F1E8;
+  --text:#1C1C1C;
+  --text-strong:#0F1115;
+  --muted:#6B7280;
+  --muted-soft:#8A8378;
+  --border:#D8CDBB;
+  --border-strong:#C9B891;
+  --dark-bg:#081020;
+  --dark-depth:#0B1020;
+  --dark-card:#121826;
+  --dark-soft:#0C121F;
+  --dark-text:#D8DEEA;
+  --dark-strong:#F2EFE7;
+  --dark-muted:#A9B1C2;
+  --dark-border:#273042;
+  --radius-xs:8px;
+  --radius-sm:12px;
+  --radius-md:18px;
+  --radius-lg:24px;
+  --radius-xl:30px;
+  --radius-full:9999px;
+  --page-max:430px;
+  --shadow-soft:0 16px 55px rgba(59,45,25,.12);
+  --shadow-card:0 12px 34px rgba(42,32,18,.09);
+  --serif:"Noto Serif KR", "Source Han Serif KR", "AppleMyungjo", "Georgia", serif;
+  --sans:"Pretendard", "Apple SD Gothic Neo", "Segoe UI", system-ui, sans-serif;
+}
+[data-theme="dark"] {
+  --bg:#081020;
+  --bg-depth:#0B1020;
+  --bg-warm:#121826;
+  --surface:#121826;
+  --surface-soft:#0C121F;
+  --surface-inset:#050A12;
+  --text:#D8DEEA;
+  --text-strong:#F2EFE7;
+  --muted:#A9B1C2;
+  --muted-soft:#7E8799;
+  --border:#273042;
+  --border-strong:#6F5529;
+  --primary:#00C896;
+  --primary-active:#16E0AD;
+  --secondary:#FFB845;
+  --secondary-strong:#D99A35;
+  --shadow-soft:0 18px 60px rgba(0,0,0,.44);
+  --shadow-card:0 16px 46px rgba(0,0,0,.35);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:
+    radial-gradient(circle at 14% -4%, rgba(215,154,58,.18), transparent 32%),
+    radial-gradient(circle at 88% 10%, rgba(15,107,79,.16), transparent 30%),
+    linear-gradient(180deg, var(--bg), var(--bg-depth));
+  color:var(--text);
+  font-family:var(--sans);
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  padding:0 0 calc(86px + env(safe-area-inset-bottom));
+}
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.34;
+  background-image:
+    linear-gradient(115deg, transparent 0 42%, rgba(15,107,79,.08) 43%, transparent 46%),
+    radial-gradient(circle at 10% 90%, rgba(215,154,58,.13), transparent 26%);
+  mix-blend-mode:multiply;
+}
+[data-theme="dark"] body::before { mix-blend-mode:screen; opacity:.18; }
+a { color:inherit; }
+button { font:inherit; }
+.app-shell {
+  width:min(100%, var(--page-max));
+  margin:0 auto;
+  position:relative;
+  min-height:100vh;
+}
+.reader-header {
+  position:sticky;
+  top:0;
+  z-index:40;
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px 14px 9px;
+  backdrop-filter:blur(18px);
+  background:color-mix(in srgb, var(--bg) 86%, transparent);
+  border-bottom:1px solid color-mix(in srgb, var(--border) 72%, transparent);
+}
+.header-left,.header-actions { display:flex; align-items:center; gap:8px; }
+.icon-btn {
+  border:1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  background:color-mix(in srgb, var(--surface) 90%, transparent);
+  color:var(--text-strong);
+  height:40px;width:40px;
+  border-radius:var(--radius-full);
+  display:grid;place-items:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.06);
+}
+.icon-btn:active,.primary-btn:active { transform:translateY(1px) scale(.99); }
+.header-title { text-align:center; min-width:0; flex:1; }
+.header-title strong { display:block; color:var(--text-strong); font-size:13px; font-weight:850; letter-spacing:-.01em; }
+.header-title span { display:block; color:var(--muted); font-size:11px; font-weight:700; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.progress { position:absolute; left:0; right:0; bottom:-1px; height:2px; background:transparent; }
+.progress > i { display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--primary),var(--secondary)); transition:width .08s linear; }
+.cover { padding:18px 16px 24px; min-height:calc(100svh - 64px); display:flex; flex-direction:column; }
+.chips { display:flex; gap:8px; flex-wrap:wrap; margin:4px 0 20px; }
+.chip {
+  display:inline-flex;align-items:center;gap:5px;
+  height:30px;padding:0 12px;
+  border-radius:var(--radius-full);
+  background:var(--surface-inset);
+  color:var(--primary);
+  border:1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  font-size:12px;font-weight:820;
+}
+.hero-panel {
+  flex:1;
+  border-radius:var(--radius-xl);
+  padding:28px 22px 24px;
+  background:
+    radial-gradient(circle at 98% 68%, rgba(15,107,79,.18), transparent 38%),
+    radial-gradient(circle at 10% 2%, rgba(215,154,58,.13), transparent 36%),
+    linear-gradient(180deg,var(--surface),var(--surface-soft));
+  border:1px solid color-mix(in srgb, var(--border) 64%, transparent);
+  box-shadow:var(--shadow-soft);
+  position:relative;
+  overflow:hidden;
+}
+.hero-panel::after {
+  content:"";
+  position:absolute;right:-44px;bottom:-54px;width:210px;height:210px;border-radius:50%;
+  border:1px solid color-mix(in srgb, var(--primary) 22%, transparent);
+  background:radial-gradient(circle, rgba(15,107,79,.16), transparent 65%);
+}
+.hero-kicker {
+  color:var(--primary);
+  font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:18px;
+}
+.hero-panel h1 {
+  position:relative;z-index:1;
+  font-family:var(--serif);
+  font-weight:900;
+  color:var(--text-strong);
+  letter-spacing:-.062em;
+  line-height:1.17;
+  font-size:clamp(44px, 12vw, 58px);
+  margin:0 0 14px;
+}
+.hero-subtitle { position:relative;z-index:1; margin:0; color:var(--muted); line-height:1.68; font-weight:650; font-size:15px; }
+.hero-quote {
+  position:relative;z-index:1;
+  margin:42px 0 34px;
+  padding-left:18px;
+  border-left:4px solid var(--primary);
+  font-family:var(--serif);
+  color:var(--text-strong);
+  font-size:20px;
+  font-weight:850;
+  line-height:1.68;
+  letter-spacing:-.035em;
+}
+.hero-meta { position:relative;z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:auto; }
+.meta-item { border-top:1px solid color-mix(in srgb,var(--border) 70%,transparent); padding-top:12px; }
+.meta-item span { display:block; color:var(--muted-soft); font-size:11px; font-weight:750; }
+.meta-item strong { display:block; margin-top:5px; color:var(--text-strong); font-size:13px; font-weight:850; }
+.section { padding:22px 16px; }
+.section-head { display:flex; justify-content:space-between; align-items:end; gap:12px; margin-bottom:14px; }
+.section-head h2 {
+  margin:0;
+  color:var(--text-strong);
+  font-size:22px;
+  line-height:1.35;
+  letter-spacing:-.036em;
+  font-weight:900;
+}
+.section-head p { margin:6px 0 0; color:var(--muted); line-height:1.62; font-size:13px; font-weight:600; }
+.mini-label {
+  color:var(--primary);
+  font-size:11px;
+  line-height:1.15;
+  font-weight:900;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.mode-toggle {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:4px;
+  padding:4px;
+  background:var(--surface-inset);
+  border:1px solid color-mix(in srgb,var(--border) 70%,transparent);
+  border-radius:var(--radius-full);
+  margin:0 0 14px;
+}
+.mode-toggle button {
+  border:0;background:transparent;color:var(--muted);
+  height:36px;border-radius:var(--radius-full);
+  font-size:13px;font-weight:850;
+}
+.mode-toggle button.active { background:var(--primary); color:white; }
+[data-theme="dark"] .mode-toggle button.active { color:#041411; }
+.summary-note {
+  display:none;
+  border-radius:var(--radius-lg);
+  background:color-mix(in srgb,var(--primary) 9%, var(--surface));
+  border:1px solid color-mix(in srgb,var(--primary) 23%, transparent);
+  padding:16px;
+  color:var(--text);
+  line-height:1.68;
+  font-size:14px;
+}
+.summary-mode .article-corpus { display:none; }
+.summary-mode .summary-note { display:block; }
+.accordion-list { display:grid; gap:12px; }
+.accordion-card {
+  border-radius:var(--radius-lg);
+  background:var(--surface);
+  border:1px solid color-mix(in srgb,var(--border) 74%, transparent);
+  box-shadow:var(--shadow-card);
+  overflow:hidden;
+}
+.accordion-card button {
+  width:100%; border:0; background:transparent;
+  display:flex; gap:12px; align-items:flex-start; text-align:left;
+  padding:16px;
+  color:var(--text);
+}
+.acc-icon {
+  width:34px;height:34px;border-radius:var(--radius-full);
+  display:grid;place-items:center;
+  background:color-mix(in srgb,var(--primary) 10%, var(--surface-inset));
+  color:var(--primary); flex:0 0 auto;
+}
+.acc-title { flex:1; }
+.acc-title strong { display:block; color:var(--text-strong); font-size:16px; font-weight:900; letter-spacing:-.025em; }
+.acc-title span { display:block; margin-top:6px; color:var(--muted); font-size:13px; line-height:1.6; font-weight:600; }
+.chev { color:var(--muted); transition:transform .18s ease; }
+.accordion-card.open .chev { transform:rotate(180deg); }
+.acc-body { display:none; padding:0 16px 16px 62px; color:var(--text); font-size:14px; line-height:1.74; }
+.accordion-card.open .acc-body { display:block; }
+.evidence-grid { display:grid; gap:12px; }
+.evidence-card {
+  border-radius:var(--radius-lg);
+  padding:16px;
+  background:var(--surface);
+  border:1px solid color-mix(in srgb,var(--border) 74%, transparent);
+  box-shadow:var(--shadow-card);
+}
+.evidence-top { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:10px; }
+.evidence-card svg { width:110px; height:54px; overflow:visible; }
+.evidence-card svg rect { fill:color-mix(in srgb,var(--primary) 72%, white); opacity:.92; rx:2px; }
+.evidence-card svg polyline,.evidence-card svg path { fill:none; stroke:var(--primary); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+.evidence-card svg circle { fill:none; stroke:color-mix(in srgb,var(--secondary) 82%, white); stroke-width:8; }
+.evidence-card svg path + path { stroke:var(--secondary); opacity:.7; }
+.evidence-card h3 { margin:0 0 7px; color:var(--text-strong); font-size:16px; line-height:1.42; font-weight:900; letter-spacing:-.025em; }
+.evidence-card p { margin:0; color:var(--muted); font-size:13px; line-height:1.62; font-weight:600; }
+.dark-panel {
+  margin:12px 10px 24px;
+  padding:18px 14px 18px;
+  border-radius:28px;
+  color:var(--dark-text);
+  background:
+    radial-gradient(circle at 84% 18%, rgba(0,200,150,.20), transparent 28%),
+    radial-gradient(circle at 18% 90%, rgba(255,184,69,.12), transparent 32%),
+    linear-gradient(180deg,#081020,#050A12);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 24px 70px rgba(0,0,0,.36);
+}
+.dark-panel .section-head h2 { color:var(--dark-strong); }
+.dark-panel .section-head p { color:var(--dark-muted); }
+.compare-head { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:8px; margin:14px 0 14px; }
+.compare-pill {
+  border-radius:18px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  padding:12px 10px;
+  text-align:center;
+  color:var(--dark-strong);
+  font-weight:900;
+  font-size:13px;
+  line-height:1.35;
+}
+.compare-pill.good { background:linear-gradient(180deg,rgba(0,200,150,.42),rgba(15,107,79,.72)); border-color:rgba(0,200,150,.35); }
+.vs { width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:#081020;border:2px solid rgba(0,200,150,.45); color:var(--dark-strong); font-weight:900; }
+.compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.compare-card {
+  border-radius:20px;
+  padding:12px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.095);
+}
+.compare-card.good { background:rgba(0,200,150,.09); border-color:rgba(0,200,150,.28); }
+.compare-card ul { margin:0; padding:0; list-style:none; display:grid; gap:11px; }
+.compare-card li { font-size:12px; line-height:1.45; color:var(--dark-muted); }
+.compare-card li strong { display:block; color:var(--dark-strong); font-size:13px; margin-bottom:2px; }
+.compare-card .mark { display:inline-grid; place-items:center; width:18px;height:18px;border-radius:50%; margin-right:4px; color:#081020; background:var(--secondary); font-weight:900; font-size:10px; }
+.compare-card.good .mark { background:var(--primary-dark); }
+.insight-box { margin-top:14px; border:1px solid rgba(255,184,69,.38); background:rgba(255,184,69,.09); border-radius:18px; padding:14px; }
+.insight-box h3 { margin:0 0 7px;color:var(--dark-strong);font-size:15px; }
+.insight-box p { margin:0;color:var(--dark-muted);font-size:13px;line-height:1.65; }
+.module-grid { display:grid; gap:12px; }
+.module-card {
+  border-radius:var(--radius-lg);
+  border:1px solid color-mix(in srgb,var(--border) 72%, transparent);
+  background:linear-gradient(180deg,var(--surface),var(--surface-soft));
+  box-shadow:var(--shadow-card);
+  padding:16px;
+}
+.module-card span { color:var(--secondary-strong); font-size:11px; font-weight:900; letter-spacing:.06em; }
+.module-card h3 { margin:6px 0 8px; color:var(--text-strong); font-size:16px; line-height:1.42; letter-spacing:-.025em; }
+.module-card p { margin:0; color:var(--muted); font-size:13px; line-height:1.64; font-weight:600; }
+.checklist { display:grid; gap:12px; }
+.check-card {
+  border-radius:var(--radius-lg);
+  border:1px solid color-mix(in srgb,var(--border) 72%, transparent);
+  background:var(--surface);
+  box-shadow:var(--shadow-card);
+  padding:14px;
+}
+.check-card h3 { margin:0 0 10px; color:var(--text-strong); font-size:16px; font-weight:900; display:flex; justify-content:space-between; }
+.check-card h3 span { color:var(--primary); font-size:13px; }
+.check-item { display:flex; gap:8px; align-items:flex-start; padding:8px 0; border-top:1px solid color-mix(in srgb,var(--border) 52%, transparent); font-size:13px; line-height:1.55; color:var(--text); font-weight:650; }
+.check-item:first-of-type { border-top:0; }
+.tick { width:18px;height:18px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:var(--primary);color:white;font-size:11px;font-weight:900;margin-top:1px; }
+[data-theme="dark"] .tick { color:#041411; }
+.timeline { display:grid; gap:12px; position:relative; }
+.timeline::before { content:""; position:absolute; left:17px; top:8px; bottom:8px; width:2px; background:color-mix(in srgb,var(--primary) 36%, transparent); }
+.timeline-card { position:relative; padding:14px 14px 14px 48px; border-radius:var(--radius-lg); background:var(--surface); border:1px solid color-mix(in srgb,var(--border) 74%, transparent); box-shadow:var(--shadow-card); }
+.timeline-dot { position:absolute; left:9px; top:18px; width:18px; height:18px; border-radius:50%; background:var(--primary); border:4px solid var(--surface); box-shadow:0 0 0 1px color-mix(in srgb,var(--primary) 25%, transparent); }
+.timeline-card span { color:var(--primary); font-size:12px; font-weight:900; }
+.timeline-card h3 { margin:5px 0 6px; color:var(--text-strong); font-size:15px; line-height:1.42; }
+.timeline-card p { margin:0 0 7px; color:var(--muted); font-size:13px; line-height:1.55; }
+.timeline-card small { color:var(--muted-soft); font-size:12px; font-weight:750; }
+.article-card {
+  border-radius:28px;
+  background:color-mix(in srgb,var(--surface) 96%, transparent);
+  border:1px solid color-mix(in srgb,var(--border) 72%, transparent);
+  box-shadow:var(--shadow-soft);
+  padding:4px 0 2px;
+  overflow:hidden;
+}
+.article-nav { display:flex; gap:6px; overflow:auto; padding:10px 12px; border-bottom:1px solid color-mix(in srgb,var(--border) 62%, transparent); scrollbar-width:none; }
+.article-nav::-webkit-scrollbar { display:none; }
+.article-nav a { flex:0 0 auto; text-decoration:none; height:30px; padding:0 12px; display:grid; place-items:center; border-radius:var(--radius-full); background:var(--surface-inset); color:var(--muted); font-size:12px; font-weight:850; }
+.article-nav a:first-child { background:var(--primary); color:#fff; }
+.article-content { padding:18px 18px 22px; }
+.article-content h1.article-main-title {
+  font-family:var(--serif);
+  font-size:28px;
+  line-height:1.3;
+  letter-spacing:-.05em;
+  color:var(--text-strong);
+  margin:0 0 16px;
+}
+.article-content .section-title {
+  margin:36px 0 12px;
+  padding-top:4px;
+  font-family:var(--serif);
+  font-size:24px;
+  line-height:1.35;
+  letter-spacing:-.045em;
+  color:var(--text-strong);
+}
+.article-content .subsection-title {
+  margin:26px 0 10px;
+  color:var(--text-strong);
+  font-size:18px;
+  line-height:1.42;
+  letter-spacing:-.03em;
+}
+.article-content p {
+  font-size:15px;
+  line-height:1.78;
+  letter-spacing:-.01em;
+  margin:13px 0;
+  color:var(--text);
+}
+.article-content strong { color:var(--text-strong); font-weight:900; }
+.article-content ul,.article-content ol { padding-left:20px; line-height:1.72; color:var(--text); }
+.article-content li { margin:6px 0; }
+.article-content code:not(pre code) {
+  display:inline-flex;
+  align-items:center;
+  min-height:24px;
+  padding:2px 8px;
+  border-radius:var(--radius-full);
+  background:var(--surface-inset);
+  color:var(--primary);
+  border:1px solid color-mix(in srgb,var(--border) 64%, transparent);
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:850;
+  margin:2px 2px;
+}
+.pull-card {
+  margin:18px 0;
+  padding:16px 16px 16px 18px;
+  border-radius:var(--radius-lg);
+  border:1px solid color-mix(in srgb,var(--primary) 24%, var(--border));
+  background:color-mix(in srgb,var(--primary) 7%, var(--surface-soft));
+  box-shadow:0 10px 28px rgba(15,107,79,.08);
+}
+.pull-card p { margin:7px 0; font-family:var(--serif); font-size:16px; font-weight:800; color:var(--text-strong); line-height:1.7; }
+.responsive-table { margin:16px 0; border-radius:var(--radius-lg); border:1px solid color-mix(in srgb,var(--border) 72%, transparent); overflow:hidden; background:var(--surface); }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:var(--surface-inset); color:var(--text-strong); text-align:left; font-weight:900; }
+th,td { border-bottom:1px solid color-mix(in srgb,var(--border) 65%, transparent); padding:10px; vertical-align:top; line-height:1.55; }
+tr:last-child td { border-bottom:0; }
+.code-card, .mermaid-card {
+  border-radius:var(--radius-lg);
+  background:var(--surface-inset);
+  border:1px solid color-mix(in srgb,var(--border) 72%, transparent);
+  padding:14px;
+  overflow:auto;
+  font-size:12px;
+  line-height:1.55;
+  color:var(--text);
+}
+.mermaid-card h4 { margin:6px 0 8px; font-size:16px; color:var(--text-strong); }
+.mermaid-card p { font-size:13px; color:var(--muted); }
+.cite-chip {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:24px;
+  padding:0 8px;
+  margin:0 2px;
+  border:1px solid color-mix(in srgb,var(--secondary) 46%, var(--border));
+  border-radius:var(--radius-full);
+  background:color-mix(in srgb,var(--secondary) 12%, var(--surface-soft));
+  color:var(--secondary-strong);
+  font-size:11px;
+  font-weight:900;
+  vertical-align:baseline;
+  cursor:pointer;
+}
+.entity-chip {
+  color:var(--text-strong);
+  font-weight:900;
+  border-bottom:1px solid color-mix(in srgb,var(--primary) 34%, transparent);
+}
+.source-grid { display:grid; gap:10px; }
+.source-card {
+  border-radius:var(--radius-lg);
+  padding:14px;
+  border:1px solid color-mix(in srgb,var(--border) 74%, transparent);
+  background:var(--surface);
+  box-shadow:var(--shadow-card);
+}
+.source-card span { color:var(--secondary-strong); font-size:11px; font-weight:900; }
+.source-card h3 { margin:5px 0 6px; color:var(--text-strong); font-size:15px; line-height:1.42; }
+.source-card p { margin:0; color:var(--muted); font-size:13px; line-height:1.6; }
+.citation-drawer {
+  position:fixed;
+  inset:auto 10px calc(84px + env(safe-area-inset-bottom)) 10px;
+  max-width:430px;
+  margin:0 auto;
+  z-index:70;
+  display:none;
+  border-radius:24px;
+  background:var(--surface);
+  color:var(--text);
+  border:1px solid var(--border);
+  box-shadow:0 22px 80px rgba(0,0,0,.22);
+  padding:16px;
+}
+.citation-drawer.open { display:block; }
+.citation-drawer header { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:10px; }
+.citation-drawer h2 { margin:0; font-size:16px; color:var(--text-strong); }
+.citation-drawer ol { margin:0; padding-left:20px; max-height:280px; overflow:auto; }
+.citation-drawer li { margin:9px 0; color:var(--muted); font-size:12px; line-height:1.45; }
+.citation-drawer code { display:block; margin-top:4px; white-space:normal; word-break:break-all; font-size:11px; color:var(--muted-soft); }
+.toc-drawer {
+  position:fixed;
+  inset:auto 10px calc(84px + env(safe-area-inset-bottom)) 10px;
+  max-width:430px;
+  margin:0 auto;
+  z-index:68;
+  display:none;
+  border-radius:24px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  box-shadow:0 22px 80px rgba(0,0,0,.22);
+  padding:16px;
+}
+.toc-drawer.open { display:block; }
+.toc-drawer h2 { margin:0 0 10px; font-size:16px; color:var(--text-strong); }
+.toc-drawer a { display:flex; justify-content:space-between; align-items:center; text-decoration:none; color:var(--text); padding:11px 0; border-top:1px solid color-mix(in srgb,var(--border) 54%, transparent); font-size:14px; font-weight:800; }
+.toc-drawer a:first-of-type { border-top:0; }
+.bottom-bar {
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:0;
+  width:min(100%, var(--page-max));
+  z-index:60;
+  display:grid;
+  grid-template-columns:64px 1fr 64px;
+  gap:10px;
+  align-items:center;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:color-mix(in srgb,var(--bg) 88%, transparent);
+  backdrop-filter:blur(18px);
+  border-top:1px solid color-mix(in srgb,var(--border) 74%, transparent);
+}
+.bar-small {
+  height:48px;
+  border:0;
+  background:transparent;
+  color:var(--text-strong);
+  display:grid;
+  place-items:center;
+  gap:2px;
+  font-size:11px;
+  font-weight:850;
+}
+.primary-btn {
+  height:48px;
+  border:0;
+  border-radius:var(--radius-full);
+  background:var(--primary);
+  color:#fff;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:0 12px 30px color-mix(in srgb,var(--primary) 28%, transparent);
+}
+[data-theme="dark"] .primary-btn { color:#041411; }
+.toast {
+  position:fixed;
+  left:50%; bottom:calc(92px + env(safe-area-inset-bottom));
+  transform:translateX(-50%) translateY(14px);
+  z-index:80;
+  opacity:0;
+  pointer-events:none;
+  background:var(--text-strong);
+  color:var(--bg);
+  border-radius:var(--radius-full);
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:850;
+  transition:.18s ease;
+}
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+@media (min-width: 720px) {
+  :root { --page-max:760px; }
+  .cover { min-height:auto; }
+  .hero-panel h1 { max-width:560px; }
+  .evidence-grid,.module-grid,.source-grid { grid-template-columns:1fr 1fr; }
+  .checklist { grid-template-columns:1fr 1fr; }
+  .check-card:last-child { grid-column:1/-1; }
+}
+@media (max-width: 520px) {
+  .responsive-table { border:0; background:transparent; overflow:visible; }
+  table, thead, tbody, th, td, tr { display:block; width:100%; }
+  thead { display:none; }
+  tr {
+    margin:12px 0;
+    padding:12px;
+    border-radius:var(--radius-lg);
+    background:var(--surface);
+    border:1px solid color-mix(in srgb,var(--border) 72%, transparent);
+    box-shadow:var(--shadow-card);
+  }
+  td { border:0; padding:8px 0; display:grid; grid-template-columns:minmax(96px, 34%) 1fr; gap:10px; }
+  td::before { content:attr(data-label); color:var(--primary); font-weight:900; font-size:11px; line-height:1.4; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+}
+</style>
+</head>
+<body class="summary-mode">
+<div class="app-shell" id="top">
+  <header class="reader-header" aria-label="상단 내비게이션">
+    <div class="header-left">
+      <button class="icon-btn" id="menuBtn" aria-label="목차 열기">☰</button>
+    </div>
+    <div class="header-title">
+      <strong>커리큘럼 주권 리더</strong>
+      <span>소버린 PKM × AI 시대 미디어교육</span>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="테마 전환">☀</button>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+  </header>
+
+  <main>
+    <section class="cover" id="cover">
+      <div class="chips" aria-label="키워드">
+        <span class="chip">AI 시대</span>
+        <span class="chip">소버린 PKM</span>
+        <span class="chip">미디어교육</span>
+        <span class="chip">커리큘럼 주권</span>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-kicker">Editorial Prototype · Mobile HTML</div>
+        <h1>누구를 위한<br>커리큘럼인가</h1>
+        <p class="hero-subtitle">구형 도구 중심 교육의 함정과 AI 시대의 생존 전략</p>
+        <div class="hero-quote">취업률 숫자를 지키기 위해 학생의 미래를 포기하는 교육은 교육이 아니다.</div>
+        <div class="hero-meta">
+          <div class="meta-item"><span>문서 유형</span><strong>비평 칼럼 / 리서치 브리프</strong></div>
+          <div class="meta-item"><span>읽기 시간</span><strong>약 18분</strong></div>
+          <div class="meta-item"><span>핵심 축</span><strong>AI · 평가 · 포트폴리오</strong></div>
+          <div class="meta-item"><span>출력 형식</span><strong>모바일 HTML</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">OVERVIEW</span>
+          <h2>먼저, 문제의 뼈대</h2>
+          <p>긴 원고를 모바일에서 바로 읽히도록 요약 카드와 접기 구조로 나눴습니다.</p>
+        </div>
+      </div>
+      <div class="mode-toggle" role="group" aria-label="읽기 모드 선택">
+        <button class="active" id="summaryModeBtn" type="button">요약 모드</button>
+        <button id="detailModeBtn" type="button">상세 모드</button>
+      </div>
+      <div class="summary-note">
+        요약 모드에서는 핵심 카드, 근거 카드, 비교 카드, 실행 카드만 먼저 보여 줍니다. 원문 전체는 <strong>상세 모드</strong>에서 열립니다.
+      </div>
+      <div class="accordion-list">
+        <article class="accordion-card open">
+          <button type="button" class="acc-btn">
+            <span class="acc-icon">◎</span>
+            <span class="acc-title"><strong>문제의 핵심</strong><span>학생이 Premiere를 배웠느냐가 아니라, 학과가 아직도 낡은 납품 문법 안에 갇혀 있느냐가 문제입니다.</span></span>
+            <span class="chev">⌄</span>
+          </button>
+          <div class="acc-body">툴 실습은 필요합니다. 그러나 툴 실습이 학과의 세계관 전체가 되는 순간, 학생은 변화하는 시장을 읽는 능력보다 특정 버튼 위치를 외우는 쪽으로 좁아집니다.</div>
+        </article>
+        <article class="accordion-card">
+          <button type="button" class="acc-btn">
+            <span class="acc-icon">↯</span>
+            <span class="acc-title"><strong>왜 이 구조가 낡았는가</strong><span>방송시장, 채용시장, AI 도구, 학생의 읽기 환경은 이미 바뀌었습니다.</span></span>
+            <span class="chev">⌄</span>
+          </button>
+          <div class="acc-body">지역방송 인턴과 편집 툴 숙련을 “현실적 취업”으로 포장하는 방식은 단기 숫자에는 편할 수 있지만, 장기 경력에는 위험한 지도일 수 있습니다.</div>
+        </article>
+        <article class="accordion-card">
+          <button type="button" class="acc-btn">
+            <span class="acc-icon">▣</span>
+            <span class="acc-title"><strong>학생에게 남는 것</strong><span>결과물 하나가 아니라, 생산 과정과 판단 근거를 증명하는 포트폴리오가 남아야 합니다.</span></span>
+            <span class="chev">⌄</span>
+          </button>
+          <div class="acc-body">앞으로 학생에게 필요한 것은 완성본만 제출하는 능력이 아닙니다. 문제 정의, 자료 수집, AI 사용 기록, 출처와 권리 정리, 모바일 퍼블리싱까지 보여 주는 생산 체계입니다.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="evidence">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">EVIDENCE</span>
+          <h2>증거와 현실</h2>
+          <p>원고의 고급 출처들을 모바일 근거 카드로 재배치했습니다.</p>
+        </div>
+      </div>
+      <div class="evidence-grid">
+        <article class="evidence-card">
+      <div class="evidence-top"><span class="mini-label">교육부·KEDI</span><svg viewBox="0 0 120 54" role="img" aria-label="bar chart"><rect x="8" y="32" width="12" height="14"/><rect x="28" y="24" width="12" height="22"/><rect x="48" y="18" width="12" height="28"/><rect x="68" y="12" width="12" height="34"/><rect x="88" y="7" width="12" height="39"/></svg></div>
+      <h3>취업은 시작점이지 끝점이 아니다</h3>
+      <p>전체 취업률, 일반대학 취업률, 1년 내 이동률, 유지취업률을 함께 봐야 한다.</p>
+    </article>
+<article class="evidence-card">
+      <div class="evidence-top"><span class="mini-label">KISDI</span><svg viewBox="0 0 120 54" role="img" aria-label="line chart"><polyline points="8,42 24,36 40,39 56,28 72,30 88,18 108,12"/><circle cx="108" cy="12" r="3"/></svg></div>
+      <h3>방송시장 수축과 시청 기반 변화</h3>
+      <p>방송 매출·광고·종사자 수 압박, 실시간 지상파 시청 비중 하락이 동시에 보인다.</p>
+    </article>
+<article class="evidence-card">
+      <div class="evidence-top"><span class="mini-label">OECD</span><svg viewBox="0 0 120 54" role="img" aria-label="donut"><circle cx="64" cy="27" r="19"/><path d="M64 8 A19 19 0 1 1 47 36"/></svg></div>
+      <h3>AI 노출의 이익은 자동 분배되지 않는다</h3>
+      <p>고숙련 직무가 더 큰 이익을 얻을 수 있고, 단순 툴 사용자에게는 격차가 커질 수 있다.</p>
+    </article>
+<article class="evidence-card">
+      <div class="evidence-top"><span class="mini-label">ILO</span><svg viewBox="0 0 120 54" role="img" aria-label="waves"><path d="M8 36 C22 14 34 14 48 36 S74 58 88 36 102 14 116 36"/><path d="M8 44 C22 22 34 22 48 44 S74 66 88 44 102 22 116 44"/></svg></div>
+      <h3>미디어·웹 업무는 재구성 압력이 크다</h3>
+      <p>대체보다 업무 변형이 중요하지만, 영상·이미지 생성 능력 때문에 자동화 점수는 올라갔다.</p>
+    </article>
+<article class="evidence-card">
+      <div class="evidence-top"><span class="mini-label">WEF · LinkedIn</span><svg viewBox="0 0 120 54" role="img" aria-label="stairs"><polyline points="8,44 28,44 28,36 48,36 48,28 68,28 68,20 88,20 88,12 110,12"/></svg></div>
+      <h3>한 가지 툴보다 전환 능력</h3>
+      <p>기술 변화 속도는 빨라지고, 인간 역량과 AI 활용 능력의 결합이 더 중요해진다.</p>
+    </article>
+<article class="evidence-card">
+      <div class="evidence-top"><span class="mini-label">Columbia · Medill · Ohio State</span><svg viewBox="0 0 120 54" role="img" aria-label="grid"><rect x="8" y="8" width="24" height="16"/><rect x="40" y="8" width="24" height="16"/><rect x="72" y="8" width="24" height="16"/><rect x="24" y="30" width="24" height="16"/><rect x="56" y="30" width="24" height="16"/><rect x="88" y="30" width="24" height="16"/></svg></div>
+      <h3>AI는 한 과목이 아니라 기관 전략</h3>
+      <p>수업, 프로젝트, 평가, 교수 개발이 같이 움직일 때 전환이 가능하다.</p>
+    </article>
+      </div>
+    </section>
+
+    <section class="dark-panel" id="compare">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">CURRICULUM COMPARISON</span>
+          <h2>커리큘럼 비교</h2>
+          <p>표 대신 모바일에서 바로 읽히는 대조 카드로 바꿨습니다.</p>
+        </div>
+      </div>
+      <div class="compare-head">
+        <div class="compare-pill">레거시 SaaS<br>커리큘럼</div>
+        <div class="vs">VS</div>
+        <div class="compare-pill good">AI-네이티브<br>커리큘럼</div>
+      </div>
+      <div class="compare-grid">
+        <article class="compare-card">
+          <ul>
+            <li><span class="mark">!</span><strong>Premiere 기능 암기</strong>기능 위치와 절차 중심의 파편 학습</li>
+            <li><span class="mark">!</span><strong>단기 취업률 중심</strong>첫 취업 숫자만 남고 경력 지속성은 흐려짐</li>
+            <li><span class="mark">!</span><strong>도구 종속</strong>특정 툴 변화에 취약한 작업 습관</li>
+            <li><span class="mark">!</span><strong>교수 개인 학습 부재</strong>새 수업은 한 사람에게 떠넘김</li>
+          </ul>
+        </article>
+        <article class="compare-card good">
+          <ul>
+            <li><span class="mark">✓</span><strong>워크플로우 설계</strong>문제 정의 → 제작 → 검증 → 배포</li>
+            <li><span class="mark">✓</span><strong>소버린 PKM</strong>지식 원본과 작업 기록의 자산화</li>
+            <li><span class="mark">✓</span><strong>AI 협업</strong>AI를 대체재가 아니라 작업 동료로 다룸</li>
+            <li><span class="mark">✓</span><strong>과정 중심 평가</strong>결과물보다 판단과 수정 근거를 봄</li>
+          </ul>
+        </article>
+      </div>
+      <div class="insight-box">
+        <h3>핵심 차이</h3>
+        <p>“도구 사용”이 아니라 “문제 해결”이 교육의 중심이 될 때, 학생의 생존 가능성이 올라갑니다.</p>
+      </div>
+    </section>
+
+    <section class="section" id="redesign">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">REDESIGN</span>
+          <h2>교육을 다시 짜는 다섯 층</h2>
+          <p>원고의 재설계안을 수업 설계 카드로 변환했습니다.</p>
+        </div>
+      </div>
+      <div class="module-grid">
+        <article class="module-card"><span>01</span><h3>콘텐츠 기획과 조사</h3><p>핵심 질문, 자료 출처, 인터뷰 설계, 독자 분석을 결과물 이전에 남깁니다.</p></article>
+        <article class="module-card"><span>02</span><h3>멀티모달 제작과 AI 보조</h3><p>영상·오디오·텍스트·이미지를 묶고, AI가 만든 초안을 사람이 검토합니다.</p></article>
+        <article class="module-card"><span>03</span><h3>저작권·출처·검증·윤리</h3><p>프롬프트, 참조 자료, 통계, 인터뷰, 음원과 이미지의 권리 위험을 기록합니다.</p></article>
+        <article class="module-card"><span>04</span><h3>모바일 퍼블리싱과 플랫폼 전략</h3><p>16:9 발표 자료를 넘어서 세로 스크롤, 카드형 설명, 웹 발행으로 확장합니다.</p></article>
+        <article class="module-card"><span>05</span><h3>프로젝트 문서화와 포트폴리오</h3><p>완성본만이 아니라 초안, 피드백, 수정, 배포, 성찰까지 한 덩어리로 보여 줍니다.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="action">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">ACTION</span>
+          <h2>행동으로 옮기기</h2>
+          <p>비판을 끝내는 자리는 실행 설계입니다.</p>
+        </div>
+      </div>
+      <div class="checklist">
+        <article class="check-card">
+          <h3>학과가 바꿔야 할 것 <span>5/5</span></h3>
+          <div class="check-item"><span class="tick">✓</span>성과 지표를 취업률 하나에서 역량 성장과 경력 지속성으로 넓힌다.</div>
+          <div class="check-item"><span class="tick">✓</span>AI와 데이터 문해력을 전공 안의 필수 능력으로 둔다.</div>
+          <div class="check-item"><span class="tick">✓</span>인턴 출구를 방송국 하나가 아니라 디지털·브랜드·교육·아카이브로 넓힌다.</div>
+          <div class="check-item"><span class="tick">✓</span>교수 공동 AI 사용 규칙과 평가 기준을 만든다.</div>
+          <div class="check-item"><span class="tick">✓</span>졸업 프로젝트를 과정 공개형 포트폴리오로 재설계한다.</div>
+        </article>
+        <article class="check-card">
+          <h3>교수가 배워야 할 것 <span>4/4</span></h3>
+          <div class="check-item"><span class="tick">✓</span>생성형 AI 도구를 자기 수업과 연구 흐름에 실제로 붙여 본다.</div>
+          <div class="check-item"><span class="tick">✓</span>소버린 PKM으로 지식 원본과 수업 자료를 장기 자산으로 만든다.</div>
+          <div class="check-item"><span class="tick">✓</span>과제 평가를 결과물 중심에서 과정·근거·구두 방어 중심으로 바꾼다.</div>
+          <div class="check-item"><span class="tick">✓</span>한 교수에게 전환 비용을 떠넘기지 않는 운영 규칙을 만든다.</div>
+        </article>
+        <article class="check-card">
+          <h3>학생이 가져가야 할 역량 <span>5/5</span></h3>
+          <div class="check-item"><span class="tick">✓</span>문제를 정의하고, 필요한 자료를 찾고, 믿을 수 있는 근거를 구분한다.</div>
+          <div class="check-item"><span class="tick">✓</span>AI 산출물을 그대로 쓰지 않고 검토·수정·폐기할 수 있다.</div>
+          <div class="check-item"><span class="tick">✓</span>출처와 권리, 프롬프트와 작업 로그를 남긴다.</div>
+          <div class="check-item"><span class="tick">✓</span>모바일에서 읽히는 카드형 흐름으로 결과물을 퍼블리싱한다.</div>
+          <div class="check-item"><span class="tick">✓</span>자기 작업 방식을 설명할 수 있는 포트폴리오를 만든다.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">6-MONTH PILOT</span>
+          <h2>6개월 파일럿 로드맵</h2>
+          <p>원고의 실행 표를 실제 학과 회의에서 바로 볼 수 있는 카드로 바꿨습니다.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <article class="timeline-card">
+      <div class="timeline-dot"></div>
+      <span>1개월차</span>
+      <h3>현재 교과·인턴 구조 점검</h3>
+      <p>10쪽 이내 진단 메모, 위험 목록</p>
+      <small>학과장 + 전임교원 전원</small>
+    </article>
+<article class="timeline-card">
+      <div class="timeline-dot"></div>
+      <span>2개월차</span>
+      <h3>공통 AI 사용 규칙과 평가 틀 합의</h3>
+      <p>2쪽 공통 원칙 문서, 공통 루브릭 초안</p>
+      <small>교원 워크숍 팀</small>
+    </article>
+<article class="timeline-card">
+      <div class="timeline-dot"></div>
+      <span>3개월차</span>
+      <h3>파일럿 교과목 2개 재설계</h3>
+      <p>강의계획서, 과제 양식, 학생 안내문</p>
+      <small>파일럿 담당 교수 2~3인</small>
+    </article>
+<article class="timeline-card">
+      <div class="timeline-dot"></div>
+      <span>4개월차</span>
+      <h3>MD-to-모바일 데모 제작</h3>
+      <p>데모 웹앱, 템플릿, 기록 양식</p>
+      <small>소규모 제작팀</small>
+    </article>
+<article class="timeline-card">
+      <div class="timeline-dot"></div>
+      <span>5개월차</span>
+      <h3>수업 운영과 중간 피드백</h3>
+      <p>중간 리뷰 리포트, 수정판</p>
+      <small>파일럿 수업팀 + 외부 멘토</small>
+    </article>
+<article class="timeline-card">
+      <div class="timeline-dot"></div>
+      <span>6개월차</span>
+      <h3>데모데이와 다음 학기 확장 결정</h3>
+      <p>공개 시연, 성과 보고서, 확장안</p>
+      <small>학과 전체</small>
+    </article>
+      </div>
+    </section>
+
+    <section class="section" id="article">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">FULL TEXT</span>
+          <h2>원문 전체 읽기</h2>
+          <p>상세 모드에서 심층 리서치 원고 전체가 열립니다.</p>
+        </div>
+      </div>
+      <article class="article-card">
+        <nav class="article-nav" aria-label="본문 빠른 이동">
+          <a href="#overview">문제 제기</a>
+          <a href="#evidence">근거</a>
+          <a href="#redesign">대안</a>
+          <a href="#roadmap">실행</a>
+          <a href="#sources">출처</a>
+        </nav>
+        <div class="article-content article-corpus">
+          <h1 class="article-main-title">미디어콘텐츠 학과는 아직도 2018년에 살고 있는가</h1>
+<blockquote class="pull-card">
+<p>문제는 학생이 편집 프로그램 하나를 배웠느냐가 아니다. 문제는 학과의 생산 방식 전체가 아직도 방송국 납품용 옛 문법 안에 갇혀 있느냐는 것이다.</p>
+</blockquote>
+<p><strong>키워드 칩</strong><br/>
+<code>레거시 실습</code> <code>취업률 유인</code> <code>지역방송 인턴</code> <code>AI 전환 회피</code> <code>한 교수 과부하</code> <code>모바일 퍼블리싱</code> <code>평가 재설계</code> <code>커리큘럼 주권</code></p>
+<p><strong>세 줄 요약</strong><br/>
+지금의 미디어콘텐츠 교육 위기는 “학생이 Adobe Premiere를 쓰느냐”의 문제가 아니다. 더 큰 문제는 학과가 산업 변화에 맞춰 기획, 데이터, 저작권, AI 활용, 검증, 배포, 모바일 읽기 경험까지 다시 짜지 않은 채, 편집 실습과 지역방송 인턴만으로 시간을 버는 데 있다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn32view0turn10view0turn27view1turn12view3turn12view2" type="button">근거 1</button></p>
+<p>공식 통계와 산업 보고서를 같이 보면, 방송시장은 광고와 매출이 줄고 있고, 실시간 지상파 시청 비중은 낮아졌으며, AI는 특히 미디어·웹 관련 인지 업무의 자동화 가능성을 키우고 있다. 그런데도 많은 학과는 “방송 제작 실습 + 단기 취업률” 구도를 붙잡고 있다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn10view0turn27view1turn27view2turn33view0turn33view1" type="button">근거 2</button></p>
+<p>더 치명적인 것은 책임 회피다. 학과 차원의 제도와 재교육 없이 “AI는 안 교수 한 명이 알아서 맡아 주세요”라고 말하는 순간, 그 학과는 혁신을 한 것이 아니라 전환 비용을 한 사람에게 떠넘긴 것이다. 이미 여러 대학과 기업은 전 학과형 AI 문해력, 교수 개발, 평가 재설계, 현장형 프로젝트로 움직이고 있다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn19view4turn19view5turn31view0turn19view2turn19view3turn25view3turn25view4" type="button">근거 3</button></p>
+<h2 class="section-title">집행 요약</h2>
+<p><span class="entity-chip">교육부</span>와 <span class="entity-chip">한국교육개발원</span>이 발표한 최근 고등교육기관 졸업자 통계에 따르면 2024년도 전체 취업률은 69.5%였고 일반대학은 62.8%였다. 동시에 2023년도 졸업자의 취업 후 1년 내 일자리 이동률은 17.8%였으며, 일반대학 졸업자의 유지취업률은 79.6%였다. 즉 숫자 하나로 잡히는 “취업”은 곧바로 안정적 경력과 같은 뜻이 아니다. 대학 정보 공시의 핵심 지표로 취업률이 전면 배치되어 있다는 점까지 고려하면, 학과가 단기 취업 숫자에 끌릴 유인은 분명하다. 하지만 교육의 목표를 거기서 멈추면 경력의 질과 지속성이 무너진다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn32view0turn4search0turn4search4" type="button">근거 4</button></p>
+<p><span class="entity-chip">정보통신정책연구원</span> 자료를 보면 2023년 국내 방송사업 매출은 전년보다 4.1% 줄었고, 2024년 방송시장도 광고 매출 하락의 영향으로 총 방송사업매출액이 전년보다 0.7% 감소했다. 종사자 수도 2.3% 줄었다. 별도 미디어패널 분석에서는 지상파 실시간 방송 시청 비율이 2017년 77%에서 2024년 68%로 9%포인트 내려갔고, 실시간 방송 시청자 가운데 50대 이상 비율은 70%를 넘었다. 이걸 보고도 여전히 지역방송 인턴을 졸업 진로의 중심 통로처럼 붙잡는다면, 그건 학생의 미래보다 학과의 익숙한 관성에 충실한 선택에 가깝다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn10view0turn27view1turn27view2" type="button">근거 5</button></p>
+<p><span class="entity-chip">OECD</span>는 한국 노동시장에서 AI 노출이 높은 직군일수록 임금 성장의 이익이 더 크게 나타날 수 있다고 봤고, 특히 생성형 AI 노출이 높은 직무에서 그런 경향을 확인했다. 반면 젊은 층, 중저숙련층, 여성은 전통 AI 충격에 더 취약할 수 있다고 짚었다. <span class="entity-chip">ILO</span>는 전 세계 노동자의 4분의 1이 어떤 정도로든 생성형 AI 노출 직업에 있고, 대체보다 “업무 변형”이 더 흔한 결과일 것이라고 보면서도, 미디어·웹 관련 직무는 음성·이미지·영상 생성 능력의 발전으로 자동화 점수가 높아졌다고 밝혔다. <span class="entity-chip">World Economic Forum</span>은 2030년까지 기술과 인간 역량이 동시에 더 중요해지고, 생성형 AI의 확산으로 그래픽 디자이너 같은 일부 역할은 빠르게 재편될 수 있다고 본다. <span class="entity-chip">LinkedIn</span>은 2030년까지 대부분의 직무에서 쓰는 기술의 70%가 바뀔 수 있다고 했고, <span class="entity-chip">Glassdoor</span>는 AI 관련 신규 공고 비중이 2023년에서 2024년 사이 123% 늘었으며 2025년에도 53% 더 늘어날 흐름이라고 분석했다. 핵심은 단순하다. 산업은 이미 “한 가지 제작 툴 숙련자”보다 “AI를 자기 일에 붙여 쓸 수 있는 사람”을 찾고 있다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn12view1turn33view0turn33view1turn13view0turn12view3turn12view2turn31view2" type="button">근거 6</button></p>
+<p>이 칼럼의 결론은 선명하다. Adobe Premiere 기반 제작 실습을 버리자는 말이 아니다. 그것만 붙잡고 학과의 중심을 짜는 일을 그만두자는 말이다. 편집 기술은 이제 기본기 중 하나일 뿐이다. 앞으로의 핵심은 기획, 조사, 인터뷰, 데이터 정리, AI 활용 기록, 사실 확인, 저작권·출처 관리, 멀티플랫폼 배포, 모바일 읽기 경험, 팀 협업, 그리고 자기 생산 체계의 외부화다. 이 전환을 개인 한 명에게 떠넘기지 말고, 학과 전체의 교과 설계와 평가 방식으로 옮겨야 한다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn19view4turn19view5turn31view0turn29view1turn16view3turn30search2turn30search3" type="button">근거 7</button></p>
+<h3 class="subsection-title">비교 카드</h3>
+<blockquote class="pull-card">
+<p><strong>낡은 학과 모델</strong><br/>
+Premiere 실습, 16:9 결과물, 방송국 인턴, 취업률 숫자, 개별 교수의 사투.</p>
+</blockquote>
+<blockquote class="pull-card">
+<p><strong>바꿔야 할 학과 모델</strong><br/>
+AI를 포함한 기획-제작-검증-배포 전 과정, 모바일 중심 결과물, 산업 변화에 맞는 평가, 교수진 공동 전환, 학생의 장기 포트폴리오.</p>
+</blockquote>
+<h2 class="section-title">문제 진단</h2>
+<p>이 문제를 너무 오래 “실무 교육 강화”라는 좋은 말로 덮어 왔다. 그러나 실무는 늘 좋은 것이 아니다. 어떤 실무는 그냥 낡은 관행이다. 현재 많은 미디어콘텐츠 학과의 핵심 고장은 세 가지다. 첫째, 제작 실습을 곧바로 “편집 툴 수업”으로 줄여 버린다. 둘째, 졸업 직전 학생을 익숙한 지역방송·방송영상 인턴 통로로 몰아 단기 취업 숫자를 관리하려 한다. 셋째, AI 관련 수업, 새 평가 방식, 교수 재교육, 도구 기준, 윤리 기준, 데이터 기준은 만들지 않은 채, 한 교수에게 “요즘 건 좀 해보시죠”라고 던진다. 이 셋은 따로 노는 문제가 아니라 한 묶음이다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn32view0turn27view1turn31view0" type="button">근거 8</button></p>
+<p>첫째 고장은 교육 내용의 축소다. 상위권과 선도 대학의 공개 교과를 보면, 미디어교육은 이미 데이터, AI, 플랫폼, 창의 기획, 윤리, 프로젝트, 산업 연계를 묶어 가고 있다. 그런데 여전히 어떤 학과는 “촬영-편집-송출”의 구도를 거의 그대로 유지한다. 그 구조에서는 학생이 왜 이 콘텐츠를 만들고, 어떤 데이터를 쓰며, 어떤 권리 문제를 피하고, 어떤 플랫폼 문법에 맞춰, 어떤 독자를 위해, 어떤 검증 절차를 거쳐 내보내는지 배우기 어렵다. 잘라 말해, 손은 바쁜데 머리는 좁아진다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn19view0turn27view3turn27view4turn27view5turn19view2turn19view3" type="button">근거 9</button></p>
+<p>둘째 고장은 평가 유인의 왜곡이다. 취업률이 중요하지 않다는 말이 아니다. 하지만 대학이 취업을 “단기 숫자”로만 읽기 시작하면, 교육은 미래를 준비하는 일이 아니라 당장 보험 가입과 고용 형태를 맞추는 일로 가벼워진다. 공시와 통계는 취업 상황과 이동, 유지까지 같이 보라고 말하고 있는데, 현장은 여전히 첫 숫자만 크게 본다. 단기 취업률을 위해 졸업반을 익숙한 산업에 밀어 넣는 방식은 학과 운영자에게는 쉽지만, 학생에게는 가장 비싼 선택일 수 있다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn32view0turn4search0turn4search4" type="button">근거 10</button></p>
+<p>셋째 고장은 조직의 비겁함이다. AI 전환은 새 강의 한 과목으로 끝나지 않는다. 과제 공지 문구, 사용 허용 범위, 검증 방식, 데이터 보안, 저작권 처리, 평가 기준, 교수 연수, 장비 예산, 결과물 포맷, 산학 연계까지 같이 바뀌어야 한다. 그런데 이것을 학과 차원에서 정리하지 않고 “안 교수님이 잘 아시니까”라고 말하는 순간, 그 조직은 혁신이 아니라 책임 떠넘기기를 하고 있는 것이다. 실제로 기관 차원의 AI 전환을 시작한 대학들은 학생 교육과 함께 교수 개발 과정을 별도로 운영하고, 과제와 평가 문서까지 바꾸고 있다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn19view4turn19view5turn31view0turn16view3" type="button">근거 11</button></p>
+<h3 class="subsection-title">비교 카드</h3>
+<blockquote class="pull-card">
+<p><strong>문제의 이름</strong><br/>
+“AI 교육을 강화하자”가 아니다.<br/>
+<strong>정확한 이름은</strong> “학과 차원의 전환 비용을 제도화하지 않고, 한 교수에게 숨은 운영비로 떠넘기는 구조”다.</p>
+</blockquote>
+<blockquote class="pull-card">
+<p><strong>문제의 본질</strong><br/>
+“학생 취업을 돕자”가 아니다.<br/>
+<strong>정확한 이름은</strong> “지속 가능한 경력 설계보다 단기 숫자 관리가 더 쉬운 구조”다.</p>
+</blockquote>
+<h2 class="section-title">근거</h2>
+<h3 class="subsection-title">노동시장과 산업 구조</h3>
+<p>방송과 전통 미디어 환경은 이미 수축과 분화를 동시에 겪고 있다. 2023년 국내 방송사업 매출은 줄었고, 2024년에도 광고 매출 하락과 함께 총매출 감소 흐름이 이어졌다. 2024년 종사자 수 감소가 전통 방송산업 내 고용 축소를 뜻하며, 일부 인력은 조사 범위 밖의 OTT나 개인 플랫폼 기반 독립 제작 시장으로 이동했을 가능성도 함께 제기됐다. 여기서 중요한 건 “방송 일자리 자체가 완전히 사라진다”는 공포가 아니라, 진입 경로와 필요한 역량이 바뀌고 있다는 사실이다. 옛 방송사 문법만 가르치면 학생은 성장 중인 바깥 시장으로 나갈 언어를 잃는다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn10view0turn27view1turn34search12" type="button">근거 12</button></p>
+<p>시청 행태도 많이 달라졌다. 실시간 지상파 시청 비율은 내려갔고, 개인방송과 영화·동영상 시청 비중은 늘었다. 실시간 방송의 여성 비중이 높고 50대 이상 비율이 70%를 넘는다는 점은, 전통 방송 시청자 구성이 젊은 창작자들이 앞으로 상대해야 할 주요 성장 시장과는 다를 수 있음을 보여 준다. 이런 상황에서 지역방송 인턴을 학과의 기본 출구처럼 운영하는 것은 학생을 현재 시장보다 과거 시장에 더 익숙하게 만드는 위험이 있다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn27view2turn28view1turn28view2" type="button">근거 13</button></p>
+<p>AI가 미디어 일을 어떻게 바꾸는가에 대해서도 방향은 뚜렷하다. ILO는 음성, 이미지, 영상 생성 능력의 발전 때문에 미디어·웹 관련 직무의 자동화 점수가 올라갔다고 밝혔다. 동시에 대부분의 일은 통째로 없어지기보다 업무가 재구성될 가능성이 크다고 했다. 이것은 교육 쪽에 아주 불편한 메시지를 준다. 학생에게 필요한 것은 “AI가 사람을 대체하니 감성으로 버텨라” 같은 위로가 아니다. 오히려 자기 직무를 더 높은 수준으로 다시 짤 수 있는 능력, 다시 말해 기획·검토·판단·연출·협업·윤리·설명 능력이다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn33view0turn33view1turn12view0" type="button">근거 14</button></p>
+<p>OECD의 한국 분석도 비슷한 그림을 준다. 생성형 AI 노출이 높은 직무는 임금 성장의 이익을 더 볼 수 있지만, 그 이익은 자동으로 모두에게 가지 않는다. 고숙련·고임금 직군이 더 큰 이익을 보는 경향이 있고, 저숙련층은 덜 이익을 볼 수 있다. 이 말은 교육이 학생을 “단순 툴 사용자” 자리에 묶어 둘수록 손해가 커진다는 뜻이다. 툴 시연 수업만으로는 임금 프리미엄이 붙는 높은 가치 업무로 못 올라간다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn12view1" type="button">근거 15</button></p>
+<p><span class="entity-chip">Adobe</span>와 <span class="entity-chip">WPP</span> 자료도 현장 감각을 보탠다. Adobe는 2026년 보고서에서 조직의 45%만이 충분한 AI 재교육 프로그램을 갖췄다고 답했고, 직원이 자기 역할에서 AI를 편하게 쓴다고 보는 조직은 44%에 그쳤다. 반대로 WPP는 2024년에 고급 AI 훈련 모듈을 확대해 3만 명 이상이 10만 8천 개 이상의 학습을 마쳤고, 2025년에는 AI 거버넌스 틀까지 따로 만들었다. 산업은 이미 “툴 사용”이 아니라 “전 조직 재교육 + 관리 규칙 + 실제 업무 연결”로 가고 있다. 그런데 대학이 아직도 한 과목, 한 교수, 한 실습실에서 머물러 있으면 누가 더 과거에 사는가. 답은 어렵지 않다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn25view0turn25view3turn25view4" type="button">근거 16</button></p>
+<h3 class="subsection-title">교육과 평가 방식</h3>
+<p>평가를 바꾸지 않으면 교육은 바뀌지 않는다. <span class="entity-chip">유네스코</span>는 생성형 AI 교육 지침에서 데이터 보호, 연령과 맥락에 맞는 설계, 인간 중심 접근, 교육과정 설계와 교수법 재검토를 강조했다. 또 AI 도구를 교육과 연구에 쓸 때 윤리·안전·공정성·의미 있는 사용을 함께 보라고 했다. 다시 말해 새 도구를 허용하느냐 금지하느냐보다 더 중요한 것은, 어떤 과제를 어떤 절차로 내고 무엇을 평가하느냐다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn16view3" type="button">근거 17</button></p>
+<p>국내 대학 지침도 같은 방향을 가리킨다. <span class="entity-chip">세종대학교</span>는 생성형 AI 활용 가이드에서 검증 시스템에 대한 과신을 경계하고, 보고서 과제뿐 아니라 현장 프로젝트, 구두발표, 대면 집필, 오픈북 테스트, 소리·이미지·비디오가 필요한 과제, 2단계 평가 같은 다양한 평가 방식을 도입하라고 권고했다. 이건 사실상 “기존 제출물 중심 평가를 고집하면 안 된다”는 말이다. 그런데도 학과가 그대로 가로형 슬라이드 발표와 편집 결과물만 점수의 중심에 두면, 학생은 AI 시대에 가장 값높은 능력인 설명, 검토, 수정, 근거 제시, 협업 기록을 평가받지 못한다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn31view0" type="button">근거 18</button></p>
+<p>최근의 연구도 같은 결론을 낸다. 한 종합 리뷰는 생성형 AI 시대의 평가는 의도적으로 AI를 활용하는 과제, 비판적 사고와 창의성 평가, 결과보다 과정 중심 평가, 단계형 피드백 평가, 그리고 필요할 경우 대면·구두·현장형 평가를 결합하는 쪽으로 바뀌어야 한다고 정리했다. 또 2025년 체계적 문헌 검토는 AI가 자기주도 학습을 돕는 잠재력이 있지만, 인간의 자기 효능감과 학습 주도권을 해치지 않도록 균형 있게 넣어야 한다고 말했다. 즉 AI를 막연히 두려워해도 안 되고, 그냥 맡겨도 안 된다. 설계가 전부다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn29view1turn29view0" type="button">근거 19</button></p>
+<p>생성형 AI 문해력 연구도 교육 내용의 범위를 넓혀야 한다고 말한다. 2025년 발표된 역량 틀은 생성형 AI 문해력을 기초 이해, 프롬프트 설계, 프로그래밍, 윤리·법적 이해까지 포함한 12개 역량으로 제시했다. 또 다른 종합 검토는 AI 문해력을 단순 사용법이 아니라 기능적 이해, 비판적 이해, 사회문화적 이해를 함께 보는 틀로 다시 정리해야 한다고 봤다. “툴 하나 잘 쓰기”가 커리큘럼의 중심이 될 수 없는 까닭이다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn30search2turn30search3turn30search14" type="button">근거 20</button></p>
+<h2 class="section-title">바뀐 곳들</h2>
+<p>국내에서도 이미 움직인 곳이 있다. <span class="entity-chip">고려대학교</span> 미디어학부는 공개 교과에서 ‘인공지능과미디어’, ‘AI크리에이티브’, ‘미디어데이터사이언스입문’, ‘빅데이터분석과미디어’, ‘디지털플랫폼의이해’ 등을 함께 묶고 있다. <span class="entity-chip">동서대학교</span>는 첨단콘텐츠전공을 AI콘텐츠, XR·실감형콘텐츠, 서사창작, 엔터테인먼트 엔지니어링 모듈로 설계했고, 실제 산업전문가를 모듈 교수로 연결했다. 세종대 미디어커뮤니케이션학과도 전통 미디어 이론 위에 AI 미디어 산업과 문화 분야를 특화 영역으로 두고, 별도 AI 마이크로디그리로 전공-기술 융합 구조를 제시하고 있다. 다시 말해 “미디어 계열은 아직 방송 실습 중심이 당연하다”는 말은 사실이 아니다. 이미 바꾼 학교들이 있다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn19view0turn19view1turn27view3turn27view4" type="button">근거 21</button></p>
+<p>국외 사례는 더 노골적이다. <span class="entity-chip">Northwestern University</span>의 Medill은 AI in Media 수업을 팀 기반 실험실 형태로 운영하며 연구, 디자인 사고, 프로토타입 제작, 사용자 테스트, 비판적 분석, 스토리텔링을 함께 다룬다. <span class="entity-chip">Columbia Journalism School</span>은 CJS2030: AI 이니셔티브에서 “Learn. Build. Critique.”를 전면에 걸고, 학생과 현업인을 대상으로 윤리적이고 책임 있는 AI 활용 교육, 도구 개발, 신뢰와 영향 분석을 함께 진행한다. <span class="entity-chip">The Ohio State University</span>는 아예 모든 학부생이 자기 전공 안에서 AI fluency를 갖추도록 설계했고, 교수용 “Teaching and Learning to Build AI Fluency” 과정에서 과제, 활동, 수업 정책 설계까지 훈련한다. 여기서는 AI가 특정 교양 1과목의 일이 아니라, 전공별 적용과 교수 재교육을 포함한 기관 전략이다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn19view2turn19view3turn19view4turn19view5" type="button">근거 22</button></p>
+<p>기업 역시 더 이상 한두 명 전문가에게만 AI를 맡기지 않는다. WPP는 대규모 AI 학습과 인증을 전사적으로 돌리고 있고, AI 정책과 에이전트 관리 틀까지 따로 둔다. Adobe도 마케터와 창작 실무자를 위한 AI 훈련을 구조화해, 실제 작업 흐름에 AI를 붙이는 학습을 제공한다. 국가 차원에서도 <span class="entity-chip">한국콘텐츠진흥원</span>은 2026년 인재양성 로드맵에서 AI 특화 콘텐츠 아카데미를 중심 신규 사업으로 내세우고 1,000명 이상 AI 활용 전문 인력을 키우겠다고 밝혔다. 산업과 공공 부문이 이렇게 움직이는데, 학과가 여전히 “기존 커리큘럼은 그대로 두고 한 교수만 더 고생하면 되지 않나”라고 말하는 것은 현실 감각이 아니라 현실 부정이다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn25view3turn25view4turn25view2turn31view1" type="button">근거 23</button></p>
+<h3 class="subsection-title">비교 카드</h3>
+<blockquote class="pull-card">
+<p><strong>이미 바꾼 곳의 공통점</strong><br/>
+AI를 “도구 특강”으로 두지 않는다.<br/>
+전공 수업, 프로젝트, 평가, 교수 연수, 윤리 규칙까지 같이 건드린다.</p>
+</blockquote>
+<blockquote class="pull-card">
+<p><strong>아직 못 바꾼 곳의 공통점</strong><br/>
+제작은 남고 설계는 빠진다.<br/>
+현장은 말하지만, 실제로는 낡은 포맷이 커리큘럼을 지배한다.</p>
+</blockquote>
+<h2 class="section-title">교육 재설계안</h2>
+<p>내 제안은 간단하다. “방송 제작 실습”을 없애지 말고, “AI 시대 콘텐츠 생산 실습”으로 상위 재설계하자. 편집은 그 안의 한 도구가 되어야지, 학과의 중심 세계관이 되어서는 안 된다. 커리큘럼은 최소한 다섯 층으로 다시 짜야 한다. 첫째, 콘텐츠 기획과 조사. 둘째, 멀티모달 제작과 AI 보조 워크플로우. 셋째, 저작권·출처·검증·윤리. 넷째, 모바일 퍼블리싱과 플랫폼 전략. 다섯째, 프로젝트 문서화와 포트폴리오. 이 다섯 층이 붙어야 학생은 “무엇을 만들 줄 아는 사람”이 아니라 “어떻게 계속 만들고 증명할 줄 아는 사람”이 된다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn29view1turn16view3turn30search2turn19view2turn19view3" type="button">근거 24</button></p>
+<p>여기서 가장 중요한 것은 학습성과다. 졸업 직전 학생이 보여 줘야 할 것은 예쁜 결과물 하나가 아니다. 문제 정의, 자료 수집, 인터뷰 설계, 요약과 시각화, AI 사용 기록, 출처와 권리 정리, 결과물의 모바일 읽기 경험, 팀 협업 기록, 배포 전략, 그리고 자기 반성까지 한 덩어리로 제출해야 한다. 이게 바로 앞으로의 실무다. 조직은 점점 결과물보다 재현 가능한 생산 체계를 더 보기 시작하고 있다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn12view2turn31view2turn25view1" type="button">근거 25</button></p>
+<h3 class="subsection-title">현재 커리큘럼과 제안 커리큘럼 비교 표</h3>
+<div class="responsive-table"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>현재 중심 모듈</th>
+<th>제안 모듈</th>
+<th>길러지는 핵심 능력</th>
+<th>평가 방식</th>
+<th>도입 기간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="영역">기초 제작</td>
+<td data-label="현재 중심 모듈">촬영기초, 편집기초, 스튜디오 실습</td>
+<td data-label="제안 모듈"><strong>멀티모달 제작 기초</strong></td>
+<td data-label="길러지는 핵심 능력">영상·오디오·텍스트·이미지 통합 제작, 기본 AI 보조 사용</td>
+<td data-label="평가 방식">짧은 제작물 + 작업 로그</td>
+<td data-label="도입 기간">1학기 안</td>
+</tr>
+<tr>
+<td data-label="영역">기획</td>
+<td data-label="현재 중심 모듈">아이템 회의, 대본 작성 일부</td>
+<td data-label="제안 모듈"><strong>문제정의와 조사 설계</strong></td>
+<td data-label="길러지는 핵심 능력">리서치, 인터뷰, 자료 찾기, 독자 분석</td>
+<td data-label="평가 방식">기획서, 인터뷰 설계서, 근거표</td>
+<td data-label="도입 기간">1학기 안</td>
+</tr>
+<tr>
+<td data-label="영역">편집</td>
+<td data-label="현재 중심 모듈">Premiere 중심 후반작업</td>
+<td data-label="제안 모듈"><strong>편집 + 생성형 보조 워크플로우</strong></td>
+<td data-label="길러지는 핵심 능력">컷 편집, 초안 생성, 자막·요약·전사 자동화 검토</td>
+<td data-label="평가 방식">전후 비교 리포트, 수정 근거 제출</td>
+<td data-label="도입 기간">즉시</td>
+</tr>
+<tr>
+<td data-label="영역">플랫폼</td>
+<td data-label="현재 중심 모듈">방송 송출 문법 중심</td>
+<td data-label="제안 모듈"><strong>모바일 퍼블리싱과 플랫폼 전략</strong></td>
+<td data-label="길러지는 핵심 능력">세로형 읽기 경험, 썸네일, 짧은 영상, 카드뉴스, 웹 발행</td>
+<td data-label="평가 방식">모바일 결과물, 사용자 테스트</td>
+<td data-label="도입 기간">1학기 안</td>
+</tr>
+<tr>
+<td data-label="영역">데이터</td>
+<td data-label="현재 중심 모듈">선택 과목 수준</td>
+<td data-label="제안 모듈"><strong>미디어 데이터 읽기와 시각화</strong></td>
+<td data-label="길러지는 핵심 능력">기본 분석, 지표 읽기, 데이터 스토리 만들기</td>
+<td data-label="평가 방식">데이터 브리프, 시각화 카드</td>
+<td data-label="도입 기간">1년</td>
+</tr>
+<tr>
+<td data-label="영역">윤리·권리</td>
+<td data-label="현재 중심 모듈">법규 개론 분리 운영</td>
+<td data-label="제안 모듈"><strong>AI 윤리·저작권·출처 검증 통합 모듈</strong></td>
+<td data-label="길러지는 핵심 능력">프롬프트 기록, 출처 표시, 저작권 위험 점검, 사실 확인</td>
+<td data-label="평가 방식">출처표, 위험 점검표, 구두 방어</td>
+<td data-label="도입 기간">즉시</td>
+</tr>
+<tr>
+<td data-label="영역">캡스톤</td>
+<td data-label="현재 중심 모듈">결과물 제출 중심</td>
+<td data-label="제안 모듈"><strong>과정 공개형 캡스톤</strong></td>
+<td data-label="길러지는 핵심 능력">팀 협업, 문서화, 반성, 배포, 포트폴리오</td>
+<td data-label="평가 방식">단계형 심사, 데모데이, 공개 포트폴리오</td>
+<td data-label="도입 기간">1년</td>
+</tr>
+<tr>
+<td data-label="영역">교수 운영</td>
+<td data-label="현재 중심 모듈">개별 교수 재량</td>
+<td data-label="제안 모듈"><strong>교수 공동 운영 규칙</strong></td>
+<td data-label="길러지는 핵심 능력">과제 정책 통일, AI 허용 범위 합의, 평가 일관성</td>
+<td data-label="평가 방식">공동 루브릭, 수업정책 문서</td>
+<td data-label="도입 기간">즉시</td>
+</tr>
+</tbody>
+</table></div>
+<p>이 재설계는 <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn31view0turn29view1turn16view3turn19view5turn30search2" type="button">근거 26</button>에 근거해 짰다.</p>
+<h3 class="subsection-title">권장 세부 모듈과 학습성과</h3>
+<p><strong>모듈 하나: AI 시대 콘텐츠 기획과 조사</strong><br/>
+학생은 한 주제를 정하고, 핵심 질문을 만들고, 인터뷰 대상을 정하고, 자료 출처의 신뢰도를 구분할 수 있어야 한다. 결과물은 “제작 전 조사 브리프”로 남겨야 한다.</p>
+<p><strong>모듈 둘: 생성형 AI 보조 제작 실습</strong><br/>
+학생은 요약, 전사, 아이디어 확장, 러프 스크립트, 썸네일 초안, 자막 초안을 AI로 뽑아 볼 수 있어야 한다. 동시에 어떤 부분은 사람이 고치고, 어떤 부분은 버리는지 설명할 수 있어야 한다.</p>
+<p><strong>모듈 셋: 출처·권리·검증 실습</strong><br/>
+학생은 자신이 쓴 프롬프트, 참조 이미지, 음성·영상 자료, 인터뷰 발언, 통계 출처를 표준 양식으로 남겨야 한다. “예쁘게 만들었다”보다 “무엇을 어디서 가져왔고 왜 믿었는가”를 말할 수 있어야 한다.</p>
+<p><strong>모듈 넷: 모바일 읽기 경험 설계</strong><br/>
+학생은 16:9 발표자료가 아니라, 세로 스크롤 중심 모바일 독서를 전제로 한 카드형 설명 흐름을 설계해야 한다. 핵심 문장, 키워드 칩, 3줄 요약, 비교 카드, 적용 카드로 구조를 만드는 훈련이 필요하다.</p>
+<p><strong>모듈 다섯: 공개형 포트폴리오와 성찰</strong><br/>
+완성본만 올리는 것이 아니라, 초안-수정-피드백-최종의 흐름을 포트폴리오에 남긴다. 학생은 “내가 어떻게 만들었는지”를 설명할 수 있어야 한다.</p>
+<h3 class="subsection-title">MD to 모바일 데모 아이디어</h3>
+<p>이 칼럼이 정말로 학과를 흔들고 싶다면, 새 교과 설계안만 내지 말고 <strong>바로 보이는 데모</strong>를 하나 만들어야 한다. 내가 추천하는 데모 이름은 <strong>“Sovereign Production Reader”</strong>다.</p>
+<p>핵심은 하나다.<br/>
+<strong>원본은 마크다운 문서 하나로 관리하고, 그 문서가 모바일 리더, PDF 강의자료, 웹 포트폴리오, 심사 카드로 동시에 나가게 만든다.</strong></p>
+<p>학생이 한 프로젝트를 하면 다음 요소가 모두 같은 원본 문서에서 나온다.</p>
+<ol>
+<li>히어로 문장</li>
+<li>키워드 칩</li>
+<li>3줄 요약</li>
+<li>섹션별 아코디언 카드</li>
+<li>비교 카드</li>
+<li>AI 사용 기록 카드</li>
+<li>출처·권리 카드</li>
+<li>인터뷰 발췌 카드</li>
+<li>배포 계획 카드</li>
+<li>반성 카드</li>
+</ol>
+<p>이 데모의 장점은 세 가지다.<br/>
+첫째, 학생이 “결과물”만이 아니라 “생산 체계”를 보여 줄 수 있다.<br/>
+둘째, 교수는 과정 평가를 할 수 있다.<br/>
+셋째, 학과는 “우리는 아직도 Premiere 실습만 한다”는 말을 단번에 뒤집는 상징 장면을 갖게 된다.</p>
+<h3 class="subsection-title">모바일 화면 목업 제안</h3>
+<p>실제 시연 화면은 아래 다섯 장면이면 충분하다.</p>
+<ul>
+<li><strong>첫 화면</strong>: 강한 한 문장, 키워드 칩, 3줄 요약</li>
+<li><strong>프로젝트 카드 화면</strong>: 기획, 조사, 제작, 검증, 배포를 아코디언 카드로 분리</li>
+<li><strong>비교 화면</strong>: “기존 방송형 결과물 vs 모바일 읽기형 결과물” 카드 비교</li>
+<li><strong>AI 사용 기록 화면</strong>: 어떤 도구를 어디에 썼고 무엇을 사람이 수정했는지 표시</li>
+<li><strong>출처·권리 화면</strong>: 인터뷰, 통계, 이미지, 음원, 프롬프트 기록을 한 번에 확인</li>
+</ul>
+<h3 class="subsection-title">실행 카드</h3>
+<blockquote class="pull-card">
+<p><strong>액션 카드 — 수업부터 바꾸기</strong><br/>
+다음 학기부터 기존 제작 실습 한 분반을 파일럿으로 바꾸고, 결과물 제출 규칙을 “완성본 + 작업 로그 + 출처표 + 성찰문”으로 묶는다.</p>
+</blockquote>
+<blockquote class="pull-card">
+<p><strong>액션 카드 — 교수 공동 규칙 만들기</strong><br/>
+한 교수에게 묻지 말고, 학과 전체가 2쪽짜리 공통 AI 사용 규칙과 평가 원칙을 만든다.</p>
+</blockquote>
+<blockquote class="pull-card">
+<p><strong>액션 카드 — 보여 주는 데모 만들기</strong><br/>
+말로 설득하지 말고, MD 원본 하나가 모바일 리더와 포트폴리오로 나가는 데모를 학생 프로젝트로 공개한다.</p>
+</blockquote>
+<h2 class="section-title">반론과 실행</h2>
+<p>가장 흔한 반론은 이것이다. <strong>“그래도 현장은 Premiere를 쓴다.”</strong> 맞다. 그래서 버리자는 말이 아니다. 다만 산업이 요구하는 것은 이미 “Premiere만 쓸 줄 아는 사람”이 아니라, AI를 포함한 새 흐름 속에서 기획·편집·검증·배포를 이어 붙일 줄 아는 사람이다. Glassdoor는 AI 관련 공고의 대부분이 완전히 새로운 직업이 아니라 기존 직무의 AI 특화 버전이라고 봤다. WEF와 LinkedIn도 기술 변화와 인간 역량의 결합이 더 중요해진다고 말한다. 그러니 툴은 남기되, 툴 위에 올라타는 능력을 가르쳐야 한다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn31view2turn13view0turn12view2turn12view3" type="button">근거 27</button></p>
+<p>두 번째 반론은 <strong>“지역방송 인턴도 소중한 현장 경험이다.”</strong> 이것도 맞다. 현장 경험은 필요하다. 하지만 문제는 그것이 “하나의 선택지”가 아니라 “학과의 기본 출구”가 될 때다. 방송산업 매출과 광고가 줄고, 실시간 방송 시청 기반이 약해지고, 시청자 고령화가 강해지는 상황에서 특정 전통 산업만 진로의 중심으로 제시하는 것은 학생에게 너무 좁은 지도를 주는 일이다. 인턴은 하되, OTT, 독립 제작, 브랜드 콘텐츠, 데이터 저널리즘, UX 라이팅, AI 콘텐츠 운영, 디지털 아카이빙, 교육용 미디어 설계까지 같이 열어야 한다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn10view0turn27view1turn27view2" type="button">근거 28</button></p>
+<p>세 번째 반론은 <strong>“AI는 한 교수만 잘하면 된다.”</strong> 그건 사실상 조직이 해야 할 일을 개인에게 외주 주는 말이다. Ohio State는 학생 AI 문해력과 별도로 교수용 AI fluency 연수를 두고 있고, 세종대는 평가 방식 자체를 다양화하라고 공식 지침에 적었다. UNESCO도 제도와 정책, 인간 중심 설계를 같이 보라고 했다. AI 전환은 개인 영웅담이 아니라 학과 운영 체계의 문제다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn19view4turn19view5turn31view0turn16view3" type="button">근거 29</button></p>
+<p>네 번째 반론은 <strong>“우리는 취업률이 중요하다.”</strong> 물론 중요하다. 그러나 취업률은 시작점이지 끝점이 아니다. 공식 통계가 이미 취업 후 이동률과 유지취업률을 같이 보라고 말한다. 단기 진입만 높이고 유지와 이동의 질을 못 관리하면, 학과는 학생의 첫 발만 돕고 그 뒤는 외면하는 셈이다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn32view0" type="button">근거 30</button></p>
+<h3 class="subsection-title">자주 나오는 방어 논리와 짧은 반박</h3>
+<div class="responsive-table"><table>
+<thead>
+<tr>
+<th>방어 논리</th>
+<th>왜 설득력이 약한가</th>
+<th>더 나은 답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="방어 논리">“Premiere는 현업 필수다.”</td>
+<td data-label="왜 설득력이 약한가">맞지만, 이제는 충분조건이 아니다. 역할은 AI 특화형으로 바뀌고 있다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn31view2turn13view0turn12view2" type="button">근거 31</button></td>
+<td data-label="더 나은 답">편집 기술을 유지하되, 기획·검증·배포·문서화를 붙인다.</td>
+</tr>
+<tr>
+<td data-label="방어 논리">“지역방송 인턴이 제일 현실적이다.”</td>
+<td data-label="왜 설득력이 약한가">일부 학생에게는 맞지만, 산업 전체 흐름을 대표하지 않는다. 방송시장 지표는 압박을 보여 준다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn10view0turn27view1turn27view2" type="button">근거 32</button></td>
+<td data-label="더 나은 답">인턴 포트폴리오를 다변화한다.</td>
+</tr>
+<tr>
+<td data-label="방어 논리">“AI 과목 하나만 만들면 된다.”</td>
+<td data-label="왜 설득력이 약한가">기관 전략과 교수 연수 없는 단일 과목은 오래 못 간다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn19view4turn19view5turn16view3" type="button">근거 33</button></td>
+<td data-label="더 나은 답">공통 규칙, 평가, 교수 개발을 같이 바꾼다.</td>
+</tr>
+<tr>
+<td data-label="방어 논리">“학생이 아직 기본기가 부족하다.”</td>
+<td data-label="왜 설득력이 약한가">그래서 더더욱 과정 기록, 단계형 평가, 구두 설명을 붙여야 한다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn29view1turn31view0" type="button">근거 34</button></td>
+<td data-label="더 나은 답">기본기를 결과물만이 아니라 사고 과정으로 평가한다.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="subsection-title">상위 핵심 출처 표</h3>
+<div class="responsive-table"><table>
+<thead>
+<tr>
+<th>출처</th>
+<th>왜 중요한가</th>
+<th>링크</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="출처">고등교육기관 졸업자 취업통계, 교육부·한국교육개발원</td>
+<td data-label="왜 중요한가">단기 취업률, 이동률, 유지취업률을 함께 보여 준다</td>
+<td data-label="링크"><button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn32view0" type="button">근거 35</button></td>
+</tr>
+<tr>
+<td data-label="출처">2024·2025 방송산업 실태 관련 KISDI 자료</td>
+<td data-label="왜 중요한가">방송시장 수축, 광고 하락, 종사자 감소를 보여 준다</td>
+<td data-label="링크"><button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn10view0turn27view1" type="button">근거 36</button></td>
+</tr>
+<tr>
+<td data-label="출처">한국미디어패널 기반 실시간 방송 시청 분석</td>
+<td data-label="왜 중요한가">지상파 시청 감소와 고령화 흐름을 보여 준다</td>
+<td data-label="링크"><button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn27view2" type="button">근거 37</button></td>
+</tr>
+<tr>
+<td data-label="출처">OECD 한국 노동시장 AI 보고서</td>
+<td data-label="왜 중요한가">한국에서 AI 노출과 임금·고용 변화를 정리한다</td>
+<td data-label="링크"><button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn12view1" type="button">근거 38</button></td>
+</tr>
+<tr>
+<td data-label="출처">ILO 2025 업데이트와 미디어·문화 산업 브리프</td>
+<td data-label="왜 중요한가">미디어·웹 관련 직무의 AI 노출과 업무 변형 위험을 보여 준다</td>
+<td data-label="링크"><button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn33view0turn12view0" type="button">근거 39</button></td>
+</tr>
+<tr>
+<td data-label="출처">WEF Future of Jobs 2025</td>
+<td data-label="왜 중요한가">빠르게 커지는 기술과 인간 역량을 제시한다</td>
+<td data-label="링크"><button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn13view0turn12view3" type="button">근거 40</button></td>
+</tr>
+<tr>
+<td data-label="출처">LinkedIn Work Change Report 2025</td>
+<td data-label="왜 중요한가">기술 변화 속도와 기존 직무 재구성을 보여 준다</td>
+<td data-label="링크"><button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn12view2" type="button">근거 41</button></td>
+</tr>
+<tr>
+<td data-label="출처">Columbia, Medill, Ohio State, 세종대 사례</td>
+<td data-label="왜 중요한가">커리큘럼·평가·교수 개발의 실제 전환 모델이다</td>
+<td data-label="링크"><button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn19view2turn19view3turn19view4turn19view5turn31view0turn27view3" type="button">근거 42</button></td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="subsection-title">6개월 파일럿 로드맵 표</h3>
+<div class="responsive-table"><table>
+<thead>
+<tr>
+<th>월</th>
+<th>핵심 일</th>
+<th>산출물</th>
+<th>책임 주체</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="월">1개월차</td>
+<td data-label="핵심 일">기존 제작 실습·인턴 운영 진단, 공통 문제 정의</td>
+<td data-label="산출물">10쪽 이내 진단 메모, 위험 목록</td>
+<td data-label="책임 주체">학과장 + 전임교원 전원</td>
+</tr>
+<tr>
+<td data-label="월">2개월차</td>
+<td data-label="핵심 일">공통 AI 사용 규칙, 출처·권리 규칙, 평가 틀 합의</td>
+<td data-label="산출물">2쪽 공통 원칙 문서, 공통 루브릭 초안</td>
+<td data-label="책임 주체">교원 워크숍 팀</td>
+</tr>
+<tr>
+<td data-label="월">3개월차</td>
+<td data-label="핵심 일">파일럿 교과목 2개 재설계</td>
+<td data-label="산출물">강의계획서, 과제 양식, 학생 안내문</td>
+<td data-label="책임 주체">파일럿 담당 교수 2~3인</td>
+</tr>
+<tr>
+<td data-label="월">4개월차</td>
+<td data-label="핵심 일">MD-to-모바일 데모 제작, 학생 조교 교육</td>
+<td data-label="산출물">데모 웹앱, 템플릿, 기록 양식</td>
+<td data-label="책임 주체">안 교수 포함 소규모 제작팀</td>
+</tr>
+<tr>
+<td data-label="월">5개월차</td>
+<td data-label="핵심 일">수업 운영, 중간 피드백, 외부 실무자 점검</td>
+<td data-label="산출물">중간 리뷰 리포트, 수정판</td>
+<td data-label="책임 주체">파일럿 수업팀 + 외부 멘토</td>
+</tr>
+<tr>
+<td data-label="월">6개월차</td>
+<td data-label="핵심 일">데모데이, 결과 평가, 다음 학기 확장 결정</td>
+<td data-label="산출물">공개 시연, 성과 보고서, 확장안</td>
+<td data-label="책임 주체">학과 전체</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="subsection-title">머메이드 타임라인</h3>
+<div class="mermaid-card">
+<div class="mini-label">MERMAID TIMELINE</div>
+<h4>6개월 파일럿 롤아웃</h4>
+<p>이 HTML 시안에서는 머메이드 코드를 바로 렌더링하지 않고, 아래 로드맵 카드와 원본 코드로 함께 보존했습니다.</p>
+<details>
+<summary>원본 머메이드 코드 보기</summary>
+<pre class="code-card"><code>gantt
+    title 6개월 파일럿 롤아웃
+    dateFormat  YYYY-MM-DD
+    axisFormat  %m월
+
+<pre class="code-card"><code>section 진단
+현재 교과/인턴 구조 점검        :a1, 2026-05-01, 14d
+취업률·유지취업률 분석 반영      :a2, after a1, 10d
+
+section 규칙
+공통 AI 사용 원칙 수립          :b1, 2026-05-20, 14d
+공통 평가 루브릭 확정           :b2, after b1, 10d
+
+section 수업 재설계
+파일럿 교과목 설계              :c1, 2026-06-10, 20d
+과제/출처/기록 양식 제작        :c2, after c1, 10d
+
+section 데모
+MD-to-모바일 템플릿 제작        :d1, 2026-07-05, 20d
+교수·조교 워크숍                :d2, after d1, 7d
+
+section 운영
+파일럿 수업 실행                :e1, 2026-08-01, 30d
+중간 점검 및 수정               :e2, after e1, 10d
+
+section 공개
+데모데이 및 성과 평가           :f1, 2026-09-10, 10d
+다음 학기 확장 결정             :f2, after f1, 7d&lt;/code&gt;&lt;/pre&gt;</code></pre>
+<p></p></code></pre></details>
+</div>
+<h3 class="subsection-title">열린 질문과 한계</h3>
+<p>이 글은 특정 학과의 내부 문서, 인턴 배치 기록, 개별 교수의 실제 업무 분담표를 직접 확인한 보고서는 아니다. 따라서 “어느 학교가 실제로 몇 명을 어디로 보냈는가” 같은 내부 운영 실태는 공개 자료만으로 단정하지 않았다. 또 지역방송 인턴의 효과를 전공별로 장기 추적한 국내 공개 통계는 매우 제한적이다. 그래서 본 칼럼은 공개된 고등교육 통계, 방송산업 지표, 국제 노동시장 자료, 선도 대학 커리큘럼, 교육 지침을 바탕으로 <strong>구조적 위험</strong>을 비판하고, <strong>더 나은 설계안</strong>을 제시하는 데 초점을 두었다. <button aria-label="출처 토큰 보기" class="cite-chip" data-ref="turn32view0turn10view0turn27view1turn19view4turn16view3" type="button">근거 43</button></p>
+<p>마지막으로, 이 칼럼의 가장 날카로운 문장을 남긴다.<br/>
+학과가 AI 시대를 맞아 할 일은 <strong>AI를 가르칠 영웅 교수 한 명을 찾는 것</strong>이 아니다.<br/>
+학과가 해야 할 일은 <strong>학생의 지식 원본, 제작 흐름, 평가 방식, 포트폴리오 포맷을 새 시대에 맞게 다시 짜는 것</strong>이다.</p>
+<p>그걸 하지 않은 채 Adobe Premiere 실습을 돌리고, 지역방송 인턴을 취업률 방파제로 쓰고, “안 교수님이 AI는 좀 맡아 주세요”라고 말한다면, 그 학과는 학생을 미래로 보내는 것이 아니다.<br/>
+그 학과는 자기 책임을 미래로 미루고 있을 뿐이다.</p>
+
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="sources">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">SOURCE MAP</span>
+          <h2>상위 출처 지도</h2>
+          <p>심층 리서치 원고에서 반복적으로 쓰인 고급 출처들을 독자가 먼저 볼 수 있게 정리했습니다.</p>
+        </div>
+      </div>
+      <div class="source-grid">
+        <article class="source-card"><span>01</span><h3>교육부·한국교육개발원</h3><p>고등교육기관 졸업자 취업통계. 단기 취업률, 이동률, 유지취업률을 함께 읽게 하는 근거.</p></article>
+<article class="source-card"><span>02</span><h3>KISDI</h3><p>방송산업 실태, 광고 매출, 종사자 수, 미디어패널 기반 실시간 방송 시청 변화.</p></article>
+<article class="source-card"><span>03</span><h3>OECD</h3><p>한국 노동시장에서 AI 노출, 임금 성장, 고숙련·저숙련 격차를 읽는 근거.</p></article>
+<article class="source-card"><span>04</span><h3>ILO</h3><p>생성형 AI가 미디어·웹 관련 직무를 어떻게 바꾸는지 보여 주는 국제 노동시장 자료.</p></article>
+<article class="source-card"><span>05</span><h3>World Economic Forum</h3><p>Future of Jobs 계열 자료. 기술 변화와 인간 역량 재편을 읽는 큰 지도.</p></article>
+<article class="source-card"><span>06</span><h3>LinkedIn</h3><p>Work Change Report 계열 자료. 직무 기술 변화와 AI 역량 수요를 보여 주는 자료.</p></article>
+<article class="source-card"><span>07</span><h3>Glassdoor</h3><p>AI 관련 채용 공고 증가와 기존 직무의 AI 특화 흐름을 보여 주는 취업시장 자료.</p></article>
+<article class="source-card"><span>08</span><h3>UNESCO</h3><p>생성형 AI 교육 지침. 데이터 보호, 인간 중심 접근, 평가 재설계를 위한 근거.</p></article>
+<article class="source-card"><span>09</span><h3>세종대학교</h3><p>생성형 AI 활용 가이드. 과제와 평가 방식의 변화 필요성을 보여 주는 국내 대학 사례.</p></article>
+<article class="source-card"><span>10</span><h3>Columbia · Medill · Ohio State</h3><p>AI 문해력, 교수 개발, 프로젝트형 실험실을 제도화한 해외 대학 사례.</p></article>
+<article class="source-card"><span>11</span><h3>Adobe · WPP</h3><p>AI 재교육, 전사 학습, 관리 규칙을 실제 업무 흐름에 붙이는 기업 사례.</p></article>
+<article class="source-card"><span>12</span><h3>한국콘텐츠진흥원</h3><p>AI 특화 콘텐츠 인재양성과 산업 쪽 전환 흐름을 보여 주는 국내 공공기관 자료.</p></article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav class="bottom-bar" aria-label="하단 액션 바">
+  <button class="bar-small" id="tocBtn" type="button">☷<span>목차</span></button>
+  <button class="primary-btn" id="continueBtn" type="button">계속 읽기</button>
+  <button class="bar-small" id="shareBtn" type="button">↗<span>공유</span></button>
+</nav>
+
+<aside class="toc-drawer" id="tocDrawer" aria-label="목차">
+  <h2>목차</h2>
+  <a href="#cover">첫 화면 <span>01</span></a>
+  <a href="#overview">개요 <span>02</span></a>
+  <a href="#evidence">증거와 현실 <span>03</span></a>
+  <a href="#compare">커리큘럼 비교 <span>04</span></a>
+  <a href="#redesign">교육 재설계 <span>05</span></a>
+  <a href="#action">실행 카드 <span>06</span></a>
+  <a href="#roadmap">6개월 로드맵 <span>07</span></a>
+  <a href="#article">원문 전체 <span>08</span></a>
+  <a href="#sources">출처 지도 <span>09</span></a>
+</aside>
+
+<aside class="citation-drawer" id="citationDrawer" aria-label="출처 토큰">
+  <header>
+    <h2>원고 출처 토큰</h2>
+    <button class="icon-btn" id="closeCites" type="button" aria-label="닫기">×</button>
+  </header>
+  <ol>
+    <li><strong>근거 1</strong><code>turn32view0turn10view0turn27view1turn12view3turn12view2</code></li>
+<li><strong>근거 2</strong><code>turn10view0turn27view1turn27view2turn33view0turn33view1</code></li>
+<li><strong>근거 3</strong><code>turn19view4turn19view5turn31view0turn19view2turn19view3turn25view3turn25view4</code></li>
+<li><strong>근거 4</strong><code>turn32view0turn4search0turn4search4</code></li>
+<li><strong>근거 5</strong><code>turn10view0turn27view1turn27view2</code></li>
+<li><strong>근거 6</strong><code>turn12view1turn33view0turn33view1turn13view0turn12view3turn12view2turn31view2</code></li>
+<li><strong>근거 7</strong><code>turn19view4turn19view5turn31view0turn29view1turn16view3turn30search2turn30search3</code></li>
+<li><strong>근거 8</strong><code>turn32view0turn27view1turn31view0</code></li>
+<li><strong>근거 9</strong><code>turn19view0turn27view3turn27view4turn27view5turn19view2turn19view3</code></li>
+<li><strong>근거 10</strong><code>turn32view0turn4search0turn4search4</code></li>
+<li><strong>근거 11</strong><code>turn19view4turn19view5turn31view0turn16view3</code></li>
+<li><strong>근거 12</strong><code>turn10view0turn27view1turn34search12</code></li>
+<li><strong>근거 13</strong><code>turn27view2turn28view1turn28view2</code></li>
+<li><strong>근거 14</strong><code>turn33view0turn33view1turn12view0</code></li>
+<li><strong>근거 15</strong><code>turn12view1</code></li>
+<li><strong>근거 16</strong><code>turn25view0turn25view3turn25view4</code></li>
+<li><strong>근거 17</strong><code>turn16view3</code></li>
+<li><strong>근거 18</strong><code>turn31view0</code></li>
+<li><strong>근거 19</strong><code>turn29view1turn29view0</code></li>
+<li><strong>근거 20</strong><code>turn30search2turn30search3turn30search14</code></li>
+<li><strong>근거 21</strong><code>turn19view0turn19view1turn27view3turn27view4</code></li>
+<li><strong>근거 22</strong><code>turn19view2turn19view3turn19view4turn19view5</code></li>
+<li><strong>근거 23</strong><code>turn25view3turn25view4turn25view2turn31view1</code></li>
+<li><strong>근거 24</strong><code>turn29view1turn16view3turn30search2turn19view2turn19view3</code></li>
+<li><strong>근거 25</strong><code>turn12view2turn31view2turn25view1</code></li>
+<li><strong>근거 26</strong><code>turn31view0turn29view1turn16view3turn19view5turn30search2</code></li>
+<li><strong>근거 27</strong><code>turn31view2turn13view0turn12view2turn12view3</code></li>
+<li><strong>근거 28</strong><code>turn10view0turn27view1turn27view2</code></li>
+<li><strong>근거 29</strong><code>turn19view4turn19view5turn31view0turn16view3</code></li>
+<li><strong>근거 30</strong><code>turn32view0</code></li>
+<li><strong>근거 31</strong><code>turn31view2turn13view0turn12view2</code></li>
+<li><strong>근거 32</strong><code>turn10view0turn27view1turn27view2</code></li>
+<li><strong>근거 33</strong><code>turn19view4turn19view5turn16view3</code></li>
+<li><strong>근거 34</strong><code>turn29view1turn31view0</code></li>
+<li><strong>근거 35</strong><code>turn32view0</code></li>
+<li><strong>근거 36</strong><code>turn10view0turn27view1</code></li>
+<li><strong>근거 37</strong><code>turn27view2</code></li>
+<li><strong>근거 38</strong><code>turn12view1</code></li>
+<li><strong>근거 39</strong><code>turn33view0turn12view0</code></li>
+<li><strong>근거 40</strong><code>turn13view0turn12view3</code></li>
+<li><strong>근거 41</strong><code>turn12view2</code></li>
+<li><strong>근거 42</strong><code>turn19view2turn19view3turn19view4turn19view5turn31view0turn27view3</code></li>
+<li><strong>근거 43</strong><code>turn32view0turn10view0turn27view1turn19view4turn16view3</code></li>
+  </ol>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite">복사했습니다</div>
+
+<script>
+(function() {
+  const root = document.documentElement;
+  const body = document.body;
+  const themeBtn = document.getElementById('themeBtn');
+  const progressBar = document.getElementById('progressBar');
+  const summaryBtn = document.getElementById('summaryModeBtn');
+  const detailBtn = document.getElementById('detailModeBtn');
+  const tocBtn = document.getElementById('tocBtn');
+  const menuBtn = document.getElementById('menuBtn');
+  const tocDrawer = document.getElementById('tocDrawer');
+  const citationDrawer = document.getElementById('citationDrawer');
+  const closeCites = document.getElementById('closeCites');
+  const continueBtn = document.getElementById('continueBtn');
+  const shareBtn = document.getElementById('shareBtn');
+  const toast = document.getElementById('toast');
+
+  const savedTheme = localStorage.getItem('curriculum-reader-theme');
+  if (savedTheme) root.setAttribute('data-theme', savedTheme);
+  themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☾' : '☀';
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1700);
+  }
+  function setMode(summary) {
+    body.classList.toggle('summary-mode', summary);
+    summaryBtn.classList.toggle('active', summary);
+    detailBtn.classList.toggle('active', !summary);
+    if (!summary) setTimeout(() => document.getElementById('article').scrollIntoView({behavior:'smooth', block:'start'}), 80);
+  }
+  summaryBtn.addEventListener('click', () => setMode(true));
+  detailBtn.addEventListener('click', () => setMode(false));
+
+  themeBtn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    if (next === 'light') root.removeAttribute('data-theme'); else root.setAttribute('data-theme','dark');
+    localStorage.setItem('curriculum-reader-theme', next === 'light' ? '' : 'dark');
+    themeBtn.textContent = next === 'dark' ? '☾' : '☀';
+  });
+
+  document.querySelectorAll('.acc-btn').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.accordion-card').classList.toggle('open'));
+  });
+
+  function toggleToc() {
+    citationDrawer.classList.remove('open');
+    tocDrawer.classList.toggle('open');
+  }
+  tocBtn.addEventListener('click', toggleToc);
+  menuBtn.addEventListener('click', toggleToc);
+  tocDrawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => tocDrawer.classList.remove('open')));
+
+  document.querySelectorAll('.cite-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      tocDrawer.classList.remove('open');
+      citationDrawer.classList.add('open');
+      const ref = chip.getAttribute('data-ref') || '';
+      if (navigator.clipboard) navigator.clipboard.writeText(ref).catch(() => {});
+      showToast('출처 토큰을 복사했습니다');
+    });
+  });
+  closeCites.addEventListener('click', () => citationDrawer.classList.remove('open'));
+
+  const sections = ['cover','overview','evidence','compare','redesign','action','roadmap','article','sources'];
+  continueBtn.addEventListener('click', () => {
+    const y = window.scrollY + 90;
+    let next = sections[1];
+    for (let i=0; i<sections.length; i++) {
+      const el = document.getElementById(sections[i]);
+      if (el && el.offsetTop <= y) next = sections[Math.min(i+1, sections.length-1)];
+    }
+    document.getElementById(next).scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  shareBtn.addEventListener('click', async () => {
+    const data = { title: document.title, text: '누구를 위한 커리큘럼인가 · 모바일 HTML 시안', url: location.href };
+    try {
+      if (navigator.share) await navigator.share(data);
+      else if (navigator.clipboard) { await navigator.clipboard.writeText(location.href); showToast('링크를 복사했습니다'); }
+    } catch(e) {}
+  });
+
+  window.addEventListener('scroll', () => {
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const pct = Math.min(100, Math.max(0, (window.scrollY / max) * 100));
+    progressBar.style.width = pct + '%';
+    tocDrawer.classList.remove('open');
+  }, {passive:true});
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { tocDrawer.classList.remove('open'); citationDrawer.classList.remove('open'); }
+  });
+})();
+</script>
+</body>
+</html>
