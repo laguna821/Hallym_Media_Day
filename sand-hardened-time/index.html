@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!-- ATS-V2 ROUTING
+cell: analysis-longform (prose ratio ~0.98 산문, 테제 성장 논증) / shell: Evidence Reading v2
+moves-detected:
+  - not_A_but_B(VerdictPlate) × 2 [S3 "문제는 모래 부족이 아니다", S8 "대안의 본질은 새 산지가 아니다"] — repeat_semantics: stamp
+  - definition_stamp(StampPlate) × 1 [S3 "굳은 시간"]
+  - verbatim_relic(RelicFrame 외부인용) × 4 [S2 UNEP, S4 Eslami, S5 SANDRP, S7 Peduzzi]
+  - failure_ledger/chronicle(LedgerRow·Timeline) × 1 [S6 니파섬 2003→2007]
+  - concrete_trace(접지 스트립·InlineAnchor) — spine, always-on [S2/S4/S5/S6/S7 실측 수치]
+  - ending_cut(CutEnding B 되묻기) — spine [S9]
+budget: situational 4 (not_A_but_B / definition_stamp / verbatim_relic / chronicle) / signature: Hero(ThesisHeader-v2 답선포형, tier-max breakout, S1)
+instances:
+  - question_reset→ThesisHeader-v2(house)→Thesis→tier-max breakout [S1 signature]
+  - concrete_trace→LiveCounter+KPI stat card(gallery I2-ground)→Summary→tier-wide full-band [S2]
+  - verbatim_relic→RelicFrame(house, I3-testify tweet-card 골조 차용)→Evidence→satellite/pair [S2/S4/S5/S7]
+  - not_A_but_B→VerdictPlate(house, I1)→Core→tier-wide [S3/S8]
+  - compare→AxisCompareBlock-v2(house)+SVG grain(I5-compare-verdict before-after 골조)→Core→split-pair [S3]
+  - definition_stamp→Responsive Split Definition Panel(shadcn Card anatomy)→Core→7:5 pair [S3]
+  - concrete_trace→SVG riverbed cross-section+KPI(I2)→Evidence→split-pair [S4]
+  - failure_ledger→LedgerRow/Timeline(house, I7-chronicle timeline 골조)+SVG island→Evidence→full-band [S6]
+  - compare→SVG bar(I5-compare-verdict)+RelicFrame→Core→split-pair [S7]
+  - summon→bento(gallery I9-summon)→Core→full-band [S8 대안 3종]
+  - ending_cut→CutEnding B 되묻기(house)→페이지 말단→tier-max breakout(motion 0) [S9]
+  - SourceLedger→Meta footer(외부 출처 7)→Meta [footer]
+tier-map: [tier-max, full-rail, split-pair, 7:5-definition, split-pair, full-rail, 4:8-chronicle, 7:5-pair, full-band, 5:2:5-closing]
+composition-map: [full-band, full-band, split-pair, narrow-focus, split-pair, full-band, full-band, split-pair, full-band]
+dials: variance 6 / motion 3 / density 6
+type-scale: base 17 / restrained responsive scale / 단계 사용 = display-xl,display,h1,h2,h3,body-lg,body,caption,label (9/9)
+library-quota: 갤러리 유래 구조 6종 (I1 big-type / I2 KPI stat card·number / I3 tweet-card→relic / I5 compare·before-after / I7 timeline / I9 bento) / 시리즈 6종 (≥5 충족)
+color-system: mineral neutral — cool limestone + blue-charcoal 90% / oxide coral signal 10%. 세피아·종이 질감·복수 강조색 미사용
+scaffold: single-axis 12-column editorial rails · 40px module rhythm · responsive split panels · full-bleed Raw5 fields · dark bookends
+signature: 1 (Hero) + 8 supporting Raw5 fields — VerdictPlate/StampPlate 는 순수 타이포 플레이트(무장식, "quietly right", non-awwwards)
+graphic-layer: 5 inline SVG (hero strata / grain angular-vs-round / riverbed cross-section / island submerge timeline / cement 3yr-vs-100yr bar)
+consistency-pass: 12/12
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>굳은 시간 — 모래는 무한하지 않다</title>
+<meta name="description" content="모래 채굴의 규모와 물성, 염수화, 인명 피해, 사라진 섬, 대안 골재를 ‘굳은 시간’이라는 하나의 회계로 읽는 반응형 에디토리얼.">
+<meta name="theme-color" content="#132027">
+<link rel="canonical" href="https://laguna821.github.io/Hallym_Media_Day/sand-hardened-time/">
+<link rel="preload" as="image" href="assets/images/raw-01.webp" fetchpriority="high">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css">
+<style>
+/* ============================================================
+   A2Z (에이투지체) 하우스 산세리프 — 9 웨이트 로컬 로드 (상대경로)
+   ============================================================ */
+@font-face{font-family:"A2Z";font-weight:100;font-style:normal;font-display:swap;src:url("assets/fonts/a2z-thin.ttf") format("truetype");}
+@font-face{font-family:"A2Z";font-weight:200;font-style:normal;font-display:swap;src:url("assets/fonts/a2z-extra-light.ttf") format("truetype");}
+@font-face{font-family:"A2Z";font-weight:300;font-style:normal;font-display:swap;src:url("assets/fonts/a2z-light.ttf") format("truetype");}
+@font-face{font-family:"A2Z";font-weight:400;font-style:normal;font-display:swap;src:url("assets/fonts/a2z-regular.ttf") format("truetype");}
+@font-face{font-family:"A2Z";font-weight:500;font-style:normal;font-display:swap;src:url("assets/fonts/a2z-medium.ttf") format("truetype");}
+@font-face{font-family:"A2Z";font-weight:600;font-style:normal;font-display:swap;src:url("assets/fonts/a2z-semi-bold.ttf") format("truetype");}
+@font-face{font-family:"A2Z";font-weight:700;font-style:normal;font-display:swap;src:url("assets/fonts/a2z-bold.ttf") format("truetype");}
+@font-face{font-family:"A2Z";font-weight:800;font-style:normal;font-display:swap;src:url("assets/fonts/a2z-extra-bold.ttf") format("truetype");}
+@font-face{font-family:"A2Z";font-weight:900;font-style:normal;font-display:swap;src:url("assets/fonts/a2z-black.ttf") format("truetype");}
+
+/* ============================================================
+   TOKENS — cool mineral neutrals + one oxide-coral signal
+   Typeface policy: A2Z display + Pretendard reading/labels only
+   ============================================================ */
+:root{
+  /* -- raw5 image material: exactly five reusable sources -- */
+  --img1:url("assets/images/raw-01.webp");
+  --img2:url("assets/images/raw-02.webp");
+  --img3:url("assets/images/raw-03.webp");
+  --img4:url("assets/images/raw-04.webp");
+  --img5:url("assets/images/raw-05.webp");
+
+  /* -- fonts -- */
+  --ach-font-display:"A2Z","Pretendard Variable",Pretendard,sans-serif;
+  --ach-font-sans:"Pretendard Variable",Pretendard,"A2Z",sans-serif;
+  --ach-font-mono:"Pretendard Variable",Pretendard,"A2Z",sans-serif;
+
+  /* -- cool limestone / blue-charcoal neutrals -- */
+  --bone:#E8ECEA;
+  --bone-surface:#F6F8F6;
+  --bone-subtle:#DCE3E0;
+  --char:#132027;
+  --char-surface:#1B2A31;
+  --char-subtle:#24363E;
+  --char-deep:#0C151A;
+
+  /* -- ink -- */
+  --ink:#121C21;
+  --ink-2:#46565D;
+  --ink-3:#637179;
+  --paper:#F4F7F5;
+  --paper-2:#C7D1CE;
+  --paper-3:#8F9DA0;
+
+  /* -- borders -- */
+  --line-strong:#2F4047;
+  --line-subtle:#BEC9C6;
+  --line-on-dark:#344850;
+  --line-on-dark-2:#50636B;
+
+  /* -- one signal family: oxide coral -- */
+  --amber-deep:#B94327;
+  --amber-ink:#9D351F;
+  --amber:#E05B39;
+  --amber-light:#FF9475;
+  --amber-tint:#F4DAD1;
+  --amber-on-dark:#FF9A7C;
+
+  /* -- semantic danger remains inside the same signal family -- */
+  --sienna:#9B2F24;
+  --sienna-on-dark:#FF826F;
+
+  /* -- spacing / radius -- */
+  --sp1:4px; --sp2:8px; --sp3:12px; --sp4:16px; --sp5:24px; --sp6:32px; --sp7:40px; --sp8:48px; --sp9:64px; --sp10:80px;
+  --r-sm:4px; --r-md:8px; --r-lg:12px;
+
+  /* -- rectilinear component rhythm -- */
+  --section-pad:clamp(64px,6vw,96px);
+  --module-gap:var(--sp7);
+  --module-pad:clamp(var(--sp5),2.5vw,var(--sp7));
+
+  /* -- layout canvas -- */
+  --ach-container-max:1440px;
+  --ach-container:min(calc(100% - clamp(32px,6vw,80px)),var(--ach-container-max));
+  --ach-gutter:clamp(16px,1.6vw,24px);
+
+  /* -- motion -- */
+  --m-evidence:600ms cubic-bezier(0.2,0,0,1);
+  --m-expressive:360ms cubic-bezier(0.2,0,0,1);
+}
+
+/* ============================================================
+   TYPE SCALE — restrained 9-step responsive library (base 17)
+   전 텍스트는 이 9단계 중 하나만 참조. 임의 font-size 금지.
+   ============================================================ */
+.t-display-xl{font:800 clamp(40px,5.2vw,72px)/1.07 var(--ach-font-display);letter-spacing:-0.018em;}
+.t-display{font:800 clamp(30px,3.6vw,46px)/1.12 var(--ach-font-display);letter-spacing:-0.014em;}
+.t-h1{font:700 clamp(26px,2.7vw,38px)/1.2 var(--ach-font-display);letter-spacing:-0.01em;}
+.t-h2{font:700 clamp(22px,1.9vw,29px)/1.28 var(--ach-font-display);letter-spacing:-0.006em;}
+.t-h3{font:600 clamp(19px,1.3vw,22px)/1.35 var(--ach-font-display);letter-spacing:-0.003em;}
+.t-body-lg{font:400 clamp(18px,1.15vw,20px)/1.68 var(--ach-font-sans);}
+.t-body{font:400 17px/1.72 var(--ach-font-sans);}
+.t-caption{font:400 13.6px/1.5 var(--ach-font-sans);}
+.t-mono{font:600 12.5px/1.45 var(--ach-font-mono);letter-spacing:0.045em;text-transform:uppercase;}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--bone);color:var(--ink);font-family:var(--ach-font-sans);font-size:17px;line-height:1.72;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+h1,h2,h3,h4,p,figure{margin:0;}
+strong{font-weight:800;color:inherit;}   /* 통볼드 = 자작 명제 전용 */
+em{font-style:italic;}
+a{color:inherit;text-decoration:none;}
+svg{display:block;max-width:100%;}
+.svg-mono{font-family:var(--ach-font-mono);}
+.svg-sans{font-family:var(--ach-font-sans);}
+::selection{background:var(--amber-light);color:var(--ink);}
+
+/* -- inline mono anchor: 실측치 전용 채널 -- */
+.anchor{font-family:var(--ach-font-mono);font-weight:500;font-size:0.92em;letter-spacing:0.01em;color:inherit;white-space:nowrap;}
+.overline{font-family:var(--ach-font-mono);font-weight:650;font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;}
+
+/* ============================================================
+   BAND + GRID (풀블리드 밴드 + 12-col 콘텐츠 그리드)
+   ============================================================ */
+.band{width:100%;position:relative;overflow:hidden;}
+.band--dark{background:var(--char);color:var(--paper);}
+.band--light{background:var(--bone);color:var(--ink);}
+.band--deep{background:var(--char-deep);color:var(--paper);}
+.screen{min-height:0;display:flex;flex-direction:column;justify-content:center;padding-block:var(--section-pad);}
+.screen--tall{min-height:0;}
+.screen--lead{padding-bottom:var(--module-gap);}
+.screen--continuation{padding-top:0;}
+.wrap{width:var(--ach-container);margin-inline:auto;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--ach-gutter);row-gap:var(--module-gap);align-items:start;}
+.wrap>*{min-width:0;}
+.wrap>[style*="margin-top:var(--sp"]{margin-top:0!important;}
+
+/* width tiers */
+.tier-max{grid-column:1/-1;}
+.tier-wide{grid-column:2/12;}
+.tier-content{grid-column:3/11;}
+.tier-prose{grid-column:3/9;}
+.col-7{grid-column:span 7;} .col-5{grid-column:span 5;}
+.col-8{grid-column:span 8;} .col-4{grid-column:span 4;}
+.col-6{grid-column:span 6;}
+.col-4,.col-5,.col-6,.col-7,.col-8{container-type:inline-size;}
+@media(max-width:900px){
+  .tier-wide,.tier-content,.tier-prose,.col-7,.col-5,.col-8,.col-4,.col-6{grid-column:1/-1;}
+}
+
+/* section header (overline + display 페어, 전 섹션 반복) */
+.sec-head{display:flex;flex-direction:column;gap:var(--sp3);margin-bottom:0;width:100%;}
+.sec-head.tier-max{grid-column:1/-1;max-width:none;justify-self:stretch;}
+.sec-head h2{max-width:32ch;}
+.sec-head .overline{color:var(--amber-ink);}
+.band--dark .sec-head .overline{color:var(--amber-on-dark);}
+
+/* ============================================================
+   CARD TOKENS — 밴드 극성별 세트 (색 상속 금지)
+   ============================================================ */
+.card{border-radius:var(--r-sm);padding:clamp(20px,2.5vw,32px);}
+.card--onlight{background:var(--bone-surface);color:var(--ink);border:1.5px solid var(--line-strong);}
+.card--onlight .meta{color:var(--ink-3);}
+.card--ondark{background:var(--char-surface);color:var(--paper);border:1.5px solid var(--line-on-dark);}
+.card--ondark .meta{color:var(--paper-3);}
+.card--bone-on-dark{background:var(--bone);color:var(--ink);border:1.5px solid var(--line-strong);}
+.card--bone-on-dark .meta{color:var(--ink-3);}
+
+/* ============================================================
+   NAV (상단 sticky 바)
+   ============================================================ */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bone) 86%,transparent);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--line-subtle);}
+.nav-in{width:var(--ach-container);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:var(--sp4);}
+.brand{font-family:var(--ach-font-mono);font-weight:700;font-size:13px;letter-spacing:0.06em;color:var(--ink);text-transform:uppercase;display:flex;align-items:center;gap:var(--sp2);}
+.brand .dot{width:10px;height:10px;border-radius:2px;background:var(--amber);display:inline-block;}
+.nav-links{display:flex;gap:var(--sp5);align-items:center;}
+.nav-links a{font-family:var(--ach-font-mono);font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-2);padding:6px 2px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;cursor:pointer;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);border-color:var(--amber);}
+.nav-toggle{display:none;background:none;border:1.5px solid var(--line-strong);border-radius:var(--r-sm);width:40px;height:40px;cursor:pointer;color:var(--ink);align-items:center;justify-content:center;}
+@media(max-width:820px){
+  .nav-links{position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bone-surface);border-bottom:1px solid var(--line-subtle);max-height:0;overflow:hidden;transition:max-height .28s ease;}
+  .nav-links.open{max-height:60vh;}
+  .nav-links a{width:100%;padding:14px var(--ach-gutter);border-bottom:1px solid var(--line-subtle);}
+  .nav-toggle{display:flex;}
+}
+
+/* ============================================================
+   HERO (S1) — 답선포형 ThesisHeader-v2, tier-max breakout, signature
+   ============================================================ */
+.hero{position:relative;min-height:86svh;display:flex;flex-direction:column;justify-content:center;padding-block:clamp(96px,12vw,160px);}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;}
+.hero .wrap{position:relative;z-index:1;}
+.hero-lead{color:var(--amber-on-dark);margin-bottom:var(--sp5);}
+.hero h1{margin-block:var(--sp3) var(--sp6);}
+.hero h1 .amber{color:var(--amber-on-dark);}
+.hero-sub{color:var(--paper-2);max-width:44ch;}
+.hero-scroll{position:absolute;left:0;right:0;bottom:var(--sp6);display:flex;justify-content:center;z-index:1;}
+.hero-scroll .overline{color:var(--paper-3);display:flex;align-items:center;gap:var(--sp2);}
+
+/* ============================================================
+   STAT STRIP (S2, S4, S5, S7) — 접지 스트립
+   ============================================================ */
+.stat-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0;grid-column:1/-1;border:1px solid var(--line-strong);background:color-mix(in srgb,var(--bone-surface) 88%,transparent);}
+.stat{min-height:190px;padding:var(--module-pad);border-top:0;display:flex;flex-direction:column;justify-content:space-between;}
+.stat+.stat{border-left:1px solid var(--line-strong);}
+.band--dark .stat-strip{border-color:var(--line-on-dark-2);background:color-mix(in srgb,var(--char-surface) 76%,transparent);}
+.band--dark .stat+.stat{border-left-color:var(--line-on-dark-2);}
+.stat .num{font-family:var(--ach-font-display);font-weight:800;line-height:1;letter-spacing:-0.01em;color:var(--amber-deep);font-size:clamp(38px,4.4vw,58px);}
+.band--dark .stat .num{color:var(--amber-on-dark);}
+.stat .num small{font-size:0.42em;font-weight:500;letter-spacing:0.02em;}
+.stat .lbl{margin-top:var(--sp3);color:inherit;max-width:26ch;}
+.stat .src{margin-top:var(--sp3);color:var(--ink-3);}
+.band--dark .stat .src{color:var(--paper-3);}
+
+/* ============================================================
+   RELIC FRAME (외부 인용 유물) — 이중 프레임 + 날짜/출처 택
+   ============================================================ */
+.relic{position:relative;border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:clamp(24px,3vw,40px);background:transparent;box-shadow:none;}
+.band--dark .relic{border-color:var(--line-on-dark-2);box-shadow:none;}
+.relic .tag{position:absolute;top:-11px;left:var(--sp5);background:var(--amber);color:var(--char);font-family:var(--ach-font-mono);font-weight:700;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:4px;}
+.relic .q-en{font-weight:500;color:var(--ink);}
+.band--dark .relic .q-en{color:var(--paper);}
+.relic .q-ko{margin-top:var(--sp3);color:var(--ink-2);}
+.band--dark .relic .q-ko{color:var(--paper-2);}
+.relic .cite{margin-top:var(--sp4);color:var(--ink-3);}
+.band--dark .relic .cite{color:var(--paper-3);}
+
+/* ============================================================
+   VERDICT PLATE (not_A_but_B 선고) — 순수 타이포, 무장식
+   ============================================================ */
+.verdict{grid-column:1/-1;padding-block:0;}
+.verdict .a{color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--ink-3);}
+.band--dark .verdict .a{color:var(--paper-3);text-decoration-color:var(--paper-3);}
+.verdict .b{margin-top:var(--sp4);color:var(--ink);}
+.band--dark .verdict .b{color:var(--paper);}
+.verdict .b .amber{color:var(--amber-deep);}
+.band--dark .verdict .b .amber{color:var(--amber-on-dark);}
+.verdict .support{margin-top:var(--sp5);color:var(--ink-2);max-width:60ch;}
+.band--dark .verdict .support{color:var(--paper-2);}
+.section-claim{grid-column:1/-1;padding:var(--sp6) 0;border-top:1px solid var(--line-on-dark-2);border-bottom:1px solid var(--line-on-dark-2);}
+.section-claim p{max-width:44ch;}
+
+/* Responsive Split Definition Panel — shadcn Card anatomy, ACH border-first remap. */
+.definition-copy{grid-column:span 7!important;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:var(--module-pad);border:1px solid var(--line-on-dark-2);background:color-mix(in srgb,var(--char-surface) 68%,transparent);}
+.definition-card{grid-column:span 5;align-self:stretch;display:flex;}
+.definition-card .stamp{width:100%;height:100%;}
+
+/* ============================================================
+   STAMP PLATE (definition_stamp 굳은 시간) — 사방 프레임 + 씰
+   ============================================================ */
+.stamp{border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:var(--sp7);background:var(--bone-surface);}
+.stamp .seal{display:inline-block;background:var(--amber);color:var(--char);font-family:var(--ach-font-mono);font-weight:700;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 11px;border-radius:4px;margin-bottom:var(--sp5);}
+.stamp .term{color:var(--ink);}
+.stamp .term u{text-decoration:none;box-shadow:inset 0 -0.5em 0 var(--amber-light);}
+.stamp .def{margin-top:var(--sp4);color:var(--ink);max-width:52ch;}
+.stamp .ctx{margin-top:var(--sp5);padding-top:var(--sp5);border-top:1px solid var(--line-subtle);color:var(--ink-2);max-width:56ch;}
+
+/* ============================================================
+   COMPARE (grain / cement) — split-pair
+   ============================================================ */
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:var(--ach-gutter);}
+@media(max-width:820px){.compare{grid-template-columns:1fr;}}
+.cmp-col{padding:var(--sp5);border:1.5px solid var(--line-strong);border-radius:var(--r-sm);}
+.band--dark .cmp-col{border-color:var(--line-on-dark);}
+.cmp-col .axis{color:var(--amber-deep);margin-bottom:var(--sp3);}
+.band--dark .cmp-col .axis{color:var(--amber-on-dark);}
+.cmp-col p{color:var(--ink-2);}
+.band--dark .cmp-col p{color:var(--paper-2);}
+.cmp-verdict{grid-column:1/-1;margin-top:var(--sp5);color:var(--ink);}
+.band--dark .cmp-verdict{color:var(--paper);}
+
+/* figure + caption */
+.figure{width:100%;margin:0;border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:clamp(16px,2vw,24px);background:var(--bone-surface);}
+.band--dark .figure{border-color:var(--line-on-dark);background:var(--char-surface);}
+.figure figcaption{margin-top:var(--sp4);color:var(--ink-3);}
+.band--dark .figure figcaption{color:var(--paper-3);}
+
+/* prose */
+.prose p+p{margin-top:var(--sp4);}
+.prose{color:var(--ink-2);max-width:74ch;}
+.band--dark .prose{color:var(--paper-2);}
+.prose strong{color:var(--ink);}
+.band--dark .prose strong{color:var(--paper);}
+
+/* aside channel (방백 — 마진 노트) */
+.aside{font-style:italic;color:var(--ink-3);border-top:1px solid var(--line-subtle);padding-top:var(--sp3);margin-top:var(--sp4);}
+.band--dark .aside{color:var(--paper-3);border-top-color:var(--line-on-dark);}
+
+/* ============================================================
+   TALLY (deaths S5) — form-first, sienna, motion 0
+   ============================================================ */
+.tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0;grid-column:1/-1;border:1px solid var(--line-on-dark-2);background:color-mix(in srgb,var(--char-surface) 72%,transparent);}
+.tally .cell{min-height:180px;border-top:3px solid var(--sienna-on-dark);padding:var(--module-pad);}
+.tally .cell+.cell{border-left:1px solid var(--line-on-dark-2);}
+.tally .cell .num{font-family:var(--ach-font-display);font-weight:800;font-size:clamp(38px,4.4vw,56px);line-height:1;color:var(--sienna-on-dark);}
+.tally .cell .lbl{margin-top:var(--sp3);color:var(--paper-2);max-width:24ch;}
+.tally .cell .lbl .anchor{color:var(--paper);}
+.led{grid-column:1/-1;margin-top:var(--sp7);border-left:0;}
+.led-row{display:grid;grid-template-columns:auto 1fr;gap:var(--sp5);padding:var(--sp4) 0;border-top:1px solid var(--line-on-dark);align-items:baseline;}
+.led-row .date{font-family:var(--ach-font-mono);font-weight:500;font-size:12.5px;color:var(--sienna-on-dark);letter-spacing:0.04em;white-space:nowrap;}
+.led-row .body{color:var(--paper-2);}
+.led-row .body strong{color:var(--paper);}
+.dtag{display:inline-block;font-family:var(--ach-font-mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--sienna-on-dark);border:1px solid var(--sienna-on-dark);border-radius:3px;padding:1px 6px;margin-left:var(--sp2);vertical-align:middle;}
+
+/* ============================================================
+   TIMELINE (island S6, chronicle)
+   ============================================================ */
+.timeline{grid-column:1/-1;display:grid;gap:0;container-type:inline-size;}
+.tl-row{display:grid;grid-template-columns:minmax(96px,2fr) minmax(0,10fr);gap:var(--ach-gutter);padding:var(--sp5) 0;border-top:1px solid var(--line-subtle);align-items:start;}
+@media(max-width:640px){.tl-row{grid-template-columns:1fr;gap:var(--sp2);}}
+.tl-row .when{font-family:var(--ach-font-mono);font-weight:700;font-size:14px;color:var(--amber-ink);letter-spacing:0.02em;}
+.tl-row .when.soft{color:var(--ink-3);font-weight:500;}
+.tl-row .what{color:var(--ink);}
+.tl-row .what.pivot{color:var(--ink);}
+.tl-row .what .anchor{color:var(--amber-deep);}
+
+/* Media + Chronicle pair — equal outer rails and shared vertical rhythm. */
+.island-media,.island-copy{align-self:stretch;}
+.island-media .figure{height:100%;}
+.island-copy{display:grid;grid-template-rows:auto 1fr;gap:var(--module-gap);align-content:start;}
+.island-conclusion{margin-top:0!important;align-self:end;}
+
+/* ============================================================
+   BENTO (alternatives S8) — 비균등
+   ============================================================ */
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(180px,auto);gap:var(--ach-gutter);grid-column:1/-1;}
+.bento .b-lead{grid-column:1/-1;}
+.bento .b-item{grid-column:span 4;}
+.b-item .k{font-family:var(--ach-font-mono);font-weight:700;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber-on-dark);}
+.b-item .name{margin-top:var(--sp3);color:var(--paper);}
+.b-item .desc{margin-top:var(--sp2);color:var(--paper-2);}
+
+/* ============================================================
+   CLOSING (S9 CutEnding B 되묻기) — breakout, motion 0
+   ============================================================ */
+.close-intro{grid-column:1/6;grid-row:1;align-self:start;}
+.close-outro{grid-column:8/-1;grid-row:1;align-self:end;text-align:right;justify-self:end;}
+.close-lead{color:var(--paper-2);max-width:58ch;margin-bottom:0;}
+.close-q{grid-column:1/-1;grid-row:2;color:var(--paper);}
+.close-q .amber{color:var(--amber-on-dark);}
+.close-tail{margin-top:0;color:var(--paper-3);max-width:44ch;margin-left:auto;}
+
+/* ============================================================
+   FOOTER (Meta / SourceLedger) — 결말과 분리
+   ============================================================ */
+.foot{background:var(--char-deep);color:var(--paper-3);border-top:1px solid var(--line-on-dark);padding-block:var(--sp8);}
+.foot .wrap{row-gap:var(--sp5);}
+.foot h4{grid-column:1/-1;color:var(--paper-2);margin-bottom:var(--sp3);}
+.foot .ledger{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--ach-gutter);row-gap:0;}
+.foot .lr{display:grid;grid-template-columns:34px minmax(0,1fr);gap:var(--sp4);align-items:baseline;padding-block:var(--sp3);border-top:1px solid var(--line-on-dark);}
+.foot .lr .n{font-family:var(--ach-font-mono);font-size:11px;color:var(--amber-on-dark);}
+.foot .lr .t{color:var(--paper-3);font-size:14px;line-height:1.6;}
+.foot .colophon{grid-column:1/-1;margin-top:var(--sp5);padding-top:var(--sp5);border-top:1px solid var(--line-on-dark);font-family:var(--ach-font-mono);font-size:11px;letter-spacing:0.04em;color:var(--paper-3);}
+
+/* ============================================================
+   MOTION — scroll reveal (expressive 1회), reduced-motion 폴백
+   ============================================================ */
+/* 기본 = 보임 (JS/IO 실패해도 콘텐츠 절대 숨지 않음). reveal-ready 일 때만 초기 은닉 */
+.rise{opacity:1;transform:none;transition:opacity var(--m-expressive),transform var(--m-expressive);}
+html.reveal-ready .rise{opacity:0;transform:translateY(22px);}
+html.reveal-ready .rise.in{opacity:1;transform:none;}
+.count{font-variant-numeric:tabular-nums;}
+html.reveal-fallback .rise{opacity:1!important;transform:none!important;transition:none!important;}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .rise,html.reveal-ready .rise{opacity:1!important;transform:none!important;transition:none;}
+}
+
+/* ============================================================
+   RAW5 PREMIUM WEB LAYER
+   Exactly five raster sources; typography, metrics and diagrams stay HTML/SVG.
+   ============================================================ */
+.img1{--card-img:var(--img1)}.img2{--card-img:var(--img2)}.img3{--card-img:var(--img3)}.img4{--card-img:var(--img4)}.img5{--card-img:var(--img5)}
+.raw-img1{--section-img:var(--img1)}.raw-img2{--section-img:var(--img2)}.raw-img3{--section-img:var(--img3)}.raw-img4{--section-img:var(--img4)}.raw-img5{--section-img:var(--img5)}
+
+.skip-link{position:fixed;left:var(--sp4);top:var(--sp4);z-index:1000;transform:translateY(-160%);background-color:var(--paper);color:var(--ink);border:2px solid var(--amber-deep);border-radius:var(--r-sm);padding:var(--sp3) var(--sp4);font-family:var(--ach-font-mono);font-size:12.5px;font-weight:700;transition:transform 180ms ease-out;}
+.skip-link:focus{transform:translateY(0);}
+.reading-progress{position:fixed;inset:0 0 auto 0;height:3px;z-index:80;background-color:var(--line-subtle);pointer-events:none;}
+.reading-progress span{display:block;width:100%;height:100%;transform:scaleX(0);transform-origin:left;background-color:var(--amber-deep);will-change:transform;}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber-light);outline-offset:4px;}
+button,a{touch-action:manipulation;}
+.nav{background-color:var(--bone-surface);backdrop-filter:none;}
+.nav-toggle{width:44px;height:44px;}
+
+/* Signature: full-bleed Raw 01 + retained geological SVG strata. */
+.hero-bg::before,.hero-bg::after{content:"";position:absolute;inset:0;}
+.hero-bg::before{background-image:var(--img1);background-size:cover;background-position:center 48%;filter:grayscale(.68) saturate(.52) contrast(1.12) brightness(.68);transform:scale(1.012);}
+.hero-bg::after{background-image:linear-gradient(90deg,rgba(12,21,26,.96) 0%,rgba(19,32,39,.86) 46%,rgba(19,32,39,.42) 76%,rgba(12,21,26,.64) 100%);}
+.hero-bg svg{position:relative;z-index:2;opacity:.34;mix-blend-mode:screen;}
+.hero .tier-max{max-width:1220px;}
+.hero-sub{color:var(--paper);text-shadow:0 2px 14px rgba(0,0,0,.56);}
+.hero h1{text-shadow:0 2px 18px rgba(0,0,0,.42);}
+
+/*
+  Raw5 full-bleed field system.
+  One source per section, five materially different crops/treatments; all real copy,
+  metrics and diagrams remain selectable HTML/SVG above a contrast scrim.
+*/
+.raw5-bg{isolation:isolate;--raw-opacity:.58;--raw-pos:center;--raw-bright:.9;}
+.raw5-bg::before,.raw5-bg::after{content:"";position:absolute;inset:0;pointer-events:none;}
+.raw5-bg::before{z-index:0;background-image:var(--section-img);background-size:cover;background-position:var(--raw-pos);background-repeat:no-repeat;opacity:var(--raw-opacity);filter:grayscale(.58) saturate(.52) contrast(1.16) brightness(var(--raw-bright));transform:scale(1.018);}
+.raw5-bg::after{z-index:1;}
+.raw5-bg>.screen{position:relative;z-index:2;}
+.band--light.raw5-bg::after{background-image:linear-gradient(90deg,rgba(232,236,234,.95) 0%,rgba(232,236,234,.82) 45%,rgba(232,236,234,.54) 100%);}
+.band--dark.raw5-bg::after{background-image:linear-gradient(90deg,rgba(12,21,26,.94) 0%,rgba(19,32,39,.76) 46%,rgba(19,32,39,.57) 100%);}
+.band--deep.raw5-bg::after{background-image:linear-gradient(90deg,rgba(12,21,26,.88) 0%,rgba(12,21,26,.68) 48%,rgba(12,21,26,.46) 100%);}
+
+/* RAW 01 — landscape wash: quiet copy field left, exposed river material right. */
+.raw5-wash-right{--raw-opacity:.7;--raw-pos:center 58%;--raw-bright:1.02;}
+.raw5-wash-right::before{-webkit-mask-image:linear-gradient(90deg,transparent 2%,rgba(0,0,0,.18) 26%,#000 54%,#000 100%);mask-image:linear-gradient(90deg,transparent 2%,rgba(0,0,0,.18) 26%,#000 54%,#000 100%);}
+
+/* RAW 02 — full material tone: grains become the entire paradox field. */
+.raw5-tone-full{--raw-opacity:.58;--raw-pos:center;--raw-bright:.7;}
+.raw5-tone-full::before{mix-blend-mode:luminosity;filter:grayscale(.42) saturate(.48) contrast(1.24) brightness(.7);}
+.band--dark.raw5-tone-full::after{background-image:linear-gradient(90deg,rgba(12,21,26,.86) 0%,rgba(19,32,39,.65) 52%,rgba(12,21,26,.76) 100%);}
+
+/* RAW 03 — extraction blend: machinery enters the reading field from the edge. */
+.raw5-blend-right{--raw-opacity:.72;--raw-pos:72% center;--raw-bright:.88;}
+.raw5-blend-right::before{-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.28) 28%,#000 55%,#000 100%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.28) 28%,#000 55%,#000 100%);}
+.band--dark.raw5-blend-right::after{background-image:linear-gradient(90deg,rgba(12,21,26,.96) 0%,rgba(19,32,39,.79) 48%,rgba(12,21,26,.52) 100%);}
+
+/* RAW 03 — impact field: high-contrast extraction behind the human tally. */
+.raw5-impact{--raw-opacity:.62;--raw-pos:64% center;--raw-bright:.62;}
+.raw5-impact::before{mix-blend-mode:luminosity;filter:grayscale(.72) saturate(.42) contrast(1.3) brightness(.62);}
+.band--dark.raw5-impact::after{background-image:linear-gradient(110deg,rgba(12,21,26,.84) 0%,rgba(19,32,39,.62) 52%,rgba(12,21,26,.78) 100%);}
+
+/* RAW 04 — horizon field: the submerged island line runs through the full section. */
+.raw5-horizon{--raw-opacity:.68;--raw-pos:center 64%;--raw-bright:1;}
+.raw5-horizon::before{filter:grayscale(.62) saturate(.5) contrast(1.12) brightness(1);}
+.band--light.raw5-horizon::after{background-image:linear-gradient(90deg,rgba(232,236,234,.84) 0%,rgba(232,236,234,.67) 50%,rgba(232,236,234,.44) 100%);}
+
+/* RAW 05 — cut face: aggregate enters on a hard diagonal rather than a card wall. */
+.raw5-cut-right{--raw-opacity:.76;--raw-pos:72% center;--raw-bright:.94;}
+.raw5-cut-right::before{clip-path:polygon(35% 0,100% 0,100% 100%,12% 100%);filter:grayscale(.48) saturate(.58) contrast(1.18) brightness(.94);}
+.band--light.raw5-cut-right::after{background-image:linear-gradient(90deg,rgba(232,236,234,.96) 0%,rgba(232,236,234,.78) 46%,rgba(232,236,234,.47) 100%);}
+
+/* RAW 04 — closing cover: strongest supporting image after the hero. */
+.raw5-cover-close{--raw-opacity:.76;--raw-pos:center 58%;--raw-bright:.56;}
+.raw5-cover-close::before{filter:grayscale(.7) saturate(.42) contrast(1.25) brightness(.56);}
+.band--deep.raw5-cover-close::after{background-image:linear-gradient(105deg,rgba(12,21,26,.82) 0%,rgba(12,21,26,.58) 48%,rgba(12,21,26,.38) 100%);}
+
+/* Local reading planes keep the stronger section imagery from flattening evidence. */
+.raw5-bg .sec-head h2,.raw5-bg .sec-head .overline{position:relative;text-shadow:0 2px 18px rgba(0,0,0,.16);}
+.band--light.raw5-bg .sec-head h2{text-shadow:0 2px 20px rgba(246,248,246,.86);}
+.raw5-horizon .timeline{background-color:rgba(246,248,246,.88);border:1.5px solid var(--line-strong);padding:clamp(18px,2.5vw,32px);}
+.raw5-impact .tally{background-color:rgba(12,21,26,.56);border:1px solid var(--line-on-dark-2);}
+.raw5-impact .tally .cell{padding-inline:clamp(16px,2vw,28px);}
+.raw5-cover-close .close-lead,.raw5-cover-close .close-tail,.raw5-cover-close .close-q{text-shadow:0 3px 22px rgba(0,0,0,.7);}
+
+/* Raw image windows: crops stay material; explanatory text remains outside the bitmap. */
+.image-window{--card-img:var(--img1);position:relative;isolation:isolate;overflow:hidden;min-height:0;aspect-ratio:16/10;margin-bottom:0;border:1px solid var(--line-strong);border-radius:var(--r-sm);background-color:var(--char-surface);background-image:var(--card-img);background-size:cover;background-position:center;filter:grayscale(.62) saturate(.48) contrast(1.1) brightness(.9);transition:filter var(--m-expressive),background-size var(--m-expressive);}
+.band--dark .image-window{border-color:var(--line-on-dark-2);}
+.image-window::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(244,241,233,.14);pointer-events:none;}
+.image-window--tone,.image-window--selective{filter:grayscale(.62) saturate(.48) contrast(1.1) brightness(.9);}
+.image-window--arch,.image-window--slant{clip-path:none;border-radius:var(--r-sm);}
+.image-window--luma{-webkit-mask-image:none;mask-image:none;border-radius:var(--r-sm);}
+.raw5-diagram-stack{padding:clamp(16px,2vw,24px);container-type:inline-size;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(240px,.92fr);grid-template-areas:"photo chart" "rawcap caption";gap:var(--ach-gutter);align-items:start;}
+.raw5-diagram-stack .image-window{grid-area:photo;margin-bottom:0;}
+.raw5-diagram-stack .raw5-photo-caption{grid-area:rawcap;}
+.raw5-diagram-stack svg{grid-area:chart;position:relative;border-top:0;padding-top:0;}
+.raw5-diagram-stack figcaption{grid-area:caption;margin-top:0;}
+.band--dark .raw5-diagram-stack svg{border-top-color:var(--line-on-dark);}
+
+/* Street-editorial material windows, retokenized to the ACH border-first house. */
+.raw5-bento .b-item{--card-img:var(--img5);position:relative;isolation:isolate;overflow:hidden;min-height:250px;display:flex;flex-direction:column;justify-content:flex-end;background-color:var(--char-surface);color:var(--paper);border:1px solid var(--line-on-dark);}
+.raw5-bento .b-item::before{content:"";position:absolute;inset:-5px;z-index:-2;background-image:var(--card-img);background-size:cover;background-position:center;filter:brightness(.58) grayscale(.64) saturate(.52) contrast(1.14);transform:scale(1.025);transition:transform var(--m-evidence),filter var(--m-evidence);}
+.raw5-bento .b-item::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(180deg,rgba(12,21,26,.08) 0%,rgba(12,21,26,.38) 44%,rgba(12,21,26,.9) 100%);}
+.raw5-bento .b-item .k{color:var(--amber-on-dark);}
+.raw5-bento .b-item .name{color:var(--paper)!important;text-shadow:0 3px 18px rgba(0,0,0,.65);}
+.raw5-bento .b-item .desc{color:var(--paper)!important;text-shadow:0 2px 14px rgba(0,0,0,.68);}
+.raw5-bento .b-item:nth-child(3)::before{background-position:68% center;filter:brightness(.56) grayscale(.7) saturate(.46) contrast(1.16);}
+.raw5-bento .b-item:nth-child(4)::before{background-position:28% center;filter:brightness(.57) grayscale(.58) saturate(.5) contrast(1.16);}
+.raw5-bento .b-item:nth-of-type(1){grid-column:span 5;grid-row:span 2;min-height:524px;}
+.raw5-bento .b-item:nth-of-type(2),.raw5-bento .b-item:nth-of-type(3){grid-column:span 7;min-height:250px;}
+
+/* Real data stays legible above imagery. */
+.raw5-diagram-stack svg,.raw5-bento .b-item>*{position:relative;z-index:2;}
+.raw5-photo-caption{display:flex;justify-content:space-between;gap:var(--sp4);align-items:baseline;color:var(--ink-3);}
+.band--dark .raw5-photo-caption{color:var(--paper-3);}
+.raw5-photo-caption .raw-role{font-family:var(--ach-font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-ink);white-space:nowrap;}
+.band--dark .raw5-photo-caption .raw-role{color:var(--amber-on-dark);}
+
+/* Honest responsive feedback: reading emphasis only, never a fake control. */
+@media(hover:hover) and (pointer:fine){
+  .figure:hover .image-window{filter:grayscale(.38) saturate(.62) contrast(1.12) brightness(.98);}
+  .stat:hover,.tally .cell:hover,.timeline .tl-row:hover{background-color:color-mix(in srgb,var(--amber) 7%,transparent);}
+  .raw5-bento .b-item:hover::before{transform:scale(1.065);filter:brightness(.65) grayscale(.46) saturate(.64) contrast(1.12);}
+}
+
+@media(max-width:900px){
+  :root{--module-gap:var(--sp6);--section-pad:clamp(56px,8vw,72px);}
+  .hero-bg::before{background-position:62% center;}
+  .sec-head.tier-max{grid-column:1/-1;max-width:100%;}
+  .definition-copy,.definition-card,.close-intro,.close-outro{grid-column:1/-1!important;grid-row:auto;}
+  .close-outro{text-align:left;justify-self:start;}
+  .close-tail{margin-left:0;}
+  .raw5-bento .b-item:nth-of-type(1){grid-column:1/-1;grid-row:auto;min-height:320px;}
+  .raw5-bento .b-item:nth-of-type(2),.raw5-bento .b-item:nth-of-type(3){grid-column:span 6;min-height:320px;}
+  .foot .ledger{grid-template-columns:1fr;}
+}
+@container(max-width:760px){
+  .raw5-diagram-stack{grid-template-columns:1fr;grid-template-areas:"photo" "rawcap" "chart" "caption";}
+}
+@media(max-width:640px){
+  .hero-bg::after{background-image:linear-gradient(180deg,rgba(12,21,26,.54) 0%,rgba(12,21,26,.92) 70%,rgba(12,21,26,.98) 100%);}
+  .hero{min-height:80svh;justify-content:flex-end;padding:96px 0 112px;}
+  .hero-bg::before{background-position:64% center;}
+  :root{--module-gap:var(--sp5);--section-pad:var(--sp9);}
+  .screen--lead{padding-bottom:var(--module-gap);}
+  .screen--continuation{padding-top:0;}
+  .raw5-bg{--raw-opacity:.5;}
+  .raw5-bg::before{-webkit-mask-image:none;mask-image:none;clip-path:none;transform:scale(1.025);}
+  .band--light.raw5-bg::after{background-image:linear-gradient(180deg,rgba(232,236,234,.72) 0%,rgba(232,236,234,.9) 42%,rgba(232,236,234,.78) 100%);}
+  .band--dark.raw5-bg::after,.band--deep.raw5-bg::after{background-image:linear-gradient(180deg,rgba(12,21,26,.66) 0%,rgba(12,21,26,.9) 44%,rgba(12,21,26,.78) 100%);}
+  .raw5-horizon .timeline{padding:18px;}
+  .raw5-impact .tally .cell{padding:18px 16px;}
+  .t-display-xl{font-size:clamp(38px,11vw,52px);}
+  .bento{grid-template-columns:1fr;grid-auto-rows:auto;}
+  .raw5-bento .b-item:nth-of-type(1),.raw5-bento .b-item:nth-of-type(2),.raw5-bento .b-item:nth-of-type(3){grid-column:1;min-height:260px;}
+  .stat-strip,.tally{grid-template-columns:1fr;}
+  .stat+.stat,.tally .cell+.cell{border-left:0;border-top:1px solid var(--line-strong);}
+  .band--dark .stat+.stat,.tally .cell+.cell{border-top-color:var(--line-on-dark-2);}
+  .tally .cell{border-top-width:3px;}
+  .raw5-photo-caption{align-items:flex-start;flex-direction:column;gap:var(--sp2);}
+  .reading-progress{height:4px;}
+}
+@media print{
+  .nav,.reading-progress,.hero-scroll,.skip-link{display:none!important;}
+  .band,.screen{min-height:0!important;break-inside:avoid;}
+  .rise{opacity:1!important;transform:none!important;}
+}
+</style>
+
+<script>
+/* reveal 게이트: JS+IO 있고 reduced-motion 아닐 때만 초기 은닉 활성화 (없으면 콘텐츠 기본 노출) */
+(function(){try{if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.classList.add('reveal-ready');}}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">본문으로 바로가기</a>
+<div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav" data-component="StickyNav" aria-label="글 목차">
+  <div class="nav-in">
+    <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>SAND / 굳은 시간</a>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navLinks">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#ground">규모</a>
+      <a href="#paradox">역설</a>
+      <a href="#delta">하류</a>
+      <a href="#lives">사람</a>
+      <a href="#island">국경</a>
+      <a href="#cause">원인</a>
+      <a href="#answer">대안</a>
+      <a href="#close">닫으며</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content" tabindex="-1">
+
+<!-- ==================== S1 · HERO (DARK) — signature ==================== -->
+<header id="top" class="band band--dark hero" data-component="ThesisHeader-v2" data-plane="Thesis">
+  <div class="hero-bg" aria-hidden="true">
+    <!-- GRAPHIC 1: sand strata / dune 지층 텍스처 (static) -->
+    <svg width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="strata" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" style="stop-color:var(--char)"/>
+          <stop offset="1" style="stop-color:var(--char-deep)"/>
+        </linearGradient>
+      </defs>
+      <rect width="1600" height="900" fill="url(#strata)"/>
+      <g fill="none" style="stroke:var(--line-on-dark)" stroke-width="1" opacity="0.55">
+        <path d="M0,560 C 300,520 700,600 1600,540"/>
+        <path d="M0,620 C 380,588 760,662 1600,606"/>
+        <path d="M0,684 C 300,650 820,724 1600,672"/>
+        <path d="M0,752 C 420,720 900,792 1600,742"/>
+        <path d="M0,824 C 360,796 860,860 1600,818"/>
+      </g>
+      <g fill="none" style="stroke:var(--amber)" stroke-width="1.4" opacity="0.5">
+        <path d="M0,620 C 380,588 760,662 1600,606"/>
+      </g>
+      <g style="fill:var(--amber)" opacity="0.28">
+        <circle cx="1290" cy="250" r="2.4"/><circle cx="1360" cy="300" r="1.6"/><circle cx="1230" cy="330" r="1.8"/>
+        <circle cx="1420" cy="230" r="1.4"/><circle cx="1330" cy="380" r="2"/><circle cx="1180" cy="270" r="1.5"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="tier-max">
+      <p class="overline hero-lead rise">자원 위기 · UNEP 2022</p>
+      <h1 class="t-display-xl rise">모래는 무한하지 않다.<br><span class="amber">사막이 그것을 증명한다.</span></h1>
+      <p class="t-body-lg hero-sub rise">물 다음으로 많이 쓰는 자원인데, 우리에겐 부족하다는 감각조차 없다. 사막을 떠올리기 때문이다. 그 사막이, 바로 반증이 아니라 증거다.</p>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="overline">스크롤 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="4" x2="12" y2="20"/><polyline points="6 14 12 20 18 14"/></svg></span>
+  </div>
+</header>
+
+<!-- ==================== S2 · GROUND (LIGHT) — 접지 스트립 ==================== -->
+<section id="ground" class="band band--light raw5-bg raw5-wash-right raw-img1" data-plane="Summary" data-raw5="wash-context-01">
+  <div class="screen">
+    <div class="wrap">
+      <div class="sec-head tier-max">
+        <span class="overline rise">규모 · 얼마나 퍼내는가</span>
+        <h2 class="t-h1 rise">물이 부족하다는 말엔 캠페인도, 물값도, 가뭄 뉴스도 있다.</h2>
+      </div>
+
+      <div class="stat-strip rise" data-component="StatStrip">
+        <div class="stat">
+          <div class="num count" data-to="500">0<small>억 톤 / 해</small></div>
+          <p class="t-body lbl">인류가 해마다 퍼내는 모래와 자갈의 양</p>
+          <p class="t-mono src">UNEP · 2022</p>
+        </div>
+        <div class="stat">
+          <div class="num"><span class="anchor">27 × 27</span><small> m 벽</small></div>
+          <p class="t-body lbl">그 모래로 지구를 한 바퀴 두를 수 있는 벽의 높이와 너비</p>
+          <p class="t-mono src">UNEP · 2022</p>
+        </div>
+        <div class="stat">
+          <div class="num count" data-to="2">0<small>번째 자원</small></div>
+          <p class="t-body lbl">물 다음으로, 지구에서 가장 많이 쓰이는 자원</p>
+          <p class="t-mono src">UNEP · 2022</p>
+        </div>
+      </div>
+
+      <div class="col-7 rise" style="margin-top:var(--sp8);align-self:center;">
+        <p class="t-body prose">그런데 물 바로 다음 자리를 차지한 이 자원에 대해서는, 부족하다는 감각 자체가 없다. 사하라가 있고 고비가 있는데 모래가 모자랄 리가. <strong>이 통계 앞에서 가장 오래 멈추게 되는 지점이 바로 거기다.</strong></p>
+      </div>
+      <div class="col-5 rise" style="margin-top:var(--sp8);">
+        <!-- RelicFrame 외부 인용 (UNEP) -->
+        <figure class="relic" data-component="RelicFrame" data-plane="Evidence">
+          <span class="tag">UNEP</span>
+          <p class="t-h3 q-en">"After water, sand is the most used resource globally."</p>
+          <p class="t-body q-ko">물 다음으로, 모래는 지구에서 가장 많이 쓰이는 자원이다.</p>
+          <p class="t-mono cite">UN News · 2022-04-26 · 『Sand and Sustainability』 요약</p>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== S3 · PARADOX (DARK) — grain compare + Verdict#1 + StampPlate ==================== -->
+<section id="paradox" class="band band--dark raw5-bg raw5-tone-full raw-img2" data-plane="Core" data-raw5="tone-material-02">
+  <!-- screen 3a: 각진 vs 둥근 -->
+  <div class="screen screen--tall screen--lead">
+    <div class="wrap">
+      <div class="sec-head tier-max">
+        <span class="overline rise">역설 01 · 같은 이름, 다른 물질</span>
+        <h2 class="t-h1 rise">사막에 모래가 넘치는데, 왜 모자란가</h2>
+      </div>
+
+      <div class="col-7 rise">
+        <figure class="figure raw5-diagram-stack" data-component="GrainDiagram">
+          <div class="image-window image-window--tone img2" role="img" aria-label="바람에 닳아 둥근 모래와 각진 골재의 물성 대비"></div>
+          <div class="raw5-photo-caption t-caption"><span>둥근 입자는 흐르고, 각진 입자는 맞물린다.</span><span class="raw-role">RAW 02 · MATERIAL</span></div>
+          <!-- GRAPHIC 2: 각진(interlock) vs 둥근(못 붙잡음) 알갱이 -->
+          <svg viewBox="0 0 640 320" role="img" aria-label="각진 강모래와 둥근 사막 모래의 맞물림 비교">
+            <g>
+              <text x="20" y="34" class="svg-mono" style="fill:var(--amber-on-dark)" font-size="13" letter-spacing="1.5">건설용 강모래 — INTERLOCK</text>
+              <!-- 각진 다각형들이 맞물림 -->
+              <g fill="none" style="stroke:var(--paper)" stroke-width="2" stroke-linejoin="round">
+                <polygon points="55,120 95,100 120,135 90,165 52,158"/>
+                <polygon points="120,135 158,108 190,140 165,178 90,165"/>
+                <polygon points="190,140 224,116 258,150 232,186 165,178"/>
+                <polygon points="55,158 90,165 88,205 50,210"/>
+                <polygon points="90,165 165,178 150,220 88,205"/>
+                <polygon points="165,178 232,186 224,228 150,220"/>
+              </g>
+              <text x="20" y="270" class="svg-sans" style="fill:var(--paper-2)" font-size="15">각진 알갱이가 서로 맞물려</text>
+              <text x="20" y="292" class="svg-sans" style="fill:var(--paper-2)" font-size="15">하중을 버틴다.</text>
+            </g>
+            <line x1="320" y1="60" x2="320" y2="300" style="stroke:var(--line-on-dark-2)" stroke-width="1"/>
+            <g>
+              <text x="360" y="34" class="svg-mono" style="fill:var(--paper-3)" font-size="13" letter-spacing="1.5">사막 모래 — NO GRIP</text>
+              <!-- 둥근 원들, 틈이 벌어짐 -->
+              <g fill="none" style="stroke:var(--paper-3)" stroke-width="2">
+                <circle cx="405" cy="130" r="26"/><circle cx="462" cy="120" r="22"/><circle cx="515" cy="132" r="27"/><circle cx="572" cy="122" r="20"/>
+                <circle cx="420" cy="188" r="24"/><circle cx="478" cy="182" r="26"/><circle cx="538" cy="190" r="23"/><circle cx="590" cy="184" r="19"/>
+              </g>
+              <text x="360" y="270" class="svg-sans" style="fill:var(--paper-2)" font-size="15">너무 곱고 둥글어</text>
+              <text x="360" y="292" class="svg-sans" style="fill:var(--paper-2)" font-size="15">서로 붙잡지 못한다.</text>
+            </g>
+          </svg>
+          <figcaption class="t-caption">수만 년 바람에 굴러 표면이 매끄럽게 닳은 사막 모래는, 시멘트 반죽 속에서 맞물리지 못한다.</figcaption>
+        </figure>
+      </div>
+
+      <div class="col-5 rise" style="align-self:center;">
+        <div class="prose">
+          <p class="t-body">건설용 골재는 입자가 <strong>각져 있어야</strong> 한다. 각진 알갱이들이 시멘트 반죽 속에서 서로 맞물려(<span class="anchor">interlock</span>) 하중을 버틴다.</p>
+          <p class="t-body">사막 모래로 반죽한 콘크리트는 압축강도가 나오지 않아 구조물에 쓸 수 없다. 그래서 사막 한복판에 선 도시들조차, 초고층에 쓸 모래를 바깥에서 실어 온다.</p>
+          <p class="t-body">쓸 수 있는 모래는 강과 호수와 해안에 있다. 물살이 바위를 깨고 굴리고 실어 나르며 각이 살아 있는 알갱이를 만든다. 지금 이 순간에도 진행 중이지만 — 아주, 아주 느리다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- screen 3b: Verdict#1 + StampPlate 굳은 시간 -->
+  <div class="screen screen--continuation">
+    <div class="wrap">
+      <!-- VerdictPlate #1 (not_A_but_B) — 원문 무교정 선고 -->
+      <div class="verdict definition-copy rise" data-component="SplitDefinitionCopy" data-plane="Core">
+        <p class="t-h2 a">문제는 모래가 부족한 것이 아니다.</p>
+        <p class="t-display b">우리가 쓸 수 있는 모래를 만드는 데 걸린 시간을 <span class="amber">공짜로 계산하는 것</span>이 문제다.</p>
+        <p class="t-body support">강이 수천 년에 걸쳐 각을 세워 빚은 알갱이를, 우리는 준설선 한 대로 하루 만에 퍼낸다. 채굴 장부에는 그 시간의 값이 <span class="anchor">0</span>으로 적힌다.</p>
+      </div>
+
+      <!-- StampPlate (definition_stamp) — 원문 [!important] 무교정 -->
+      <div class="definition-card rise" data-component="ResponsiveDefinitionCard">
+        <div class="stamp" data-component="StampPlate" data-plane="Core">
+          <span class="seal">정의</span>
+          <p class="t-h1 term">굳은 시간 <span style="color:var(--ink-3);font-weight:400;font-size:0.5em;">/ hardened time</span></p>
+          <p class="t-body-lg def">강과 해안이 수천 년의 풍화와 운반으로 빚어낸, 인간의 시간 척도에서는 다시 채워지지 않는 골재. 우리는 이것을 광물이 아니라 <u>시간으로 계상</u>해야 한다.</p>
+          <p class="t-caption ctx">각진 강모래를 '굳은 시간'이라 부르려는 이유가 여기 있다 — 채굴 장부의 원가 0은, 사실 수천 년을 0으로 적은 것이다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== S4 · DELTA (LIGHT) — 메콩 riverbed ==================== -->
+<section id="delta" class="band band--light raw5-bg raw5-blend-right raw-img3" data-plane="Evidence" data-raw5="blend-extraction-03">
+  <div class="screen">
+    <div class="wrap">
+      <div class="sec-head tier-max">
+        <span class="overline rise">대가 01 · 하류</span>
+        <h2 class="t-h1 rise">시간을 원가 0으로 퍼내면, 하류에서 값이 청구된다</h2>
+      </div>
+
+      <div class="col-7 rise">
+        <figure class="figure raw5-diagram-stack" data-component="RiverbedDiagram">
+          <div class="image-window image-window--slant image-window--selective img3" role="img" aria-label="낮아진 강바닥에서 모래를 퍼내는 준설선과 굴착기"></div>
+          <div class="raw5-photo-caption t-caption"><span>지질학의 시계를 산업의 시계가 앞지른 장면.</span><span class="raw-role">RAW 03 · EXTRACTION</span></div>
+          <!-- GRAPHIC 3: 하상 저하 → 조석 내륙 침입 단면도 -->
+          <svg viewBox="0 0 640 300" role="img" aria-label="준설로 하상이 낮아지고 바닷물이 내륙으로 침입하는 단면">
+            <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" style="fill:var(--sienna)"/></marker></defs>
+            <!-- 지반 -->
+            <rect x="0" y="210" width="640" height="90" style="fill:var(--bone-subtle)"/>
+            <!-- 파낸 하상 (준설 구덩이) -->
+            <path d="M0,210 L 200,210 C 260,210 270,258 340,258 C 410,258 420,210 470,210 L 640,210 L 640,300 L 0,300 Z" style="fill:var(--amber-tint);stroke:var(--line-strong)" stroke-width="1.5"/>
+            <!-- 강물 -->
+            <path d="M0,196 L 200,196 C 260,196 270,244 340,244 C 410,244 420,196 470,196 L 640,196 L 640,210 L 0,210 Z" style="fill:var(--amber)" opacity="0.5"/>
+            <!-- 바다(우측) 조석 침입 화살표 -->
+            <g style="stroke:var(--sienna)" stroke-width="2" fill="none">
+              <line x1="600" y1="170" x2="360" y2="200" marker-end="url(#arr)"/>
+            </g>
+            <!-- 준설선 -->
+            <g>
+              <rect x="300" y="176" width="80" height="20" style="fill:var(--line-strong)"/>
+              <line x1="340" y1="196" x2="340" y2="252" style="stroke:var(--line-strong)" stroke-width="2"/>
+              <text x="230" y="150" class="svg-mono" style="fill:var(--ink-3)" font-size="12">준설선 · DREDGER</text>
+            </g>
+            <text x="470" y="150" class="svg-mono" style="fill:var(--sienna)" font-size="12">조석 침입 →</text>
+            <text x="20" y="288" class="svg-sans" style="fill:var(--ink-2)" font-size="13">하상↓ → 기준수위↓ → 바닷물이 논·상수원까지</text>
+          </svg>
+          <figcaption class="t-caption">강바닥을 퍼내면 하상이 낮아지고, 바다의 조석이 그만큼 내륙으로 밀고 들어온다.</figcaption>
+        </figure>
+      </div>
+
+      <div class="col-5 rise" style="align-self:center;">
+        <div class="prose">
+          <p class="t-body">강바닥에서 모래를 퍼내면 하상이 낮아진다. 강의 기준수위가 내려가고, 바다의 조석이 그만큼 내륙으로 밀고 들어온다. 바닷물이 논과 상수원까지 거슬러 오른다.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--ach-gutter);margin-top:var(--sp5);">
+          <div class="stat" style="border-top-color:var(--sienna);">
+            <div class="num" style="color:var(--sienna);">50<small>%</small></div>
+            <p class="t-caption lbl">2050년까지 염수화 위험에 놓이는 메콩 삼각주</p>
+          </div>
+          <div class="stat" style="border-top-color:var(--sienna);">
+            <div class="num" style="color:var(--sienna);">6~7<small>배</small></div>
+            <p class="t-caption lbl">21세기 전반, 인공 하상 침식이 기후변화·해수면보다 염수 침입에 준 영향</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-7 rise" style="margin-top:var(--sp7);">
+        <figure class="relic" data-component="RelicFrame" data-plane="Evidence">
+          <span class="tag">EARTH & ENV · 2021</span>
+          <p class="t-h3 q-en" style="font-style:italic;">"인간이 만든 과정, 특히 퇴적물 고갈과 수문 체계 교란이 21세기 전반부에는 기후변화를 앞지르는 것으로 보인다."</p>
+          <p class="t-mono cite">Sepehr Eslami, Deltares · 『Communications Earth and Environment』(2021)</p>
+        </figure>
+      </div>
+      <div class="col-5 rise" style="margin-top:var(--sp7);align-self:center;">
+        <p class="t-body prose">삼각주가 잠기는 장면에서 우리는 기후변화부터 떠올린다. 그런데 적어도 메콩에서는, <strong>당장의 가해자가 바다가 아니라 준설선이다.</strong> 값을 치르는 쪽은 모래를 퍼낸 사람이 아니라, 하류에서 그 물을 마시고 농사짓는 사람이다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== S5 · LIVES (DARK) — India deaths, sienna, motion 0 ==================== -->
+<section id="lives" class="band band--dark raw5-bg raw5-impact raw-img3" data-plane="Evidence" data-raw5="impact-extraction-03">
+  <div class="screen">
+    <div class="wrap">
+      <div class="sec-head tier-max">
+        <span class="overline rise" style="color:var(--sienna-on-dark);">대가 02 · 사람</span>
+        <h2 class="t-h1 rise">그 대가에는 사람 목숨도 들어 있다</h2>
+      </div>
+
+      <div class="tally rise" data-component="Tally">
+        <div class="cell">
+          <div class="num">418</div>
+          <p class="t-body lbl">명이 목숨을 잃었다. 인도, <span class="anchor">16개월</span>(2020.12~2022.3), 모래 채굴 관련</p>
+        </div>
+        <div class="cell">
+          <div class="num">434</div>
+          <p class="t-body lbl">명이 다쳤다. 실은 트럭에, 무너진 채굴 구덩이에, 고인 물웅덩이에</p>
+        </div>
+        <div class="cell">
+          <div class="num">43<span style="font-size:0.42em;"> / 48</span></div>
+          <p class="t-body lbl">익사자 48명 가운데 어린이가 <span class="anchor">43명</span>이었다</p>
+        </div>
+      </div>
+
+      <div class="col-7 rise" style="margin-top:var(--sp8);">
+        <figure class="relic" data-component="RelicFrame" data-plane="Evidence">
+          <span class="tag" style="background:var(--sienna-on-dark);">SANDRP · 2022-04-24</span>
+          <p class="t-body q-en">"418 people lost their lives and 434 people were injured in India during December 2020 to March 2022, in cases related to sand mining."</p>
+          <p class="t-mono cite">남아시아 댐·강·사람 네트워크(SANDRP)</p>
+        </figure>
+      </div>
+      <div class="col-5 rise" style="margin-top:var(--sp8);">
+        <div class="led" data-component="LedgerRow">
+          <div class="led-row">
+            <span class="date">단서</span>
+            <p class="t-body body">SANDRP는 이 숫자가 <strong>언론 보도만 취합</strong>한 것이라, 실제 사망자는 더 많을 수 있다고 스스로 밝혔다.</p>
+          </div>
+          <div class="led-row">
+            <span class="date">2018</span>
+            <p class="t-body body">마디아프라데시주에서 모래 채굴을 취재하던 기자 <strong>산디프 샤르마</strong>가 트럭에 치여 숨졌다.<span class="dtag">표적</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-claim rise" data-component="LedgerVerdict">
+        <p class="t-h2" style="color:var(--paper);">한 줌에 원가 <span class="anchor" style="color:var(--sienna-on-dark);">0</span>으로 적힌 모래가, 다른 장부에서는 <span style="color:var(--sienna-on-dark);">사람 목숨</span>으로 결제되고 있었다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== S6 · ISLAND (LIGHT) — Nipah timeline ==================== -->
+<section id="island" class="band band--light raw5-bg raw5-horizon raw-img4" data-plane="Evidence" data-raw5="horizon-consequence-04">
+  <div class="screen">
+    <div class="wrap">
+      <div class="sec-head tier-max">
+        <span class="overline rise">대가 03 · 국경</span>
+        <h2 class="t-h1 rise">섬 하나가 통째로 사라졌다</h2>
+      </div>
+
+      <div class="col-4 rise island-media">
+        <figure class="figure raw5-diagram-stack" data-component="IslandDiagram">
+          <div class="image-window image-window--arch image-window--luma img4" role="img" aria-label="염수와 물에 잠식되는 삼각주 농경지와 모래섬"></div>
+          <div class="raw5-photo-caption t-caption"><span>땅이 사라지면 국경선도 같이 흔들린다.</span><span class="raw-role">RAW 04 · CONSEQUENCE</span></div>
+          <!-- GRAPHIC 4: 니파섬 수몰 -->
+          <svg viewBox="0 0 320 300" role="img" aria-label="니파 섬이 수위 상승으로 완전히 물에 잠기는 그림">
+            <!-- 하늘 -->
+            <rect x="0" y="0" width="320" height="300" style="fill:var(--bone-surface)"/>
+            <!-- 섬 (점선 실루엣 = 사라진) -->
+            <path d="M70,210 C 90,150 140,140 160,138 C 190,136 230,160 250,210 Z" fill="none" style="stroke:var(--line-strong)" stroke-width="1.5" stroke-dasharray="5 5"/>
+            <!-- 수면 (섬 정상 위) -->
+            <rect x="0" y="150" width="320" height="150" style="fill:var(--amber)" opacity="0.22"/>
+            <line x1="0" y1="150" x2="320" y2="150" style="stroke:var(--amber-deep)" stroke-width="2"/>
+            <!-- 파도 -->
+            <g style="stroke:var(--amber-deep)" stroke-width="1" fill="none" opacity="0.5">
+              <path d="M0,168 q 20,-8 40,0 t 40,0 t 40,0 t 40,0 t 40,0 t 40,0 t 40,0 t 40,0"/>
+              <path d="M0,190 q 20,-8 40,0 t 40,0 t 40,0 t 40,0 t 40,0 t 40,0 t 40,0 t 40,0"/>
+            </g>
+            <text x="24" y="40" class="svg-mono" style="fill:var(--ink-3)" font-size="12">NIPAH ISLAND</text>
+            <text x="24" y="60" class="svg-mono" style="fill:var(--amber-deep)" font-size="13" font-weight="700">2003 — 완전 수몰</text>
+          </svg>
+          <figcaption class="t-caption">싱가포르와 인도네시아 사이 국경에 있던 니파 섬은 2003년 완전히 물에 잠겼다.</figcaption>
+        </figure>
+      </div>
+
+      <div class="col-8 rise island-copy">
+        <div class="timeline" data-component="Timeline" style="grid-column:1/-1;">
+          <div class="tl-row">
+            <span class="when soft">배경</span>
+            <p class="t-body-lg what">싱가포르는 국토를 넓히려 바다를 메웠고, 그 모래의 대부분을 인도네시아에서 사 왔다.</p>
+          </div>
+          <div class="tl-row">
+            <span class="when soft">채굴</span>
+            <p class="t-body-lg what">무분별한 채굴로 인도네시아 리아우 주의 모래섬들이 깎여 나갔다.</p>
+          </div>
+          <div class="tl-row">
+            <span class="when">2003</span>
+            <p class="t-body-lg what pivot"><strong>국경의 니파(Nipah) 섬이 완전히 물에 잠겼다.</strong> 섬 하나가 사라지자 두 나라의 해상 경계선 문제로 번졌다.</p>
+          </div>
+          <div class="tl-row">
+            <span class="when">2007-02-06</span>
+            <p class="t-body-lg what">인도네시아가 <strong>육상 모래 수출을 금지</strong>했다. 당시 싱가포르는 해마다 <span class="anchor">600~800만 톤</span>을 수입했고, 그 <span class="anchor">90%</span> 이상이 인도네시아산이었다.</p>
+          </div>
+        </div>
+        <p class="t-h2 rise island-conclusion" style="color:var(--ink);">지도에서 섬 하나가 지워질 때까지, 그 모래에는 <span style="box-shadow:inset 0 -0.4em 0 var(--amber-light);">아무도 값을 붙이지 않았다.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== S7 · CAUSE (DARK) — demand bar + supply gap ==================== -->
+<section id="cause" class="band band--dark raw5-bg raw5-blend-right raw-img3" data-plane="Core" data-raw5="blend-demand-03">
+  <div class="screen">
+    <div class="wrap">
+      <div class="sec-head tier-max">
+        <span class="overline rise">원인 · 수요와 공급</span>
+        <h2 class="t-h1 rise">왜 이 지경까지 왔나</h2>
+      </div>
+
+      <div class="col-7 rise">
+        <figure class="figure raw5-diagram-stack" data-component="CementBar">
+          <div class="image-window image-window--luma img3" role="img" aria-label="모래를 채취하는 준설선과 커지는 강변 채굴 흔적"></div>
+          <div class="raw5-photo-caption t-caption"><span>수요의 속도는 강이 입자를 다시 빚는 속도를 기다리지 않는다.</span><span class="raw-role">RAW 03 · DEMAND</span></div>
+          <!-- GRAPHIC 5: 중국 3년 vs 미국 100년 시멘트 막대 -->
+          <svg viewBox="0 0 640 360" role="img" aria-label="중국이 3년간 쓴 시멘트가 미국이 100년간 쓴 양을 넘어선 막대 비교">
+            <line x1="60" y1="300" x2="620" y2="300" style="stroke:var(--line-on-dark-2)" stroke-width="1"/>
+            <!-- 중국 66억 (3년) -->
+            <rect x="110" y="60" width="150" height="240" style="fill:var(--amber)"/>
+            <text x="185" y="46" text-anchor="middle" class="svg-mono" style="fill:var(--amber-on-dark)" font-size="22" font-weight="700">66억 톤</text>
+            <text x="185" y="326" text-anchor="middle" class="svg-sans" style="fill:var(--paper-2)" font-size="15">중국 · 2011–2013</text>
+            <text x="185" y="346" text-anchor="middle" class="svg-mono" style="fill:var(--paper-3)" font-size="12">단 3년</text>
+            <!-- 미국 45억 (100년) -->
+            <rect x="380" y="136" width="150" height="164" fill="none" style="stroke:var(--paper-3)" stroke-width="2" stroke-dasharray="4 4"/>
+            <text x="455" y="122" text-anchor="middle" class="svg-mono" style="fill:var(--paper-2)" font-size="22" font-weight="700">45억 톤</text>
+            <text x="455" y="326" text-anchor="middle" class="svg-sans" style="fill:var(--paper-2)" font-size="15">미국 · 1901–2000</text>
+            <text x="455" y="346" text-anchor="middle" class="svg-mono" style="fill:var(--paper-3)" font-size="12">100년</text>
+          </svg>
+          <figcaption class="t-caption">시멘트는 콘크리트가 되며 몇 배의 모래를 빨아들인다 — 시멘트 통계는 그대로 모래 수요의 대리지표다. (USGS · Bill Gates 인용)</figcaption>
+        </figure>
+      </div>
+
+      <div class="col-5 rise" style="align-self:center;">
+        <p class="t-display" style="color:var(--paper);">3년이 <span style="color:var(--amber-on-dark);">100년</span>을 이겼다.</p>
+        <div class="prose" style="margin-top:var(--sp5);">
+          <p class="t-body">게이츠는 이 숫자를 중국의 성장 속도가 얼마나 경이로운지 보여주는 사례로 인용했다. <strong>같은 숫자를 반대로 읽는다.</strong></p>
+          <p class="t-body">그 속도는 경이가 아니라, 강이 모래를 만드는 속도와 우리가 퍼내는 속도 사이의 격차가 그만큼 벌어졌다는 청구서다.</p>
+        </div>
+      </div>
+
+      <div class="col-7 rise" style="margin-top:var(--sp8);align-self:center;">
+        <p class="t-body prose">공급 쪽에는 그 격차를 붙잡을 장치가 없다. 모래에는 <strong>국제적 규제도, 표준도, 제대로 된 채굴량 모니터링 데이터조차 없다.</strong> 22명의 저자가 참여한 2022년 UNEP 보고서는 모래를 '전략 자원'으로 취급하자며 10가지를 권고한다. 그 첫 번째 권고가 가장 무겁게 읽힌다.</p>
+        <p class="t-body prose" style="margin-top:var(--sp4);">석유나 희토류에는 '전략'이라는 단어가 자연스럽게 붙는다. 모래에는 안 붙는다. 발밑에 흔하기 때문이다. <strong>흔해 보이는 것에는 값을 매기지 않고, 값을 매기지 않는 것은 지켜지지 않는다.</strong></p>
+      </div>
+      <div class="col-5 rise" style="margin-top:var(--sp8);">
+        <figure class="relic" data-component="RelicFrame" data-plane="Evidence">
+          <span class="tag">PASCAL PEDUZZI · UNEP</span>
+          <p class="t-h3 q-en" style="font-style:italic;">"우리의 모래 자원은 무한하지 않으며, 우리는 그것을 현명하게 써야 한다. … 모래는 전략 자원으로 인식되어야 하고, 그 채굴과 사용 방식은 재검토되어야 한다."</p>
+          <p class="t-mono cite">파스칼 페두치 · UNEP GRID-Geneva 디렉터</p>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== S8 · ANSWER (LIGHT) — alternatives bento + Verdict#2 ==================== -->
+<section id="answer" class="band band--light raw5-bg raw5-cut-right raw-img5" data-plane="Core" data-raw5="cut-material-05">
+  <div class="screen">
+    <div class="wrap">
+      <div class="sec-head tier-max">
+        <span class="overline rise">대안 · 시간을 다시 값으로</span>
+        <h2 class="t-h1 rise">그래서 무엇을 하자는 것인가</h2>
+      </div>
+
+      <div class="bento raw5-bento rise" data-component="Bento" data-raw5="material-image-grid">
+        <div class="b-lead">
+          <p class="t-body-lg" style="color:var(--ink-2);max-width:64ch;">천연 강모래를 대신할 길은 있다. 전부, <strong style="color:var(--ink);">강이 수천 년 걸려 세울 각을 사람이 기계로 대신 세우는 일</strong>이다 — 공짜였던 공정에 비로소 청구서가 붙는다.</p>
+        </div>
+        <article class="b-item card img5">
+          <p class="k">M-SAND</p>
+          <p class="t-h3 name" style="color:var(--ink);">제조 모래</p>
+          <p class="t-caption desc" style="color:var(--ink-2);">바위를 부숴 각을 낸 골재.</p>
+        </article>
+        <article class="b-item card img2">
+          <p class="k">C&amp;D</p>
+          <p class="t-h3 name" style="color:var(--ink);">재활용 골재</p>
+          <p class="t-caption desc" style="color:var(--ink-2);">건물을 부순 자리의 폐기물을 되쓴다. <span class="anchor">무게 50%</span>까지 섞어도 성능 기준 충족.</p>
+        </article>
+        <article class="b-item card img5">
+          <p class="k">ORE-SAND</p>
+          <p class="t-h3 name" style="color:var(--ink);">광미 모래</p>
+          <p class="t-caption desc" style="color:var(--ink-2);">광산 찌꺼기에서 뽑아낸다. 해변 모래 채굴은 아예 금지 권고.</p>
+        </article>
+      </div>
+
+      <!-- VerdictPlate #2 (not_A_but_B) — 원문 무교정 선고 -->
+      <div class="verdict tier-max rise" data-component="VerdictPlate" data-plane="Core" style="margin-top:var(--sp8);">
+        <p class="t-h2 a">대안의 본질은 새 모래 산지를 찾는 것이 아니다.</p>
+        <p class="t-display b">모래를 <span class="amber">공짜로 여기던 회계</span>를 폐기하는 것이다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== S9 · CLOSE (DARK) — CutEnding B 되묻기, breakout, motion 0 ==================== -->
+<section id="close" class="band band--deep raw5-bg raw5-cover-close raw-img4" data-plane="페이지 말단" data-component="CutEnding-B" data-treatment="raw5-cover-close">
+  <div class="screen">
+    <div class="wrap">
+      <div class="close-intro" data-component="EditorialSplitLead">
+        <span class="overline" style="color:var(--amber-on-dark);">닫으며</span>
+        <p class="t-body-lg close-lead" style="margin-top:var(--sp5);">물이 부족하다는 것은 우리 모두가 배웠다. 수도꼭지를 잠그는 습관까지 몸에 익혔다. 모래에 대해서는 아직 그 첫 문장조차 배우지 못했다 — 물 다음으로 많이 쓰면서, 물과 달리 다시 채워지지 않는데도.</p>
+      </div>
+      <div class="close-q tier-max">
+        <p class="t-display-xl">우리는 지금, 무엇을 퍼내고 있는가.<br><span class="amber">모래인가, 아니면 다시는 오지 않을 시간인가.</span></p>
+      </div>
+      <div class="close-outro" data-component="EditorialSplitTail">
+        <p class="t-body close-tail">쓸 수 있는 모래는 사막에 있지 않고, 지금도 강이 아주 느리게 깎아 만드는 중이다. 우리가 그것을 만드는 속도보다 빠르게 퍼내는 한 — 사막은 늘어나고, 강은 마른다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER · Meta / SourceLedger (결말과 분리) ==================== -->
+<footer class="foot" data-plane="Meta" data-component="SourceLedger">
+  <div class="wrap">
+    <h4 class="t-mono">근거 출처</h4>
+    <div class="ledger">
+      <div class="lr"><span class="n">01</span><span class="t">규모(연 500억 톤, 물 다음, 27m 벽), 페두치 인용, 10대 권고, 22명 저자 — UNEP 『Sand and Sustainability』(2022). UN News 2022-04-26; Geneva Environment Network.</span></div>
+      <div class="lr"><span class="n">02</span><span class="t">각진 강모래 vs 둥근 사막 모래 — 건설공학 해설 종합.</span></div>
+      <div class="lr"><span class="n">03</span><span class="t">인도 사망 418명·부상 434명(2020.12~2022.3), 익사 어린이 43명, 산디프 샤르마(2018) — SANDRP, 2022-04-24.</span></div>
+      <div class="lr"><span class="n">04</span><span class="t">메콩 삼각주 2050년 50% 염수화, 하상 침식 영향 6~7배, Eslami 인용 — 『Communications Earth and Environment』(2021); Utrecht University 보도자료.</span></div>
+      <div class="lr"><span class="n">05</span><span class="t">니파 섬 2003 수몰, 인도네시아 2007-02-06 육상 모래 수출 금지, 싱가포르 연 600~800만 톤 수입·90% 인니산 — National Library Board(Singapore) 등 교차확인.</span></div>
+      <div class="lr"><span class="n">06</span><span class="t">중국 2011~2013 시멘트 66억 톤 &gt; 미국 20세기 45억 톤 — USGS 시멘트 통계, Bill Gates 인용(Gizmodo, 2015-02-22).</span></div>
+      <div class="lr"><span class="n">07</span><span class="t">대안(M-sand·C&amp;D 재활용 골재·ore-sand·재활용 골재 최대 50중량%) — UNEP 보고서 및 학술 리뷰(Nature Reviews Clean Technology).</span></div>
+    </div>
+    <p class="colophon">ATS v5 · Raw5 Component Rails · 모래는 무한하지 않다 · A2Z(에이투지체) + Pretendard · 12열 단일 축 + 반응형 컴포넌트 + Raw5 WebP 5종</p>
+  </div>
+</footer>
+
+<script>
+/* quiet scroll progress: Motion-Primitives pattern, ported to lean vanilla JS */
+(function(){
+  var bar=document.getElementById('readingProgress'),queued=false;
+  if(!bar)return;
+  function paint(){
+    var root=document.documentElement,max=Math.max(root.scrollHeight-innerHeight,1);
+    bar.style.transform='scaleX('+Math.min(Math.max(scrollY/max,0),1)+')';queued=false;
+  }
+  function queue(){if(!queued){queued=true;requestAnimationFrame(paint);}}
+  addEventListener('scroll',queue,{passive:true});addEventListener('resize',queue,{passive:true});paint();
+})();
+
+/* nav toggle (mobile) */
+(function(){
+  var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
+  if(t&&l){
+    function setOpen(o){l.classList.toggle('open',o);t.setAttribute('aria-expanded',String(o));t.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기');}
+    t.addEventListener('click',function(){setOpen(!l.classList.contains('open'));});
+    l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&l.classList.contains('open')){setOpen(false);t.focus();}});
+  }
+})();
+
+/* scroll reveal (expressive 1회) + reduced-motion 폴백 */
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var els=document.querySelectorAll('.rise');
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e);});
+  /* 안전망: IO/트랜지션이 어떤 이유로든 안 뜨면 1.6s 후 즉시(트랜지션 없이) 전부 노출 */
+  setTimeout(function(){els.forEach(function(e){e.classList.add('in');});document.documentElement.classList.add('reveal-fallback');},1600);
+})();
+
+/* count-up (evidence-once, ≤600ms) — 접지 스트립 숫자만 */
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var nums=document.querySelectorAll('.count[data-to]');
+  function run(el){
+    var to=parseInt(el.getAttribute('data-to'),10),small=el.querySelector('small'),s=small?small.outerHTML:'',t0=null,dur=600;
+    if(reduce){el.innerHTML=to+s;return;}
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var v=Math.round(to*(1-Math.pow(1-p,3)));el.innerHTML=v+s;if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  }
+  if(!('IntersectionObserver' in window)){nums.forEach(run);return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:0.6});
+  nums.forEach(function(e){io.observe(e);});
+  /* 안전망: 카운터가 안 뜨면 1.6s 후 최종값 즉시 확정 (rAF 의존 제거) */
+  setTimeout(function(){nums.forEach(function(e){if(/^\s*0/.test(e.textContent)){var to=e.getAttribute('data-to'),small=e.querySelector('small');e.innerHTML=to+(small?small.outerHTML:'');}});},1600);
+})();
+
+/* active nav link on scroll */
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.nav-links a'));
+  var map={};links.forEach(function(a){var id=a.getAttribute('href').slice(1);var s=document.getElementById(id);if(s)map[id]=a;});
+  var ids=Object.keys(map);if(!ids.length||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.remove('active');a.removeAttribute('aria-current');});var a=map[e.target.id];if(a){a.classList.add('active');a.setAttribute('aria-current','location');}}});},{rootMargin:'-45% 0px -50% 0px'});
+  ids.forEach(function(id){io.observe(document.getElementById(id));});
+})();
+</script>
+</body>
+</html>
